@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediated Reality Group</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome-free-6.5.1-web/css/all.min.css">
+	<link rel="stylesheet" href="assets/academicons-1.9.4/css/academicons.min.css">
+    <script src="js/main.js" defer></script>
+    <link rel="icon" href="assets/img/mixlab.png" type="image/x-icon">
+</head>
+
+<body class="min-h-screen bg-slate-100 dark:bg-slate-950 dark:text-white font-medium text-justify">
+    <header class="dark:text-white sticky top-2 z-10 mx-2">
+        <section class="bg-slate-500/50 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl">
+            <div class="flex items-center">
+                <div class="bg-black rounded-full mr-2"><img class="w-6 h-6" src="assets/img/mixlab.png"></div>
+                <h1 class="text-sm font-medium"><a href="index.html">Mediated Reality Group</a></h1><span class="font-thin">&nbsp;@ University of Stuttgart</span>
+            </div>
+            <div class="mr-2">
+                <buttom id="hamburger-button" class="text-sm md:hidden cursor-pointer relative w-8 h-8">
+                    &#9776;
+                </buttom>
+                <nav class="hidden font-sans md:block space-x-8 text-sm" aria-label="main">
+                    <a href="index.html" class="hover:opacity-90">TOP</a>
+                    <a href="team.html" class="hover:opacity-90">TEAM</a>
+                    <a href="publications.html" class="hover:opacity-90">PUBLICATIONS</a>
+                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </nav>
+            </div>
+        </section>
+        <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
+            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 dark:bg-slate-900 border border-gray-700 dark:border-white font-medium rounded-xl" aria-label="mobile">
+                <a href="index.html" class="pb-2 hover:opacity-90">TOP</a>
+                <a href="team.html" class="pb-2 underline hover:opacity-90">TEAM</a>
+                <div class="flex justify-between items-center hover:opacity-90">
+                    <a href="publications.html">PUBLICATIONS</a>
+                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+
+    <main class="max-w-4xl mx-auto mb-8">
+        <!--
+            join us
+        -->
+        <!--
+        <section id="join-us" class="flex flex-col mx-auto p-4 justify-center items-center text-center relative" style="min-height: calc(100vh - 46px);">
+            <img src="assets/img/spark_center.png" class="absolute inset-0 object-cover opacity-40 h-2/5 mx-auto top-1/2 transform -translate-y-1/2 dark:invert"/>
+            <div>
+                <h1 class="relative text-5xl font-extrabold select-none text-transparent bg-clip-text bg-gradient-to-br from-indigo-700 via-purple-500 to-pink-500">
+                    JOIN US!
+                </h1>
+                <p class="relative my-4 select-none">We are looking for talent and collaborations✨</p>
+                <p class="relative"><button class="relative bg-blue-500 hover:bg-blue-700 font-bold mt-1 py-1 px-2 text-white rounded-full">Openings</button></p>
+            </div>
+        </section>
+        -->
+        
+        <!--
+            members
+        -->
+        <section id="members">
+            <div class="gap-4 pt-6 gap-y-2 lg:m-0 m-2">
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/smori_square.jpg" alt="shohei portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://mugichoko445.github.io/" target="_blank">Shohei Mori</a></div>
+                                <div class="text-sm text-gray-400">
+                                    Junior Research Group Leader at University of Stuttgart, Germany<br>
+                                    Guest Associate Professor (Global) at Keio University, Japan
+                                </div>
+                                <div class="text-slate-700 dark:text-slate-500">
+                                    <a href="mailto: s.mori.jp@ieee.org"><i class="fa-solid fa-envelope fa-lg"></i></a> |
+                                    <a href="https://scholar.google.com/citations?user=U5lf_WEAAAAJ&hl=en&oi=sra" target="_blank"><i class="ai ai-google-scholar-square ai-lg"></i></a>
+                                    <a href="https://orcid.org/0000-0003-0540-7312" target="_blank"><i class="fa-brands fa-orcid fa-lg"></i></a>
+                                    <a href="https://www.linkedin.com/in/shohei-mori-66678818a" target="_blank"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                                    <a href="https://www.researchgate.net/profile/Shohei-Mori" target="_blank"><i class="fa-brands fa-researchgate fa-lg"></i></a>
+                                    <a href="https://github.com/Mugichoko445" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a>
+                                    <a href="https://twitter.com/Mugichoko445" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+                                </div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
+                <figure class="flex flex-col pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                        <img class="w-20 h-20 rounded-full" src="assets/members/shiori_ueda.jpg" alt="shiori portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://sh1027.github.io/" target="_blank">Shiori Ueda</a></div>
+                                <div class="text-sm text-gray-400">Doctoral Researcher (Visiting Scholor from Keio University, Japan)</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex flex-col pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                        <img class="w-20 h-20 rounded-full" src="assets/members/ayaka_yasunaga.jpg" alt="ayaka portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://ayaka-yasunaga.github.io//" target="_blank">Ayaka Yasunaga</a></div>
+                                <div class="text-sm text-gray-400">Appointed Doctoral Researcher (Visiting Scholor from Keio University, Japan)</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl">Jonas Geiselhart</div>
+                                <div class="text-sm text-gray-400">Appointed Master Student</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl">Tobias Kemmler</div>
+                                <div class="text-sm text-gray-400">Bachelor Student</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl">Christopher Gaug</div>
+                                <div class="text-sm text-gray-400">Appointed Bachelor Student</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+            
+            <!--
+                collaborators
+            -->
+            <div id="collaborators" class="flex items-center px-2 py-6">
+                <div class="flex-grow h-px bg-gray-400"></div>
+                <span class="flex-shrink text-xl font-light px-4">
+                    Collaborators
+                </span>
+                <div class="flex-grow h-px bg-gray-400"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
+                
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/dieter_schmalstieg.jpg" alt="dieter portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://www.vis.uni-stuttgart.de/team/Schmalstieg/" target="_blank">Dieter Schmalstieg</a></div>
+                                <div class="text-sm text-gray-400">Alexander von Humboldt Professor at University of Stuttgart, Germany</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/hideo_saito.jpg" alt="hideo portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><div class="text-xl"></div><a href="http://hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-sm text-gray-400">Professor at Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/mariko_isogawa.jpg" alt="mariko portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                                <div class="text-sm text-gray-400">Associate Professor at Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/asako_kimura.jpg" alt="asako portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="http://www.rm2c.ise.ritsumei.ac.jp/" target="_blank">Asako Kimura</a></div>
+                                <div class="text-sm text-gray-400">Professor at Ritsumeikan University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/kiyoshi_kiyokawa.jpg" alt="kiyoshi portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://carelab.info/en/contact/" target="_blank">Kiyoshi Kiyokawa</a></div>
+                                <div class="text-sm text-gray-400">Professor at NAIST, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/yutaro_hirao.jpg" alt="yutaro portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://yutarohirao.notion.site/Yutaro-Hirao-s-CV-08a37b7f88f44d66baa0cb71d6838478" target="_blank">Yutaro Hirao</a></div>
+                                <div class="text-sm text-gray-400">Assistant Professor at NAIST, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/denis_kalkofen.jpg" alt="denis portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://dkalkofen.github.io/" target="_blank">Denis Kalkofen</a></div>
+                                <div class="text-sm text-gray-400">Associate Professor at Graz University of Technology, Austria</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/peter_mohr.jpg" alt="peter portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://www.tugraz.at/institute/icg/research/team-kalkofen/people/peter-mohr/" target="_blank">Peter Mohr</a></div>
+                                <div class="text-sm text-gray-400">Postdoc Researcher at Graz University of Technology, Austria</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/ke_li.jpg" alt="ke portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://keli95566.github.io/personal/" target="_blank">Ke Li</a></div>
+                                <div class="text-sm text-gray-400">Postdoc Researcher at University of Hamburg, Germany</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/alessandro_luchetti.jpg" alt="alessandro portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://scholar.google.com/citations?user=hy8o6aUAAAAJ" target="_blank">Alessandro Luchetti</a></div>
+                                <div class="text-sm text-gray-400">Postdoc Researcher at University of Trento, Italy</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/ali_motamedi.jpg" alt="alessandro portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://scholar.google.com/citations?user=UwD44RQAAAAJ&hl=en" target="_blank">Ali Motamedi</a></div>
+                                <div class="text-sm text-gray-400">Associate Professor at École de Technologie Supérieure, Canada</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex pt-4 px-2 group">
+                    <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="assets/members/roghieh_eskandari.jpg" alt="alessandro portrait">
+                        <div class="relative p-2 text-left">
+                            <figcaption>
+                                <div class="text-xl"><a href="https://ccps.io/team/roghieh-eskandari" target="_blank">Roghieh Eskandari</a></div>
+                                <div class="text-sm text-gray-400">Ph.D. Candidate at École de Technologie Supérieure, Canada</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        
+            <!--
+                alumni
+            -->
+            <!--
+            <div id="alumni" class="flex items-center px-2 py-6">
+                <div class="flex-grow h-px bg-gray-400"></div>
+                <span class="flex-shrink text-xl font-light px-4">
+                    Alumni
+                </span>
+                <div class="flex-grow h-px bg-gray-400"></div>
+            </div>
+            
+            <figure class="flex pt-4 px-2 group">
+                <div class="relative flex items-center">
+                    <img class="w-20 h-20 rounded-full" src="https://reinaishikawa.github.io/images/reina.jpg" alt="reina.jpg">
+                    <div class="relative p-2 text-left">
+                        <figcaption>
+                            <div class="text-xl"><a href="https://reinaishikawa.github.io/" target="_blank">Reina Ishikawa</a></div>
+                            <div class="text-sm text-gray-400">2021 - 2023 (Master) | Keio Univ., Japan | Co-supervision with Prof. H. Saito as Guest Lecturer (Global)</div>
+                        </figcaption>
+                    </div>
+                </div>
+            </figure>
+            -->
+
+        </section>
+    </main>
+
+    <footer id="footer" class="dark:text-white text-sm">
+        <div class="mx-2">
+            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 dark:bg-slate-900 rounded-2xl">
+                <address>
+                    <h2><a href="index.html">Shohei MORI</a></h2>
+                    Allmandring 19,<br>
+                    70569 Stuttgart, Germany<br>
+                    Email: <a href="mailto:s.mori.jp@ieee.org">s.mori.jp [at] ieee.org</a>
+                </address>
+                <div class="flex flex-col justify-end">
+                    <p class="text-right">Copyright &copy; <span id="year"></span></p>
+                    <p class="text-right">All Rights Researved</p>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <div class="h-4"><!-- spacer --></div>
+</body>
+
+</html>
