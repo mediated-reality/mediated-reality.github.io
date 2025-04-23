@@ -1206,6 +1206,11 @@ video {
   text-decoration-line: underline;
 }
 
+.subpixel-antialiased {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
 .opacity-40 {
   opacity: 0.4;
 }
