@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasunaga+ ICIP 2025</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../assets/img/mixlab.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.1-web/css/all.min.css">
+	<link rel="stylesheet" href="../../assets/academicons-1.9.4/css/academicons.min.css">
+    <script src="../../js/projects.js" defer></script>
+</head>
+
+<body class="min-h-screen max-w-4xl mx-auto text-gray-700">
+    <main class="p-4 mx-auto text-center">
+        <!-- title -->
+        <h1 class="text-4xl pt-4">
+            User-in-the-Loop View Sampling with Error Peaking Visualization 🧐
+        </h1>
+        <!-- venue -->
+        <h2 class="pt-2 text-lg">
+            IEEE International Conference on Image Processing (ICIP) 2025 <span class="font-bold">(To Appear)</span>
+        </h2>
+
+        <!-- resources -->
+        <section id="bio" class="max-w-4xl mx-auto text-sm py-4 space-x-2">
+            <a class="bg-gray-800 text-white rounded-full px-3 py-2 hover:opacity-90" href="#" target="_blank">
+                <i class="ai ai-ieee"></i> Xplore (TBA)
+            </a>
+            <a class="bg-gray-800 text-white rounded-full px-3 py-2 hover:opacity-90" href="#" target="_blank">
+                <i class="fa-regular fa-file-pdf"></i> Paper (TBA)
+            </a>
+            <a class="bg-gray-800 text-white rounded-full px-3 py-2 hover:opacity-90" href="#" target="_blank">
+                <i class="fa-brands fa-youtube"></i> Video (TBA)
+            </a>
+        </section>
+
+        <!-- authors -->
+        <section id="authors" class="grid grid-cols-3 gap-t-2 pt-6 max-w-xl mx-auto">
+            <figure class="flex flex-col group">
+                <div class="relative flex flex-col items-center">
+                    <img class="w-24 h-24 sm:w-28 sm:h-28 rounded-full" src="ayaka_yasunaga.jpg" alt="ayaka portrait">
+                    <div class="relative pt-2 px-2">
+                        <figcaption class="text-center">
+                            <div class="text-lg sm:text-xl"><a class="text-sky-400 hover:text-sky-400/75" href="https://ayaka-yasunaga.github.io/" target="_blank">Ayaka Yasunaga</a><sup class=" text-gray-400">1</sup></div>
+                            <!--<div class="text-sm text-gray-400">Keio University</div>-->
+                        </figcaption>
+                    </div>
+                </div>
+            </figure>
+            <figure class="flex flex-col group">
+                <div class="relative flex flex-col items-center">
+                    <img class="w-24 h-24 sm:w-28 sm:h-28 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
+                    <div class="relative pt-2 px-2">
+                        <figcaption class="text-center">
+                            <div class="text-lg sm:text-xl"><a class="text-sky-400 hover:text-sky-400/75" href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a><sup class=" text-gray-400">1</sup></div>
+                            <!--<div class="text-sm text-gray-400">Keio University</div>-->
+                        </figcaption>
+                    </div>
+                </div>
+            </figure>
+            <figure class="flex flex-col group">
+                <div class="relative flex flex-col items-center">
+                    <img class="w-24 h-24 sm:w-28 sm:h-28 rounded-full" src="smori_square.jpg" alt="shohei portrait">
+                    <div class="relative pt-2 px-2">
+                        <figcaption class="text-center">
+                            <div class="text-lg sm:text-xl"><a class="text-sky-400 hover:text-sky-400/75" href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a><sup class=" text-gray-400">2,1</sup></div>
+                            <!--<div class="text-sm text-gray-400">University of Stuttgart</div>-->
+                        </figcaption>
+                    </div>
+                </div>
+            </figure>
+            <!-- affiliations -->
+            <div class="relative flex flex-col items-center col-span-3 pt-1">
+                <h2 class="text-sm text-gray-400">
+                    <sup>1</sup>Keio University, <sup>2</sup>University of Stuttgart
+                </h2>
+            </div>
+        </section>
+
+        <!-- teaser -->
+        <figure class="pt-8 pb-4 md:px-10">
+            <img class="w-screen" src="yasunaga_icip25_teaser.png" alt="yasunaga_icip25_teaser.png" width="1000" height="380">
+            <figcaption class="text-justify pt-2 text-sm">
+                Focus peaking, our error peaking visualization, and conventional AR visualization. Inspired by focus peaking, our approach visualizes errors in the underlying MPI rendering, encouraging the insertion of new views to diminish noticeable errors. Compared to the conventional AR visualization, our method is less invasive and addresses existing issues.
+            </figcaption>
+        </figure>
+
+        <!--
+            abstract
+        -->
+        <section id="abstract" class="py-4 text-justify">
+            <p><span class="font-bold">Abstract</span> 
+            Augmented reality (AR) provides ways to visualize missing view samples for novel view synthesis. Existing approaches present 3D annotations for new view samples and task users with taking images by aligning the AR display. This data collection task is known to be mentally demanding and limits capture areas to pre-defined small areas due to ideal but restrictive underlying sampling theory. To free users from 3D annotations and limited scene exploration, we propose using locally reconstructed light fields and visualizing errors to be removed by inserting new views. Our results show that the error-peaking visualization is less invasive, reduces disappointment in final results, and is satisfactory with fewer view samples in our mobile view synthesis system. We also show that our approach can contribute to recent radiance field reconstruction for larger scenes, such as 3D Gaussian splatting.
+            </p>
+        </section>
+        
+        <section id="bibtex" class="max-w-4xl mx-auto py-4 space-x-2 text-left">
+            <div class="mx-auto bg-gray-800 px-4 rounded-md shadow-lg relative">
+                <div class="flex justify-between items-center py-4 rounded-t-lg">
+                    <span class="text-xs font-semibold text-gray-400">BibTex</span>
+                    <button
+                        id="copyButton"
+                        class="text-xs font-semibold text-gray-400 btn-copy hover:text-gray-200"
+                        data-clipboard-target="#codeBlock"
+                        onclick="copyCodeToClipboard()">📋 Copy</button>
+                </div>
+                <pre class="text-sm text-white overflow-x-auto scrollbar-hide">
+<code id="codeBlock" class="block pb-4">@inproceedings{yasunaga_icip25,
+    author={Yasunaga, Ayaka and Saito, Hideo and Mori, Shohei},
+    booktitle={IEEE International Conference on Image Processing (ICIP)}, 
+    title={User-in-the-Loop View Sampling with Error Peaking Visualization}, 
+    year={2025}
+}</code></pre>
+            </div>
+        </section>
+
+        <!--
+            acknowledgement
+        -->
+        <section id="acknowledgement" class="pt-4 text-justify text-sm text-gray-600">
+            <p><span class="font-medium">Acknowledgement</span>
+                This work was supported by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under Germany's Excellence Strategy – EXC 2120/1 – 390831618 and partly by a grant from JST Support for Pioneering Research Initiated by the Next Generation (# JPMJSP2123)
+            </p>
+        </section>
+    </main>
+
+    <footer id="footer" class="text-sm">
+        <div class="mx-2">
+            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-400 rounded-2xl">
+                <address>
+                    <h2><a href="../../">Shohei MORI</a></h2>
+                    Allmandring 19,<br>
+                    70569 Stuttgart, Germany<br>
+                    Email: <a href="mailto:s.mori.jp@ieee.org">s.mori.jp [at] ieee.org</a>
+                </address>
+                <div class="flex flex-col justify-end">
+                    <p class="text-right">Copyright &copy; <span id="year"></span></p>
+                    <p class="text-right">All Rights Researved</p>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <div class="h-4"><!-- spacer --></div>
+
+    <script>
+        document.getElementById('year').innerHTML = new Date().getFullYear();
+    </script>
+    <script>
+        function copyCodeToClipboard() {
+        const copyText = document.getElementById('codeBlock').innerText;
+        const textArea = document.createElement('textarea');
+        textArea.value = copyText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    
+        const copyButton = document.getElementById('copyButton');
+        copyButton.textContent = '✅ Copied!';
+        setTimeout(function () {
+            copyButton.textContent = '📋 Copy';
+        }, 2000);
+        }
+    </script>
+</body>
+
+</html>
