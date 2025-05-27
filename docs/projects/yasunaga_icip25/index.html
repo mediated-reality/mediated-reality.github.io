@@ -130,13 +130,13 @@
     <script>
         fetch("../../footer.html")
             .then(response => response.text())
-            .then(html => document.getElementById("footer").innerHTML = html);
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+                // Wait for footer to load, then update the year
+                document.getElementById('year').innerHTML = new Date().getFullYear();
+            });
     </script>
-    <div class="h-4"><!-- spacer --></div>
-
-    <script>
-        document.getElementById('year').innerHTML = new Date().getFullYear();
-    </script>
+    
     <script>
         function copyCodeToClipboard() {
         const copyText = document.getElementById('codeBlock').innerText;
