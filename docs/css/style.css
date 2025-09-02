@@ -866,6 +866,10 @@ video {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -888,6 +892,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-y-2 {
