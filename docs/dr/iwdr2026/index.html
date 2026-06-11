@@ -1,383 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The 3rd International Workshop on Diminished Reality (IWDR 2026)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="3rd International Workshop on Diminished Reality (IWDR), held in conjunction with IEEE ISMAR 2026 in Bari, Italy."
-  />
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IWDR 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.1-web/css/all.min.css">
+	<link rel="stylesheet" href="../../assets/academicons-1.9.4/css/academicons.min.css">
+    <script src="../../js/main.js" defer></script>
+    <link rel="icon" href="iwdr2026_icon.png" type="image/x-icon">
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased">
-    <a id="top"></a>
 
-    <!-- Scroll-activated top bar -->
-<div id="scrollTopBar"
-     class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-700
-            hidden transition-opacity duration-300">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-    
-    <!-- Left: Workshop title -->
-    <a href="#top" class="text-sm font-semibold text-slate-100 hover:text-emerald-300">
-       IWDR 2026
-    </a>
-
-    <!-- Right: Navigation links -->
-    <div class="flex items-center gap-6 text-sm font-medium">
-      <a href="#top" class="text-slate-200 hover:text-emerald-300">Top</a>
-      <a href="#submission" class="text-slate-200 hover:text-emerald-300">Submit</a>
-      <a href="#dr-challenge" class="text-slate-200 hover:text-emerald-300">DR Challenge</a>
-    </div>
-
-  </div>
-</div>
-
-
-  <!-- Page wrapper -->
-  <div class="min-h-screen flex flex-col">
-    <!-- Header / Hero -->
-    <header class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border-b border-slate-800">
-      <div class="max-w-5xl mx-auto px-4 py-10 lg:py-14">
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p class="text-sm font-semibold tracking-wide text-emerald-400 uppercase">
-              IEEE ISMAR 2026 Workshop
-            </p>
-            <h1 class="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-              The 3rd International Workshop on Diminished Reality (IWDR)
-            </h1>
-            <p class="mt-4 text-base sm:text-lg text-slate-300">
-              Held in conjunction with <span class="font-semibold">IEEE ISMAR 2026</span>, Bari, Italy
-            </p>
-            <p class="mt-1 text-sm text-slate-400">
-              Website:
-              <a
-                href="https://mediated-reality.github.io/dr/iwdr2026"
-                class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
-              >
-                https://mediated-reality.github.io/dr/iwdr2026
-              </a>
-            </p>
-          </div>
-          <div class="mt-4 lg:mt-0">
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4 text-sm text-slate-200 shadow-lg shadow-emerald-500/10">
-              <p class="font-semibold text-emerald-300">Workshop date (provisional)</p>
-              <p class="mt-1">
-                <span class="font-medium">October 5 or 6, 2026</span><br />
-                Bari, Italy / hybrid
-              </p>
-              <p class="mt-3 text-xs text-slate-400">
-                All deadlines are 23:59:59 AoE (UTC−12) and aligned with the ISMAR 2026 workshop track schedule.
-              </p>
+<body class="min-h-screen bg-slate-50 dark:bg-[#05080f] text-slate-950 dark:text-slate-200 text-justify">
+    <header class="dark:text-white sticky top-4 lg:top-6 z-10 mx-2">
+        <section class="bg-slate-500/20 dark:bg-slate-800/60 dark:border dark:border-slate-700/60 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
+            <div class="flex items-center">
+                <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="iwdr2026_icon.png"></div>
+                <h1 class="font-bold"><a href="index.html"><span class="text-sky-400">IWDR</span> 2026</a>
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="mr-2">
+                <buttom id="hamburger-button" class="md:hidden cursor-pointer relative w-8 h-8">
+                    &#9776;
+                </buttom>
+                <nav class="hidden md:block space-x-8 text-sm" aria-label="main">
+                    <a href="index.html" class="hover:text-sky-400 transition-colors">Home</a>
+                    <a href="#contribute" class="hover:text-sky-400 transition-colors">Contribute</a>
+                    <a href="#keynote" class="hover:text-sky-400 transition-colors">Keynote</a>
+                    <a href="#program" class="hover:text-sky-400 transition-colors">Program</a>
+                    <a href="#organizers" class="hover:text-sky-400 transition-colors">Organizers</a>
+                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </nav>
+            </div>
+        </section>
+        <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
+            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 dark:bg-slate-900 border border-gray-700 dark:border-white font-mono rounded-xl" aria-label="mobile">
+                <a href="index.html" class="pb-2 hover:opacity-90">Home</a>
+                <a href="#contribute" class="pb-2 hover:opacity-90">Contribute</a>
+                <a href="#keynote" class="pb-2 hover:opacity-90">Keynote</a>
+                <a href="#program" class="pb-2 hover:opacity-90">Program</a>
+                <div class="flex justify-between items-center hover:opacity-90">
+                    <a href="#organizers">Organizers</a>
+                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </nav>
+        </section>
     </header>
 
-    <!-- Main content -->
-    <main class="flex-1">
-      <div class="max-w-5xl mx-auto px-4 py-10 space-y-12">
-        <!-- Overview -->
-        <section id="overview" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Overview
-          </h2>
-          <p class="text-slate-200 leading-relaxed">
-            The International Workshop on Diminished Reality (IWDR) was previously held at ISMAR 2015 and 2016.
-            At that time, progress in DR research was constrained by several technical challenges that were
-            difficult to overcome before the deep learning era. As a result, the workshop series was discontinued.
-          </p>
-          <p class="text-slate-200 leading-relaxed">
-            However, the landscape has changed dramatically. Recent advances in visual computing, neural rendering,
-            and multimodal perception have made practical DR applications far more feasible than a decade ago
-            <span class="text-slate-400">[1, 2]</span>. These developments have also enabled deeper investigation
-            into perceptual and cognitive aspects of DR systems <span class="text-slate-400">[3]</span>. With these
-            shifts, the technical boundaries of DR have expanded substantially, creating a timely opportunity to
-            revive IWDR and foster a new generation of DR research.
-          </p>
+
+    <main class="max-w-4xl mx-auto mb-8">
+        <section id="hero" class="px-4 pt-32 pb-12 text-left flex flex-col gap-6">
+            <!-- Row 1: Image + First three lines -->
+            <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 items-center">
+                <!-- Image column with light/dark mode control -->
+                <div class="col-span-1 flex justify-center lg:justify-start">
+                    <div class="relative w-full">
+                        <!-- White-background image (only in light mode) -->
+                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none block dark:hidden"/>
+                        <!-- Dark-background image (only in dark mode) -->
+                        <img src="iwdr2026_logo_dark.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none hidden dark:block"/>
+                    </div>
+                </div>
+
+                <!-- Text column -->
+                <div class="col-span-2 lg:col-span-3 min-w-0">
+                    <p class="text-xl sm:text-2xl text-slate-500 dark:text-slate-400 select-none">
+                        3rd Int. Workshop on
+                    </p>
+                    <h1 class="font-mono text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight select-none dark:text-white">
+                        Diminished Reality
+                    </h1>
+                        <span class="italic">Introducing the 1st DR Challenge</span> 🏆
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 2: Everything else (full width) -->
+            <div>
+                <p class="font-mono text-sm uppercase tracking-widest text-slate-500 select-none">
+                    Co-located with IEEE ISMAR 2026
+                </p>
+
+                <div class="font-mono text-sm mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 dark:text-slate-300 select-none">
+                    <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy</span>
+                    <span class="text-slate-400 dark:text-slate-600">·</span>
+                    <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>October 5 or 6, 2026</span>
+                    <span class="text-slate-400 dark:text-slate-600">·</span>
+                    <span><i class="fa-solid fa-desktop text-sky-400 mr-1.5"></i>Hybrid · Half-day</span>
+                </div>
+            </div>
+        </section>
+    
+        
+        <!--
+            Descriptions
+        -->
+        <section id="description" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Description</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="text-sm gap-t-2 pt-6">
+                <p class="pb-2">
+                  <span class="font-bold">We are back 👍</span>
+                  The International Workshop on Diminished Reality (IWDR) was previously held at ISMAR 2015 and 2016.
+                  At that time, progress in DR research was constrained by several technical challenges that were difficult to overcome before the deep learning era.
+                  As a result, the workshop series was discontinued.
+                  </p>
+                <p>
+                  However, the landscape has changed dramatically. Recent advances in visual computing, neural rendering, and multimodal perception have made
+                  practical DR applications far more feasible than a decade ago [1, 2].
+                  These developments have also enabled deeper investigation into perceptual and cognitive aspects of DR systems [3].
+                  With these shifts, the technical boundaries of DR have expanded substantially, creating a timely opportunity to revive IWDR
+                  and foster a new generation of DR research.</p>
+            </div>
+            <div class="text-xs gap-t-2 pt-2 text-slate-400">
+                <p><span class="font-semibold">References</span></p>
+                <ul>
+                    <li>[1] S. Mori, O. Erat, W. Broll, H. Saito, D. Schmalstieg, and D. Kalkofen, “InpaintFusion: Incremental RGB-D Inpainting for 3D Scenes,” IEEE TVCG, Vol. 26, Issue 10, pp. 2994–3007, 2020.</li>
+                    <li>[2] M. Kari and P. Abtahi, “Reality Promises: Virtual-Physical Decoupling Illusions in Mixed Reality via Invisible Mobile Robots,” Proc. ACM UIST, 2025.</li>
+                    <li>[3] Y. F. Cheng, H. Yin, Y. Yan, J. Gugenheimer, and D. Lindlbauer, “Towards Understanding Diminished Reality,” Proc. ACM CHI, 2025.</li>
+                </ul>
+            </div>
+            
+            <div class="text-sm gap-t-2 pt-2">
+                <p>
+                    <span class="font-bold">Topics:</span>
+                    IWDR 2026 aims to bring together researchers working on the full spectrum of DR,
+                    from foundational technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
+                </p>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR core technologies:</span>
+                        Vision- and graphics‑based DR pipelines /
+                        Methods for object removal, scene completion, and real‑time inpainting /
+                        DR in challenging modalities such as haptics, audio, and multimodal sensor fusion
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR applications:</span>
+                        XR applications leveraging DR in medicine, industrial support, entertainment, and telepresence /
+                        DR for safety‑critical or high‑precision environments /
+                        DR for accessibility and situational awareness
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">Perceptual issues in DR:</span>
+                        User performance and task efficiency under DR conditions /
+                        Perceptual thresholds, acceptance, and comfort /
+                        Cross‑modal perception when DR is applied to visual, auditory, or tactile cues
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">Dataset and benchmarking for DR:</span>
+                        DR datasets for training and evaluation /
+                        Benchmarking methodologies, metrics, and reproducible evaluation pipelines /
+                        Standardization
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!--
+            Contribute
+        -->
+        <section id="contribute" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Contribute</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="font-normal text-sm gap-t-2 pt-6">
+                <p>
+                    We invite contributions through two tracks.
+                </p>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
+                        in the IEEE Computer Society VGTC conference format. Anonymous submissions undergo formal review (two reviews per paper, plus a rebuttal).
+                        Accepted papers appear in the ISMAR 2026 Adjunct Proceedings on IEEE Xplore.
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR challenge (non‑archival):</span>
+                        The organizers will provide an implementation platform for WebXR-based DR systems using smartphone camera input. The platform will include fundamental components required for DR implementation, such as AR tracking, 3D scanning, 3D bounding-box detection, and inpainting modules.
+                        Participants are encouraged to build their own DR algorithms and applications on this platform and submit a short demonstration video recorded in their own environment (up to 2 min), along with a brief paper in the short papers format (up to 2 pages) summarizing the proposed algorithm and implementation details.
+                    </li>
+                </ul>
+            </div>
+            <div class="font-normal text-sm gap-t-2 pt-6">
+                <p class="pb-2">
+                    <span class="font-bold">Important dates</span> (provisional, aligned with the ISMAR 2026 workshop track). All deadlines are 23:59:59 AoE
+                    (Anywhere on Earth, UTC−12) on the stated day.
+                </p>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 5, 2026</span>
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 17, 2026</span>
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 31, 2026</span>
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 4, 2026</span>
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge) Notification of invitation:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 18, 2026</span>
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
+                    </li>
+                </ul>
+            </div>
+            <div class="font-normal text-sm gap-t-2 pt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 dark:border-sky-400/50 text-sky-600 dark:text-sky-400 rounded-md px-3 py-1.5 select-none">Submit · link coming soon</span>
+                <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 dark:text-sky-400 hover:underline">iwdr2026@googlegroups.com</a></p>
+            </div>
         </section>
 
-        <!-- Topics -->
-        <section id="topics" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Topics
-          </h2>
-          <p class="text-slate-200 leading-relaxed">
-            IWDR 2026 aims to bring together researchers working on the full spectrum of DR, from foundational
-            technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
-          </p>
-
-          <div class="grid gap-6 md:grid-cols-2">
-            <!-- DR core technologies -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                DR core technologies
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>Vision- and graphics‑based DR pipelines</li>
-                <li>Methods for object removal, scene completion, and real‑time inpainting</li>
-                <li>DR in challenging modalities such as haptics, audio, and multimodal sensor fusion</li>
-              </ul>
+        <!--
+            DR Challenge
+        -->
+        <section id="dr-challenge" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">DR Challenge</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="font-normal text-sm gap-t-2 pt-6">
+                <p>
+                    We plan to organize a hands‑on DR Challenge as a central activity of the workshop.
+                </p>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">Participants will be provided with:</span>
+                        A mobile DR framework that separates heavy DNN‑based server processing from lightweight AR functions running on mobile devices
+                        A baseline DR implementation demonstrating real‑time diminished reality on smartphones
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700 dark:text-sky-300">Participants will be invited to:</span>
+                        Develop improved DR algorithms, pipelines, applications, or benchmarking schemes
+                        Bring their systems to the workshop venue for on‑site demonstrations
+                        Discuss practical limitations of current DNN‑based DR, including latency, robustness, perceptual quality, and user experience
+                    </li>
+                </ul>
+                <div class="font-normal text-sm gap-t-2 pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                  <p>
+                    The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage reproducible experimentation in DR.
+                  </p>
+                </div>
             </div>
-
-            <!-- DR applications -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                DR applications
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>XR applications leveraging DR in medicine, industrial support, entertainment, and telepresence</li>
-                <li>DR for safety‑critical or high‑precision environments</li>
-                <li>DR for accessibility and situational awareness</li>
-              </ul>
-            </div>
-
-            <!-- Perceptual issues -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                Perceptual issues in DR
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>User performance and task efficiency under DR conditions</li>
-                <li>Perceptual thresholds, acceptance, and comfort</li>
-                <li>Cross‑modal perception when DR is applied to visual, auditory, or tactile cues</li>
-              </ul>
-            </div>
-
-            <!-- Dataset and benchmarking -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                Dataset and benchmarking for DR
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>DR datasets for training and evaluation</li>
-                <li>Benchmarking methodologies, metrics, and reproducible evaluation pipelines</li>
-                <li>Standardization</li>
-              </ul>
-            </div>
-          </div>
         </section>
 
-        <!-- Special Event - DR Challenge -->
-        <section id="dr-challenge" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Special Event – DR Challenge
-          </h2>
-          <p class="text-slate-200 leading-relaxed">
-            We plan to organize a hands‑on DR Challenge as a central activity of the workshop.
-          </p>
-
-          <div class="grid gap-6 md:grid-cols-2">
-            <!-- Provided to participants -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                Participants will be provided with:
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>
-                  A mobile DR framework that separates heavy DNN‑based server processing from lightweight AR
-                  functions running on mobile devices
-                </li>
-                <li>
-                  A baseline DR implementation demonstrating real‑time diminished reality on smartphones
-                </li>
-              </ul>
+        <!--
+            Keynote
+        -->
+        <section id="keynote" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Keynote Speaker</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-6">
+                <img class="w-32 h-32 rounded-full object-cover shrink-0 dark:invert" src="na.png" alt="tba portrait">
+                <div class="text-sm">
+                    <div class="text-lg font-bold text-sky-600 dark:text-sky-400">TBA</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 pb-3 pt-0.5">TBA</div>
+                    <p class="pb-2">
+                        <span class="font-semibold">Topic of the talk:</span> <span class="italic">Young star researcher in DR</span>
+                    </p>
+                    <!--
+                    <p>
+                    </p>
+                    -->
+                </div>
             </div>
+        </section>
 
-            <!-- Participants are invited to -->
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                Participants will be invited to:
-              </h3>
-              <ul class="mt-3 space-y-2 text-sm text-slate-200">
-                <li>Develop improved DR algorithms, pipelines, applications, or benchmarking schemes</li>
-                <li>Bring their systems to the workshop venue for on‑site demonstrations</li>
-                <li>
-                  Discuss practical limitations of current DNN‑based DR, including latency, robustness,
-                  perceptual quality, and user experience
-                </li>
-              </ul>
+        <!--
+            Program
+        -->
+        <section id="program" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Program</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="font-normal text-sm gap-t-2 pt-6">
+                <p class="pb-2">
+                    IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
+                    reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
+                </p>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Welcome and framing</span> (10 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Keynote</span> (45 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Short paper session</span> — 4 papers × 15 min (60 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Coffee break</span> (20 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Challenger demonstrations and talks</span>  — 4 challengers × 15 min (60 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Closing panel</span> (35 min)
+                    </li>
+                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Wrap-up and next steps</span> (10 min)
+                    </li>
+                </ul>
             </div>
-          </div>
-
-          <p class="text-slate-200 leading-relaxed">
-            The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage
-            reproducible experimentation in DR.
-          </p>
         </section>
-
-        <!-- References -->
-        <section id="references" class="space-y-3">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            References
-          </h2>
-          <ol class="list-decimal list-inside space-y-2 text-sm text-slate-200">
-            <li>
-              Shohei Mori, Okan Erat, Wolfgang Broll, Hideo Saito, Dieter Schmalstieg, and Denis Kalkofen,
-              “InpaintFusion: Incremental RGB-D Inpainting for 3D Scenes,” IEEE TVCG, Vol. 26, Issue 10,
-              pp. 2994–3007, 2020.
-            </li>
-            <li>
-              Mohamed Kari and Parastoo Abtahi, “Reality Promises: Virtual-Physical Decoupling Illusions in Mixed
-              Reality via Invisible Mobile Robots,” Proc. ACM UIST, 2025.
-            </li>
-            <li>
-              Yi Fei Cheng, Hang Yin, Yukang Yan, Jan Gugenheimer, David Lindlbauer, “Towards Understanding
-              Diminished Reality,” Proc. ACM CHI, 2025.
-            </li>
-          </ol>
-        </section>
-
-        <!-- Submission tracks -->
-        <section id="submission-tracks" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Submission tracks
-          </h2>
-
-          <div class="space-y-4">
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                Short papers (archival)
-              </h3>
-              <p class="mt-2 text-sm text-slate-200 leading-relaxed">
-                Original research, surveys, demos, or position papers, up to 6 pages excluding references, in IEEE
-                Computer Society VGTC conference format. Submissions are anonymous and undergo a formal review
-                (two reviews per paper, with a rebuttal). Accepted papers appear in the ISMAR 2026 Adjunct
-                Proceedings on IEEE Xplore.
-              </p>
-            </div>
-
-            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 class="text-lg font-semibold text-emerald-300">
-                DR challenge (non‑archival)
-              </h3>
-              <p class="mt-2 text-sm text-slate-200 leading-relaxed">
-                The organizers will provide an implementation platform for WebXR-based DR systems using smartphone
-                camera input. The platform will include fundamental components required for DR implementation, such
-                as AR tracking, 3D scanning, 3D bounding-box detection, and inpainting modules.
-              </p>
-              <p class="mt-2 text-sm text-slate-200 leading-relaxed">
-                Participants are encouraged to build their own DR algorithms and applications on this platform and
-                submit a short demonstration video recorded in their own environment (up to 2 min), along with a
-                brief paper in the short papers format (up to 2 pages) summarizing the proposed algorithm and
-                implementation details.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Important dates -->
-        <section id="important-dates" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Important dates (provisional)
-          </h2>
-          <p class="text-sm text-slate-300">
-            All deadlines are <span class="font-semibold">23:59:59 AoE (UTC−12)</span> on the stated day.
-            Dates align with the ISMAR 2026 workshop track schedule.
-          </p>
-
-          <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60">
-            <table class="min-w-full text-sm text-left text-slate-200">
-              <tbody class="divide-y divide-slate-800">
-                <tr>
-                  <td class="px-4 py-3 font-medium">Workshop call for participation issued</td>
-                  <td class="px-4 py-3">June 19, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">Short paper submission</td>
-                  <td class="px-4 py-3">July 3, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">Notification of acceptance</td>
-                  <td class="px-4 py-3">July 17, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">Camera-ready materials</td>
-                  <td class="px-4 py-3">July 31, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">(DR challenge) Demonstration video and description submission</td>
-                  <td class="px-4 py-3">September 4, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">(DR challenge) Notification</td>
-                  <td class="px-4 py-3">September 18, 2026 (Friday)</td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 font-medium">Workshop date</td>
-                  <td class="px-4 py-3">October 5 or 6, 2026 (Bari, Italy / hybrid)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- Submission instructions -->
-        <section id="submission" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
-            Submission
-          </h2>
-          <p class="text-slate-200 leading-relaxed">
-            Submissions must be anonymous, formatted in the IEEE Computer Society VGTC conference style
-            (<a href="https://tc.computer.org/vgtc/publications/conference/" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">https://tc.computer.org/vgtc/publications/conference/</a>),
-            and submitted via the workshop’s submission system linked from the website.
-          </p>
-          <p class="text-slate-200 leading-relaxed">
-            At least one author per accepted contribution must register for ISMAR 2026 or the workshops, and
-            on‑site presentation is required for accepted papers, in line with ISMAR 2026 policy.
-          </p>
-        </section>
-
-        <!-- Organizers -->
-        <section id="organizers" class="space-y-4">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-50">
+        
+        <!--
             Organizers
-          </h2>
-          <ul class="space-y-2 text-slate-200">
-            <li>• Shohei Mori — University of Stuttgart, Germany</li>
-            <li>• Mariko Isogawa — Keio University, Japan</li>
-            <li>• Hideo Saito — Keio University, Japan</li>
-          </ul>
-          <p class="mt-3 text-sm text-slate-300">
-            Contact:
-            <a
-              href="mailto:iwdr2026@googlegroups.com"
-              class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2"
-            >
-              iwdr2026@googlegroups.com
-            </a>
-          </p>
+        -->
+        <section id="organizers" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Organizers</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-20 h-20 sm:w-32 sm:h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                                <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-20 h-20 sm:w-32 sm:h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                                <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-20 h-20 sm:w-32 sm:h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+            </div>
         </section>
-      </div>
+        
+        <!--
+            Program Committee
+        -->
+        <section id="pc" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+                <span class="whitespace-nowrap">Program Committee</span>
+                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6 text-sm">
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Norihiko Kawai</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Osaka Institute of Technology, Japan</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Xuening Tian</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Verena Biener</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Roghieh E. Toushmanlou</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">École de Technologie Supérieure, Canada</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Fumihiko Nakamura</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Fumihisa Shibata</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Tomohiro Fukuda</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">The University of Osaka, Japan</div>
+                </div>
+                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                    <div class="text-sm font-bold">Nobuyoshi Yabuki</div>
+                    <div class="text-[0.7rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Tokyo City University, Japan</div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-950">
-      <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
-        <p>© 2026 IWDR – The 3rd International Workshop on Diminished Reality.</p>
-        <p>
-          In conjunction with
-          <span class="font-medium text-slate-300">IEEE ISMAR 2026</span>, Bari, Italy.
-        </p>
-      </div>
+    
+    <!-- footer -->
+    <footer id="footer" class="dark:text-white text-sm">
+        <div class="mx-2">
+            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 dark:bg-slate-900 rounded-2xl">
+                <address>
+                    <h2><a href="https://mediated-reality.github.io">IWDR 2026 Organizers</a></h2>
+                    Email: <a href="mailto:iwdr2026@googlegroups.com">iwdr2026@googlegroups.com</a>
+                </address>
+                <div class="flex flex-col justify-end">
+                    <p class="text-right">Copyright &copy; <span id="year"></span></p>
+                    <p class="text-right">All Rights Reserved</p>
+                </div>
+            </div>
+        </section>
     </footer>
-  </div>
-  <script>
-  const bar = document.getElementById("scrollTopBar");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 120) {
-      bar.classList.remove("hidden");
-      bar.classList.add("opacity-100");
-    } else {
-      bar.classList.add("hidden");
-      bar.classList.remove("opacity-100");
-    }
-  });
-</script>
-
+    <div class="h-4"><!-- spacer --></div>
 </body>
+
 </html>
