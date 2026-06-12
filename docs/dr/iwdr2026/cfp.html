@@ -164,6 +164,24 @@
         }
         .footer-bar a { color: var(--sky-dark); text-decoration: underline; }
 
+        /* ── Keynote row ── */
+        .keynote-row {
+            display: flex;
+            align-items: center;
+            gap: 8pt;
+        }
+        .keynote-row img {
+            width: 76pt;
+            height: 76pt;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1pt solid var(--rule);
+        }
+        .keynote-row .kn-name { font-weight: 700; font-size: 9pt; }
+        .keynote-row .kn-affil { font-size: 7pt; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        .keynote-row .kn-title { font-size: 8pt; font-style: italic; color: var(--ink); margin-top: 1pt; }
+
         /* ── Spacer ── */
         .gap { height: 2pt; }
 
@@ -216,6 +234,20 @@
             and multimodal perception have made practical Diminished Reality (DR) applications far more feasible than
             a decade ago, creating a timely opportunity to revive the workshop and foster a new generation of DR research.
         </p>
+    </section>
+
+    <!-- ── Keynote ──────────────────────────────────────────── -->
+    <section>
+        <div class="sec-title">Keynote Speaker</div>
+        <div class="keynote-row">
+            <img src="mohamed_kari.jpg" alt="Dr. Mohamed Kari">
+            <div>
+                <div class="kn-name">Dr. Mohamed Kari</div>
+                <div class="kn-affil">FieldAI Research Institute</div>
+                <div class="kn-title">Title: Reality Interfaces (Tentative)</div>
+                <p style="font-size:8pt;margin-top:2pt;">Dr. Mohamed Kari is a researcher at the FieldAI Research Institute whose work bridges interactive, real-time 3D graphics and vision systems for scene-aware augmented reality and robotics applications.</p>
+            </div>
+        </div>
     </section>
 
     <!-- ── Topics ─────────────────────────────────────────── -->
