@@ -804,6 +804,10 @@ video {
   height: auto;
 }
 
+.h-full{
+  height: 100%;
+}
+
 .h-px{
   height: 1px;
 }
@@ -1557,6 +1561,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-sky-300{
+  --tw-text-opacity: 1;
+  color: rgb(125 211 252 / var(--tw-text-opacity, 1));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -2012,12 +2021,24 @@ html {
     margin: 0px;
   }
 
+  .lg\:w-48{
+    width: 12rem;
+  }
+
+  .lg\:w-64{
+    width: 16rem;
+  }
+
   .lg\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:flex-row{
+    flex-direction: row;
   }
 
   .lg\:justify-start{
@@ -2027,5 +2048,15 @@ html {
   .lg\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:w-56{
+    width: 14rem;
+  }
+
+  .xl\:w-72{
+    width: 18rem;
   }
 }
