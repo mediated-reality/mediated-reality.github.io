@@ -15,12 +15,43 @@
     <style>
         body { font-family: 'IBM Plex Sans', sans-serif; }
         .font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+        /* DR Challenge items */
+        .challenge-items { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0 0.75rem; text-align: left; }
+        .challenge-item {
+            position: relative;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+            transition: border-color .2s, box-shadow .2s, transform .2s;
+        }
+        /* emoji right before each item's title, on the same line */
+        .challenge-item .challenge-label::before {
+            display: inline-block; margin-right: 0.45rem; font-size: 1.15em;
+            transition: transform .2s;
+        }
+        .challenge-item:nth-child(1) .challenge-label::before { content: "🧰"; }
+        .challenge-item:nth-child(2) .challenge-label::before { content: "🎯"; }
+        .challenge-item:nth-child(3) .challenge-label::before { content: "🎤"; }
+        .challenge-item:hover .challenge-label::before { transform: scale(1.1) rotate(-6deg); }
+        .challenge-item:hover {
+            border-color: rgba(14, 165, 233, 0.5);
+            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 8px 20px rgba(14, 165, 233, 0.10);
+            transform: translateY(-1px);
+        }
+        .challenge-item .challenge-label { display: block; margin-bottom: 0.25rem; letter-spacing: 0.01em; }
+
+        /* DR Challenge video: keep beside the text on middle-size screens (lg/xl widths come from Tailwind) */
+        @media (min-width: 640px) and (max-width: 767px)  { .challenge-video { width: 13rem; } }
+        @media (min-width: 768px) and (max-width: 1023px) { .challenge-video { width: 15rem; } }
     </style>
 </head>
 
-<body class="min-h-screen bg-slate-50 dark:bg-[#05080f] text-slate-950 dark:text-slate-200 text-justify">
-    <header class="dark:text-white sticky top-4 lg:top-6 z-10 mx-2">
-        <section class="bg-slate-500/20 dark:bg-slate-800/60 dark:border dark:border-slate-700/60 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
+<body class="min-h-screen bg-slate-50 text-slate-950 text-justify">
+    <header class="sticky top-4 lg:top-6 z-10 mx-2">
+        <section class="bg-slate-500/20 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
             <div class="flex items-center">
                 <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="iwdr2026_icon.png"></div>
                 <h1 class="font-bold"><a href="index.html"><span class="text-sky-400">IWDR</span> 2026</a>
@@ -35,23 +66,17 @@
                     <a href="#keynote" class="hover:text-sky-400 transition-colors">Keynote</a>
                     <a href="#program" class="hover:text-sky-400 transition-colors">Program</a>
                     <a href="#organizers" class="hover:text-sky-400 transition-colors">Organizers</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
                 </nav>
             </div>
         </section>
         <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
-            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 dark:bg-slate-900 border border-gray-700 dark:border-white font-mono rounded-xl" aria-label="mobile">
+            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 border border-gray-700 font-mono rounded-xl" aria-label="mobile">
                 <a href="index.html" class="pb-2 hover:opacity-90">Home</a>
                 <a href="#contribute" class="pb-2 hover:opacity-90">Contribute</a>
                 <a href="#keynote" class="pb-2 hover:opacity-90">Keynote</a>
                 <a href="#program" class="pb-2 hover:opacity-90">Program</a>
                 <div class="flex justify-between items-center hover:opacity-90">
                     <a href="#organizers">Organizers</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
                 </div>
             </nav>
         </section>
@@ -62,22 +87,20 @@
         <section id="hero" class="px-4 pt-32 pb-12 text-left flex flex-col gap-6">
             <!-- Row 1: Image + First three lines -->
             <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 items-center">
-                <!-- Image column with light/dark mode control -->
+                <!-- Image column -->
                 <div class="col-span-1 flex justify-center lg:justify-start">
                     <div class="relative w-full">
-                        <!-- White-background image (only in light mode) -->
-                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none block dark:hidden"/>
-                        <!-- Dark-background image (only in dark mode) -->
-                        <img src="iwdr2026_logo_dark.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none hidden dark:block"/>
+                        <!-- Logo -->
+                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none block"/>
                     </div>
                 </div>
 
                 <!-- Text column -->
                 <div class="col-span-2 lg:col-span-3 min-w-0">
-                    <p class="text-xl sm:text-2xl text-slate-500 dark:text-slate-400">
+                    <p class="text-xl sm:text-2xl text-slate-500">
                         3rd Int. Workshop on
                     </p>
-                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold dark:text-white">
+                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold">
                         Diminished Reality
                     </h1>
                         <span class="italic">Introducing the 1st DR Challenge</span> 🏆
@@ -91,36 +114,24 @@
                     Co-located with IEEE ISMAR 2026
                 </p>
 
-                <div class="font-mono text-sm mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 dark:text-slate-300">
+                <div class="font-mono text-sm mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600">
                     <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy</span>
-                    <span class="text-slate-400 dark:text-slate-600">·</span>
+                    <span class="text-slate-400">·</span>
                     <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
-                    <span class="text-slate-400 dark:text-slate-600">·</span>
+                    <span class="text-slate-400">·</span>
                     <span><i class="fa-solid fa-desktop text-sky-400 mr-1.5"></i>Hybrid · Half-day</span>
                 </div>
             </div>
         </section>
     
         
-        <!-- ── Announcement ─────────────────────────────────────────── -->
-        <section id="announcement" class="px-4">
-            <div class="flex items-center gap-3 bg-sky-50 dark:bg-sky-950/50 border border-sky-300 dark:border-sky-700 rounded-xl px-4 py-3">
-                <span class="text-2xl">🏆</span>
-                <p class="font-mono text-sm text-sky-800 dark:text-sky-200">
-                    <span class="font-bold">The DR Challenge is now open!</span>
-                    Apply before <span class="font-bold">September 25, 2026</span> (23:59:59 AoE).
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="underline hover:text-sky-600 dark:hover:text-sky-400">Apply now →</a>
-                </p>
-            </div>
-        </section>
-
         <!--
             Descriptions
         -->
         <section id="description" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Description</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="text-base gap-t-2 pt-6">
                 <p class="pb-2">
@@ -151,27 +162,27 @@
                     IWDR 2026 aims to bring together researchers working on the full spectrum of DR,
                     from foundational technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR core technologies:</span>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR core technologies:</span>
                         Vision- and graphics‑based DR pipelines /
                         Methods for object removal, scene completion, and real‑time inpainting /
                         DR in challenging modalities such as haptics, audio, and multimodal sensor fusion
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR applications:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR applications:</span>
                         XR applications leveraging DR in medicine, industrial support, entertainment, and telepresence /
                         DR for safety‑critical or high‑precision environments /
                         DR for accessibility and situational awareness
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Perceptual issues in DR:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Perceptual issues in DR:</span>
                         User performance and task efficiency under DR conditions /
                         Perceptual thresholds, acceptance, and comfort /
                         Cross‑modal perception when DR is applied to visual, auditory, or tactile cues
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Dataset and benchmarking for DR:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Dataset and benchmarking for DR:</span>
                         DR datasets for training and evaluation /
                         Benchmarking methodologies, metrics, and reproducible evaluation pipelines /
                         Standardization
@@ -184,22 +195,22 @@
             Contribute
         -->
         <section id="contribute" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Contribute</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p>
                     We invite contributions through two tracks.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
                         in the IEEE Computer Society VGTC conference format. Anonymous submissions undergo formal review (two reviews per paper).
                         Accepted papers appear in the ISMAR 2026 Adjunct Proceedings on IEEE Xplore.
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR challenge (non‑archival):</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR challenge (non‑archival):</span>
                         The organizers will provide an implementation platform for WebXR-based DR systems using smartphone camera input. The platform will include fundamental components required for DR implementation, such as AR tracking, 3D scanning, 3D bounding-box detection, and inpainting modules.
                         Participants are encouraged to build their own DR algorithms and applications on this platform and submit a short demonstration video recorded in their own environment (up to 2 min), along with a brief paper in the short papers format (up to 2 pages) summarizing the proposed algorithm and implementation details.
                     </li>
@@ -210,33 +221,33 @@
                     <span class="font-bold">Important dates</span> (provisional, aligned with the ISMAR 2026 workshop track). All deadlines are 23:59:59 AoE
                     (Anywhere on Earth, UTC−12) on the stated day.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-slate-400 dark:text-slate-500 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 12, 2026</span>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-slate-400 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600">July 12, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 17, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600">July 17, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 31, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600">July 31, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - On-site Participation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 4, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - On-site Participation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 4, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Notification of invitation:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 18, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Notification of invitation:</span> <span class="font-semibold text-sky-600">September 18, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ONLINE Presentation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 27, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - ONLINE Presentation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 27, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
                     </li>
                 </ul>
             </div>
             <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row sm:items-center gap-3">
-                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 dark:border-sky-400/50 text-sky-600 dark:text-sky-400 rounded-md px-3 py-1.5 transition-colors hover:bg-sky-500 dark:hover:bg-sky-400 hover:text-white dark:hover:text-white hover:border-sky-500 dark:hover:border-sky-400"><a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank">Submit Your Work (CMT)</a></span>
-                <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 dark:text-sky-400 hover:underline">iwdr2026@googlegroups.com</a></p>
+                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 text-sky-600 rounded-md px-3 py-1.5 transition-colors hover:bg-sky-500 hover:text-white hover:border-sky-500"><a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank">Submit Your Work (CMT)</a></span>
+                <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 hover:underline">iwdr2026@googlegroups.com</a></p>
             </div>
         </section>
 
@@ -244,41 +255,32 @@
             DR Challenge
         -->
         <section id="dr-challenge" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">DR Challenge</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
-            <div class="font-normal text-base gap-t-2 pt-6 flex flex-col lg:flex-row gap-6 items-start">
+            <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row gap-6 items-start">
                 <div class="flex-1 min-w-0">
                     <p>
                         We plan to organize a hands‑on DR Challenge as a central activity of the workshop.
                     </p>
-                    <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Starter Code:</span>
+                    <ul class="challenge-items">
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Starter Code:</span>
                             A mobile DR framework that separates heavy DNN‑based server processing from lightweight AR functions running on mobile devices.
                         </li>
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Challenge Tasks:</span>
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Challenge Tasks:</span>
                             Develop improved DR algorithms, pipelines, applications, or benchmarking schemes.
                             Discuss practical limitations of current DNN‑based DR, including latency, robustness, perceptual quality, and user experience.
                         </li>
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Presentation Styles:</span>
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Presentation Styles:</span>
                             Bring their systems to the workshop venue for <span class="font-semibold">ON-SITE</span> demonstrations (Deadline: September 4), or otherwise present them <span class="font-semibold">ONLINE</span> via pre-recorded videos (Deadline: September 27).
                         </li>
                     </ul>
-                    <div class="font-normal text-base gap-t-2 pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
-                      <p>
-                        The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage reproducible experimentation in DR.
-                        Fill out the form and download the starter code!!
-                      </p>
-                    </div>
-                    <div class="pt-4">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="inline-block font-mono text-xs uppercase tracking-widest bg-sky-500 dark:bg-sky-500 text-white rounded-md px-4 py-2 transition-colors hover:bg-sky-600 dark:hover:bg-sky-400">Apply Now 🏆</a>
-                    </div>
                 </div>
-                <div class="shrink-0 w-full lg:w-64 xl:w-72">
+                <div class="challenge-video shrink-0 w-full lg:w-64 xl:w-72">
                     <div class="relative w-full" style="aspect-ratio: 9/16;">
                         <iframe class="absolute inset-0 w-full h-full rounded-xl"
                             src="https://www.youtube.com/embed/9HO2dJ-dZQc"
@@ -290,23 +292,32 @@
                     </div>
                 </div>
             </div>
+            <div class="font-normal text-base gap-t-2 pt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+              <p>
+                The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage reproducible experimentation in DR.
+                Fill out the form and download the starter code!!
+              </p>
+            </div>
+            <div class="pt-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="inline-block font-mono text-xs uppercase tracking-widest bg-sky-500 text-white rounded-md px-4 py-2 transition-colors hover:bg-sky-600">Apply Now 🏆</a>
+            </div>
         </section>
 
         <!--
             Keynote
         -->
         <section id="keynote" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Keynote Speaker</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-6 text-center sm:text-justify">
                 <img class="w-40 h-40 rounded-full object-cover shrink-0" src="mohamed_kari.jpg" alt="mohamed portrait">
 
                 <div class="text-base">
-                    <div class="text-lg font-bold text-sky-600 dark:text-sky-400"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a>
+                    <div class="text-lg font-bold text-sky-600"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a>
                     </div>
-                    <div class="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
+                    <div class="text-sm uppercase tracking-widest text-gray-500 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
                     <p class="pb-2">
                         <span class="font-semibold">Title:</span> <span class="italic">Reality Interfaces (Tentative)</span>
                     </p>
@@ -321,35 +332,35 @@
             Program
         -->
         <section id="program" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Program</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p class="pb-2">
                     IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
                     reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Welcome and framing</span> (10 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Keynote</span> by Dr. Mohamed Kari (45 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Short paper session</span> — 4 papers × 15 min (60 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Coffee break</span> (20 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Challenger demonstrations and talks</span>  — 4 challengers × 15 min (60 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Closing panel</span> (35 min)
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Wrap-up and next steps</span> (10 min)
                     </li>
                 </ul>
@@ -360,9 +371,9 @@
             Organizers
         -->
         <section id="organizers" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Organizers</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
                 <figure class="flex flex-col group">
@@ -370,8 +381,8 @@
                         <img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                             </figcaption>
                         </div>
                     </div>
@@ -381,8 +392,8 @@
                         <img class="w-32 h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
@@ -392,8 +403,8 @@
                         <img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
@@ -405,42 +416,42 @@
             Program Committee
         -->
         <section id="pc" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Program Committee</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6 text-base">
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Norihiko Kawai</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Osaka Institute of Technology, Japan</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Osaka Institute of Technology, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Xuening Tian</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Verena Biener</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Roghieh E. Toushmanlou</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">École de Technologie Supérieure, Canada</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">École de Technologie Supérieure, Canada</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Fumihiko Nakamura</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Fumihisa Shibata</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Tomohiro Fukuda</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">The University of Osaka, Japan</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">The University of Osaka, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
                     <div class="text-base font-bold">Nobuyoshi Yabuki</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Tokyo City University, Japan</div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Tokyo City University, Japan</div>
                 </div>
             </div>
         </section>
@@ -448,9 +459,9 @@
             Acknowledgement
         -->
         <section id="acknowledgement" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Acknowledgement</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p>The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</p>
@@ -460,9 +471,9 @@
 
     
     <!-- footer -->
-    <footer id="footer" class="dark:text-white text-base">
+    <footer id="footer" class="text-base">
         <div class="mx-2">
-            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 dark:bg-slate-900 rounded-2xl">
+            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 rounded-2xl">
                 <address>
                     <h2><a href="https://mediated-reality.github.io">IWDR 2026 Organizers</a></h2>
                     Email: <a href="mailto:iwdr2026@googlegroups.com">iwdr2026@googlegroups.com</a>
