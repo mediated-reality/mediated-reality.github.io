@@ -46,6 +46,62 @@
         /* DR Challenge video: keep beside the text on middle-size screens (lg/xl widths come from Tailwind) */
         @media (min-width: 640px) and (max-width: 767px)  { .challenge-video { width: 13rem; } }
         @media (min-width: 768px) and (max-width: 1023px) { .challenge-video { width: 15rem; } }
+
+        /* Program schedule */
+        .prog {
+            margin-top: 1rem; text-align: left;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; overflow: hidden;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+        .prog-slot {
+            position: relative; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1.25rem;
+            padding: 1rem 1.25rem 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+        }
+        .prog-slot:last-child { border-bottom: 0; }
+        .prog-slot::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #cbd5e1; }
+        .prog-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: #64748b; padding-top: 0.1rem; white-space: nowrap; }
+        .prog-title { font-weight: 600; color: #0f172a; }
+        .prog-note { font-weight: 400; color: #64748b; }
+        .prog-who { color: #334155; }
+        .prog-chair {
+            display: inline-block; margin-top: 0.35rem; font-size: 0.875rem; color: #334155;
+            background: #f1f5f9; border-radius: 0.375rem; padding: 0.1rem 0.55rem;
+        }
+        .prog-slot.is-keynote { background: #f0f9ff; }
+        .prog-slot.is-keynote::before { background: #0ea5e9; }
+        .prog-slot.is-keynote .prog-time { color: #0369a1; font-weight: 500; }
+        .prog-slot.is-challenge { background: #fffbeb; }
+        .prog-slot.is-challenge::before { background: #f59e0b; }
+        .prog-slot.is-challenge .prog-time { color: #b45309; font-weight: 500; }
+        .prog-slot.is-break { background: repeating-linear-gradient(135deg, #fff 0 10px, #f8fafc 10px 20px); }
+        .prog-slot.is-break::before { background: transparent; }
+        .prog-slot.is-break .prog-title { color: #64748b; font-weight: 500; }
+        .prog-paper {
+            margin-top: 0.75rem; padding: 0.85rem 1rem;
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
+        }
+        .prog-paper-title { font-weight: 600; color: #0f172a; line-height: 1.45; }
+        .prog-paper-authors { font-size: 0.875rem; color: #64748b; line-height: 1.55; margin-top: 0.3rem; }
+
+        /* foldable abstract */
+        .prog-abstract { margin-top: 0.5rem; }
+        .prog-abstract summary {
+            display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+            color: #0369a1; padding: 0.2rem 0.6rem; border: 1px solid #bae6fd; border-radius: 9999px; background: #fff;
+            transition: background .15s, border-color .15s;
+        }
+        .prog-abstract summary::-webkit-details-marker { display: none; }
+        .prog-abstract summary::before { content: "▸"; transition: transform .2s; }
+        .prog-abstract[open] summary::before { transform: rotate(90deg); }
+        .prog-abstract summary:hover { background: #f0f9ff; border-color: #7dd3fc; }
+        .prog-abstract p {
+            margin-top: 0.6rem; padding-left: 0.85rem; border-left: 2px solid #bae6fd;
+            font-size: 0.9375rem; line-height: 1.65; color: #334155;
+        }
+        @media (max-width: 639px) {
+            .prog-slot { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 
@@ -341,29 +397,92 @@
                     IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
                     reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Welcome and framing</span> (10 min)
+                <ol class="prog">
+                    <li class="prog-slot">
+                        <div class="prog-time">14:00-14:15</div>
+                        <div>
+                            <div class="prog-title">Opening</div>
+                            <div class="prog-who">Shohei Mori</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Keynote</span> by Dr. Mohamed Kari (45 min)
+                    <li class="prog-slot is-keynote">
+                        <div class="prog-time">14:15-15:00</div>
+                        <div>
+                            <div class="prog-title">Keynote</div>
+                            <div class="prog-who">Mohamed Kari</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Short paper session</span> — 4 papers × 15 min (60 min)
+                    <li class="prog-slot">
+                        <div class="prog-time">15:00-15:30</div>
+                        <div>
+                            <div class="prog-title">Short Paper Talk × 2 <span class="prog-note">(15 min per talk)</span></div>
+                            <div class="prog-chair">Session Chair: Hideo Saito</div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">"Multimodal Diminished Reality for Robotics"</div>
+                                <div class="prog-paper-authors">Rajashekhar V S (Indian Institute of Technology – Kanpur), Rahul Kumar Ray (FLAME University), Diganta Ghorai (Indian Institute of Technology – Kanpur), Vivek Kumar (Indian Institute of Technology – Kanpur), Gowdham Prabhakar (Indian Institute of Technology – Kanpur)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>Diminished Reality (DR) is an emerging paradigm within the Extended Reality (XR) spectrum that enables the selective removal and inpainting of "objects of disinterest" from the user’s environment. While traditional robotics research prioritizes maximizing information gain, a critical research gap exists in managing the cognitive load of operators in complex, cluttered, and perceptually demanding scenarios. This work addresses this gap by formalizing a multimodal Diminished Reality for Robotics (DR-R) framework, shifting the focus from "perceiving more" to "perceiving less". We introduce a unified approach comprising three sensory cues: visual, audio, and haptic. To evaluate this framework, we conducted a structured experimental protocol (N=41) across five modalities: visual wire removal, visual suppression of simulated blood, single-channel speech extraction via SepFormer, and haptic substitution for environmental light cues in a robotic lizard. Quantitative results reveal that Audio (M=5.91/7) and Haptic (M=5.39/7) diminished cues were the most effective, scoring 24.6% and 13.7% higher, respectively, than the average of the visual modalities (M_visual_avg=4.56/7). Furthermore, the unified multimodal scene achieved a high preference rating (M=4.90/7), with participants reporting significantly enhanced scene interpretability and reduced sensory clutter. Our findings suggest that multimodal DR-R effectively mitigates sensory overload, offering a vital complementary principle to traditional robotic perception.</p>
+                                </details>
+                            </div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">"Perceive More By Seeing Less: Vision Augmentation Systems"</div>
+                                <div class="prog-paper-authors">Daniel Pillis (MIT Media Lab), Pawan Sinha (Massachusetts Institute of Technology), Cayden Pierce (Mentra), Seth Riskin (Massachusetts Institute of Technology), Yuriy Reznik (Research Laboratory of Electronics at MIT), Ken Zolot (Massachusetts Institute of Technology)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>We present “Perceive More By Seeing Less,” a creative research project and diminished reality experience that explores methods for improving visual acuity using mixed reality (MR/AR/VR/XR) pass-through technology. Working with a transdisciplinary team, we designed five real-time spatial frequency filters that suppress or enhance specific bands of visual information, a perceptual form of diminished reality (DR) in which selectively removing detail, rather than adding virtual content, reshapes how users perceive objects, spatial relations, and environments. Motivated by vision rehabilitation research on children recovering from treatable blindness, the system reframes deprivation-based rehabilitation as a creative DR tool and demonstrates the paradoxical potential of diminished reality to enhance human perception. This paper discusses the theoretical foundation, implementation, and implications for sensory, creative, and vision rehabilitation-oriented diminished reality research.</p>
+                                </details>
+                            </div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Coffee break</span> (20 min)
+                    <li class="prog-slot is-break">
+                        <div class="prog-time">15:30-16:15</div>
+                        <div>
+                            <div class="prog-title">☕ Coffee break</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Challenger demonstrations and talks</span>  — 4 challengers × 15 min (60 min)
+                    <li class="prog-slot">
+                        <div class="prog-time">16:15-16:30</div>
+                        <div>
+                            <div class="prog-title">Short Paper Talk × 1 <span class="prog-note">(15 min)</span></div>
+                            <div class="prog-chair">Session Chair: Shohei Mori</div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">"DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning"</div>
+                                <div class="prog-paper-authors">RUOFAN LIU (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>Previous DR systems rely on manually defined rules or fixed object elimination, limiting their ability to adapt to the changing activities and surrounding contexts. In this paper, we present DR.Adapt, an adaptive diminished reality framework that incorporates vision-language reasoning to automatically determine which objects should be visually suppressed based on the user's ongoing task. Our approach combines egocentric scene perception, semantic task inference, and adaptive rendering to estimate the relevance of surrounding objects and adjust their visibility accordingly. To demonstrate the feasibility of this idea, we implement a proof-of-concept prototype featuring two adaptive rendering strategies and evaluate it in representative scenarios. DR.Adapt is designed as an AI-driven interactive agent that responds to users' intentions and evolving environments. We hope this work will inspire future research on intelligent, personalized, and context-aware visual assistance in mixed reality.</p>
+                                </details>
+                            </div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Closing panel</span> (35 min)
+                    <li class="prog-slot is-challenge">
+                        <div class="prog-time">16:30-16:45</div>
+                        <div>
+                            <div class="prog-title">DR Challenge Introduction <span class="prog-note">(15 min)</span></div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Wrap-up and next steps</span> (10 min)
+                    <li class="prog-slot is-challenge">
+                        <div class="prog-time">16:45-17:00</div>
+                        <div>
+                            <div class="prog-title">DR Challenge Demonstrations and Talks <span class="prog-note">(15 min)</span></div>
+                        </div>
                     </li>
-                </ul>
+                    <li class="prog-slot">
+                        <div class="prog-time">17:00-17:35</div>
+                        <div>
+                            <div class="prog-title">Panel</div>
+                            <div class="prog-who">by Mohame Kari, Hideo Saito, Shohei Mori (+ participants)</div>
+                        </div>
+                    </li>
+                    <li class="prog-slot">
+                        <div class="prog-time">17:35-17:45</div>
+                        <div>
+                            <div class="prog-title">Closing</div>
+                            <div class="prog-who">Shohei Mori</div>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
         
