@@ -16,6 +16,90 @@
         body { font-family: 'IBM Plex Sans', sans-serif; }
         .font-mono { font-family: 'IBM Plex Mono', monospace; }
 
+        /* ── Hero ───────────────────────────────────────── */
+        .hero { padding-top: 2.5rem; padding-bottom: 1.5rem; text-align: left; }
+        .hero-card {
+            position: relative; isolation: isolate;
+            padding: 2.75rem 2.5rem 2.25rem;
+        }
+        /* no outline: a blurred, oversized backdrop that dissolves into the page */
+        .hero-card::before {
+            content: ""; position: absolute; inset: -1.5rem; z-index: -1; pointer-events: none;
+            background:
+                radial-gradient(30% 40% at 22% 30%, rgba(14, 165, 233, 0.12), transparent 75%),
+                radial-gradient(28% 40% at 80% 70%, rgba(245, 158, 11, 0.09), transparent 75%),
+                radial-gradient(ellipse 50% 50% at 50% 50%, #fff 55%, rgba(255, 255, 255, 0) 100%);
+            filter: blur(20px);
+        }
+        .hero-pixels {
+            position: absolute; right: 1.5rem; bottom: 1.6rem; width: 4.75rem;
+            color: #0ea5e9; pointer-events: none;
+        }
+        .hero-top { position: relative; display: flex; align-items: center; gap: 2rem; }
+        .hero-logo {
+            flex-shrink: 0; width: clamp(6.5rem, 20vw, 10rem);
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.18);
+            transition: transform .3s;
+        }
+        .hero-logo:hover { transform: rotate(-2deg) scale(1.03); }
+        .hero-logo img { display: block; width: 100%; height: auto; }
+        .hero-eyebrow {
+            display: inline-block; font-size: clamp(0.95rem, 2vw, 1.15rem); font-weight: 500;
+            color: #0369a1; letter-spacing: 0.01em;
+        }
+        .hero-title {
+            margin: 0.25rem 0 0.9rem;
+            font-size: clamp(2.25rem, 7vw, 4.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em;
+            background: linear-gradient(95deg, #0f172a 0%, #0f172a 45%, #0369a1 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            font-size: 0.95rem; font-weight: 500; color: #b45309;
+            background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 9999px; padding: 0.25rem 0.9rem;
+        }
+        .hero-meta { position: relative; margin-top: 2rem; padding-right: 5.5rem; }
+        .hero-colocated { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: #64748b; }
+        .hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .hero-chips span {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: #1e293b;
+            background: rgba(255, 255, 255, 0.85); border: 1px solid #e2e8f0; border-radius: 0.6rem;
+            padding: 0.4rem 0.8rem;
+        }
+        .hero-chips i { color: #0ea5e9; }
+        @media (max-width: 639px) {
+            .hero-card { padding: 1.75rem 1.25rem 1.5rem; }
+            .hero-card::before { inset: -1rem -1rem; }
+            .hero-top { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+            .hero-pixels { display: none; }
+            .hero-meta { padding-right: 0; }
+        }
+
+        /* Description references: soft, separated panel */
+        .refs-box {
+            margin: 1rem 0 1.25rem; padding: 0.85rem 1.1rem;
+            background: #f1f5f9; border-radius: 0.5rem;
+            color: #64748b; line-height: 1.55; text-align: left;
+        }
+        .refs-box > p:first-child {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.35rem;
+        }
+        .refs-box li { padding-left: 1.6rem; text-indent: -1.6rem; font-size: 0.8rem; }
+        .refs-box li + li { margin-top: 0.25rem; }
+
+        /* Description topics: emoji bullets */
+        .topic-list { list-style: none; }
+        .topic-list > li { position: relative; padding-left: 1.9rem; }
+        .topic-list > li::before { position: absolute; left: 0.2rem; top: 0; }
+        .topic-list > li:nth-child(1)::before { content: "🛠️"; }
+        .topic-list > li:nth-child(2)::before { content: "🌍"; }
+        .topic-list > li:nth-child(3)::before { content: "👁️"; }
+        .topic-list > li:nth-child(4)::before { content: "📊"; }
+
         /* DR Challenge items */
         .challenge-items { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0 0.75rem; text-align: left; }
         .challenge-item {
@@ -140,42 +224,58 @@
 
 
     <main class="max-w-4xl mx-auto mb-8">
-        <section id="hero" class="px-4 pt-32 pb-12 text-left flex flex-col gap-6">
-            <!-- Row 1: Image + First three lines -->
-            <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 items-center">
-                <!-- Image column -->
-                <div class="col-span-1 flex justify-center lg:justify-start">
-                    <div class="relative w-full">
+        <section id="hero" class="hero px-4">
+            <div class="hero-card">
+                <!-- decorative "dissolving" pixels, echoing the logo -->
+                <svg class="hero-pixels" viewBox="0 0 150 120" aria-hidden="true" fill="currentColor">
+                    <rect x="60"  y="0"  width="24" height="24" opacity=".15"/>
+                    <rect x="120" y="0"  width="24" height="24" opacity=".8"/>
+                    <rect x="30"  y="32" width="24" height="24" opacity=".1"/>
+                    <rect x="90"  y="32" width="24" height="24" opacity=".7"/>
+                    <rect x="120" y="32" width="24" height="24" opacity=".35"/>
+                    <rect x="0"   y="64" width="24" height="24" opacity=".08"/>
+                    <rect x="60"  y="64" width="24" height="24" opacity=".45"/>
+                    <rect x="90"  y="64" width="24" height="24" opacity=".9"/>
+                    <rect x="120" y="64" width="24" height="24" opacity=".6"/>
+                    <rect x="30"  y="96" width="24" height="24" opacity=".25"/>
+                    <rect x="60"  y="96" width="24" height="24" opacity=".85"/>
+                    <rect x="90"  y="96" width="24" height="24" opacity=".5"/>
+                    <rect x="120" y="96" width="24" height="24" opacity=".95"/>
+                </svg>
+
+                <!-- Row 1: Image + First three lines -->
+                <div class="hero-top">
+                    <!-- Image column -->
+                    <div class="hero-logo">
                         <!-- Logo -->
-                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none block"/>
+                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="select-none"/>
+                    </div>
+
+                    <!-- Text column -->
+                    <div class="min-w-0">
+                        <p class="hero-eyebrow">
+                            3rd Int. Workshop on
+                        </p>
+                        <h1 class="hero-title">
+                            Diminished Reality
+                        </h1>
+                        <p class="hero-tag">
+                            <span class="italic">Introducing the 1st DR Challenge</span> 🏆
+                        </p>
                     </div>
                 </div>
 
-                <!-- Text column -->
-                <div class="col-span-2 lg:col-span-3 min-w-0">
-                    <p class="text-xl sm:text-2xl text-slate-500">
-                        3rd Int. Workshop on
+                <!-- Row 2: Everything else (full width) -->
+                <div class="hero-meta">
+                    <p class="hero-colocated font-mono">
+                        Co-located with IEEE ISMAR 2026
                     </p>
-                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold">
-                        Diminished Reality
-                    </h1>
-                        <span class="italic">Introducing the 1st DR Challenge</span> 🏆
-                    </p>
-                </div>
-            </div>
 
-            <!-- Row 2: Everything else (full width) -->
-            <div>
-                <p class="font-mono text-sm uppercase tracking-widest text-slate-500">
-                    Co-located with IEEE ISMAR 2026
-                </p>
-
-                <div class="font-mono text-sm mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600">
-                    <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy</span>
-                    <span class="text-slate-400">·</span>
-                    <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
-                    <span class="text-slate-400">·</span>
-                    <span><i class="fa-solid fa-desktop text-sky-400 mr-1.5"></i>Hybrid · Half-day</span>
+                    <div class="hero-chips font-mono">
+                        <span><i class="fa-solid fa-location-dot"></i>Bari, Italy</span>
+                        <span><i class="fa-regular fa-calendar"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
+                        <span><i class="fa-solid fa-desktop"></i>Hybrid · Half-day</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -203,7 +303,7 @@
                   With these shifts, the technical boundaries of DR have expanded substantially, creating a timely opportunity to revive IWDR
                   and foster a new generation of DR research.</p>
             </div>
-            <div class="text-sm gap-t-2 pt-2 text-slate-400">
+            <div class="refs-box text-sm">
                 <p><span class="font-semibold">References</span></p>
                 <ul>
                     <li>[1] S. Mori, O. Erat, W. Broll, H. Saito, D. Schmalstieg, and D. Kalkofen, “InpaintFusion: Incremental RGB-D Inpainting for 3D Scenes,” IEEE TVCG, Vol. 26, Issue 10, pp. 2994–3007, 2020.</li>
@@ -218,7 +318,7 @@
                     IWDR 2026 aims to bring together researchers working on the full spectrum of DR,
                     from foundational technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                <ul class="topic-list pt-2">
                     <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold text-sky-700">DR core technologies:</span>
                         Vision- and graphics‑based DR pipelines /
@@ -418,7 +518,7 @@
                             <div class="prog-title">Short Paper Talk × 2 <span class="prog-note">(15 min per talk)</span></div>
                             <div class="prog-chair">Session Chair: Hideo Saito</div>
                             <div class="prog-paper">
-                                <div class="prog-paper-title">"Multimodal Diminished Reality for Robotics"</div>
+                                <div class="prog-paper-title">Multimodal Diminished Reality for Robotics</div>
                                 <div class="prog-paper-authors">Rajashekhar V S (Indian Institute of Technology – Kanpur), Rahul Kumar Ray (FLAME University), Diganta Ghorai (Indian Institute of Technology – Kanpur), Vivek Kumar (Indian Institute of Technology – Kanpur), Gowdham Prabhakar (Indian Institute of Technology – Kanpur)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
@@ -426,7 +526,7 @@
                                 </details>
                             </div>
                             <div class="prog-paper">
-                                <div class="prog-paper-title">"Perceive More By Seeing Less: Vision Augmentation Systems"</div>
+                                <div class="prog-paper-title">Perceive More By Seeing Less: Vision Augmentation Systems</div>
                                 <div class="prog-paper-authors">Daniel Pillis (MIT Media Lab), Pawan Sinha (Massachusetts Institute of Technology), Cayden Pierce (Mentra), Seth Riskin (Massachusetts Institute of Technology), Yuriy Reznik (Research Laboratory of Electronics at MIT), Ken Zolot (Massachusetts Institute of Technology)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
@@ -447,7 +547,7 @@
                             <div class="prog-title">Short Paper Talk × 1 <span class="prog-note">(15 min)</span></div>
                             <div class="prog-chair">Session Chair: Shohei Mori</div>
                             <div class="prog-paper">
-                                <div class="prog-paper-title">"DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning"</div>
+                                <div class="prog-paper-title">DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning</div>
                                 <div class="prog-paper-authors">RUOFAN LIU (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
@@ -541,35 +641,35 @@
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6 text-base">
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Norihiko Kawai</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://norihi-k.com/index-e.html" target="_blank">Norihiko Kawai</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Osaka Institute of Technology, Japan</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Xuening Tian</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Tian-00002/" target="_blank">Xuening Tian</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Verena Biener</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Biener-Roser/" target="_blank">Verena Biener</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Roghieh E. Toushmanlou</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.researchgate.net/profile/Roghieh-Eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">École de Technologie Supérieure, Canada</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Fumihiko Nakamura</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=139" target="_blank">Fumihiko Nakamura</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Fumihisa Shibata</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=21" target="_blank">Fumihisa Shibata</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Tomohiro Fukuda</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://researchmap.jp/tomohirofukuda?lang=en" target="_blank">Tomohiro Fukuda</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">The University of Osaka, Japan</div>
                 </div>
                 <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold">Nobuyoshi Yabuki</div>
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://research.tcu.ac.jp/en/persons/nobuyoshi-yabuki/" target="_blank">Nobuyoshi Yabuki</a></div>
                     <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Tokyo City University, Japan</div>
                 </div>
             </div>
