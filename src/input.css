@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    #projects a.group > div > div:last-child {
+        @apply inline-flex w-fit max-w-full flex-wrap items-center rounded-full border border-slate-300 bg-slate-100 px-2 py-1 font-bold text-slate-700;
+    }
+}
+
 html {
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;

@@ -143,45 +143,41 @@
         -->
         <section id="members" class="px-4 py-10">
             <h2 class="mb-6 flex items-center gap-3 border-b border-slate-300 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-700 dark:text-white"><i class="fa-solid fa-users w-5 text-center text-base text-teal-700 dark:text-slate-400" aria-hidden="true"></i>Members</h2>
-            <div class="lg:m-0 m-2">
-                <figure class="flex px-2 pt-4 group">
-                    <div class="relative flex items-center space-x-2">
-                        <div class="group/credit relative shrink-0">
-                            <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/smori_square.jpg" alt="Shohei Mori">
-                            <div class="absolute bottom-1 left-1/2 -translate-x-1/2">
-                                <span class="flex h-5 w-5 cursor-help items-center justify-center rounded-full bg-black/60 text-[0.65rem] leading-none text-white" tabindex="0" aria-label="Photo copyright: Bild: Universität Stuttgart/Uli Regenscheit">&copy;</span>
-                                <div class="pointer-events-none absolute bottom-full right-0 mb-1 w-max max-w-[11rem] rounded bg-black/80 px-2 py-1 text-[0.7rem] text-white opacity-0 transition-opacity duration-150 group-hover/credit:opacity-100 group-focus-within/credit:opacity-100">
-                                    Bild: Universität Stuttgart/Uli Regenscheit
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative p-2 text-left">
-                            <figcaption>
-                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">
-                                    <a href="https://mugichoko445.github.io/" target="_blank">Shohei Mori</a>
-                                </div>
-                                <div class="text-sm text-slate-500 dark:text-slate-400">
-                                    Junior Research Group Leader at Uni Stuttgart<br>
-                                    <a href="https://www.visus.uni-stuttgart.de/" target="_blank">VISUS</a>,
-                                    <a href="https://www.intcdc.uni-stuttgart.de/" target="_blank">EXC IntCDC</a>,
-                                    <a href="https://imprs.is.mpg.de/" target="_blank">IMPRS-IS</a>
-                                </div>
-                                <div class="mt-1 flex flex-wrap gap-x-2 text-slate-500 dark:text-slate-400 [&_a:hover]:text-teal-700 dark:[&_a:hover]:text-teal-300">
-                                    <a href="mailto: s.mori.jp@ieee.org"><i class="fa-solid fa-envelope fa-lg"></i></a> |
-                                    <a href="https://scholar.google.com/citations?user=U5lf_WEAAAAJ&hl=en&oi=sra" target="_blank"><i class="ai ai-google-scholar-square ai-lg"></i></a>
-                                    <a href="https://orcid.org/0000-0003-0540-7312" target="_blank"><i class="fa-brands fa-orcid fa-lg"></i></a>
-                                    <a href="https://www.linkedin.com/in/shohei-mori-66678818a" target="_blank"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-                                    <a href="https://www.researchgate.net/profile/Shohei-Mori" target="_blank"><i class="fa-brands fa-researchgate fa-lg"></i></a>
-                                    <a href="https://github.com/Mugichoko445" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a>
-                                    <a href="https://twitter.com/Mugichoko445" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
-                                </div>
-                            </figcaption>
+            <!-- group leader -->
+            <article class="m-2 flex flex-col items-center gap-6 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:gap-8 sm:text-left md:p-8 lg:m-0">
+                <div class="group/credit relative shrink-0">
+                    <img class="h-32 w-32 rounded-2xl object-cover ring-4 ring-slate-100 dark:ring-slate-800 md:h-36 md:w-36" src="assets/members/smori_square.jpg" alt="Shohei Mori">
+                    <div class="absolute bottom-2 right-2">
+                        <span class="flex h-5 w-5 cursor-help items-center justify-center rounded-full bg-black/60 text-[0.65rem] leading-none text-white" tabindex="0" aria-label="Photo copyright: Bild: Universität Stuttgart/Uli Regenscheit">&copy;</span>
+                        <div class="pointer-events-none absolute bottom-full right-0 mb-1 w-max whitespace-nowrap rounded bg-black/80 px-2 py-1 text-[0.7rem] text-white opacity-0 transition-opacity duration-150 group-hover/credit:opacity-100 group-focus-within/credit:opacity-100">
+                            Bild: Universität Stuttgart/Uli Regenscheit
                         </div>
                     </div>
-                </figure>
-            </div>
+                </div>
+                <div class="min-w-0">
+                    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">Group Leader</p>
+                    <h3 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white"><a class="hover:text-teal-700 dark:hover:text-white" href="https://mugichoko445.github.io/" target="_blank" rel="noopener">Shohei Mori</a></h3>
+                    <p class="mt-1 text-slate-600 dark:text-slate-300">Junior Research Group Leader</p>
+                    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                        <a class="hover:text-teal-700 dark:hover:text-white" href="https://www.visus.uni-stuttgart.de/" target="_blank" rel="noopener">VISUS</a>
+                        <span aria-hidden="true">&middot;</span>
+                        <a class="hover:text-teal-700 dark:hover:text-white" href="https://www.intcdc.uni-stuttgart.de/" target="_blank" rel="noopener">EXC IntCDC</a>
+                        <span aria-hidden="true">&middot;</span>
+                        <a class="hover:text-teal-700 dark:hover:text-white" href="https://imprs.is.mpg.de/" target="_blank" rel="noopener">IMPRS-IS</a>
+                    </p>
+                    <div class="mt-4 flex flex-wrap justify-center gap-1.5 sm:justify-start sm:gap-2">
+                        <a href="mailto:s.mori.jp@ieee.org" aria-label="Email" title="Email" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                        <a href="https://scholar.google.com/citations?user=U5lf_WEAAAAJ&hl=en&oi=sra" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+                        <a href="https://orcid.org/0000-0003-0540-7312" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-brands fa-orcid" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/shohei-mori-66678818a" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.researchgate.net/profile/Shohei-Mori" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-brands fa-researchgate" aria-hidden="true"></i></a>
+                        <a href="https://github.com/Mugichoko445" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/Mugichoko445" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)" class="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-sm text-slate-500 transition sm:h-9 sm:w-9 sm:text-base hover:border-teal-700 hover:text-teal-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-400 dark:hover:text-white"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </article>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
                 <!--
                 <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
@@ -534,8 +530,18 @@
                 
             <div class="pt-14"></div>
             <h2 class="mb-6 flex items-center gap-3 border-b border-slate-300 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-700 dark:text-white"><i class="fa-solid fa-user-graduate w-5 text-center text-base text-teal-700 dark:text-slate-400" aria-hidden="true"></i>Alumni</h2>
-            <div class="grid grid-cols-1 lg:m-0 m-2">
-                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">Master's Thesis/Project</div>
+            <div class="grid grid-cols-1 gap-y-2 md:grid-cols-2 lg:m-0 m-2">
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400 md:col-span-2">Doctoral Thesis</div>
+                <div class="px-2 pt-4">
+                    <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Doctoral Thesis Examiner — Mana Masuda (Keio University)</div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">"Tracking and Scene Representation for Fast-moving Cameras by Event Data Synthesis" (11.2024)</div>
+                </div>
+                <div class="px-2 pt-4">
+                    <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Doctoral Thesis Examiner — Shiori Ueda (Keio University)</div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">"Physically Grounded Cues for Reliable Learning-based Visual Understanding and Reconstruction" (08.2026)</div>
+                </div>
+
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400 md:col-span-2">Master's Thesis/Project</div>
                 <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
                         <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/mayuri_mahalingam_mudaliar.jpg" alt="mayuri_mahalingam_mudaliar.jpg">
@@ -587,7 +593,6 @@
                         <div class="relative p-2 text-left"><figcaption>
                             <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Aqsa Khan</div>
                             <div class="text-sm text-slate-500 dark:text-slate-400">2025.10 - 2026.04 | Master Thesis</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating Diminished Reality Dataset in Virtual Environment</div>
                         </figcaption></div>
                     </div>
                 </figure>
@@ -597,7 +602,6 @@
                         <div class="relative p-2 text-left"><figcaption>
                             <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Han Cheng</div>
                             <div class="text-sm text-slate-500 dark:text-slate-400">2025.3 - 2025.09 | Master Project</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400">Learning Dense Initial Point Clouds for Fast 3D Gaussian Splatting Optimization</div>
                         </figcaption></div>
                     </div>
                 </figure>
@@ -607,12 +611,11 @@
                         <div class="relative p-2 text-left"><figcaption>
                             <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Jonas Geiselhart</div>
                             <div class="text-sm text-slate-500 dark:text-slate-400">2024.12 - 2025.06 | Master Thesis</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400">Investigating Challenges in Generalizing Neural Radiance Fields with Learned Scene Priors</div>
                         </figcaption></div>
                     </div>
                 </figure>
 
-                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">Bachelor's Thesis</div>
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400 md:col-span-2">Bachelor's Thesis</div>
                 <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
                         <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/daniel_atighetchi.jpg" alt="daniel_atighetchi.jpg">
@@ -637,7 +640,6 @@
                         <div class="relative p-2 text-left"><figcaption>
                             <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Christopher Gaug</div>
                             <div class="text-sm text-slate-500 dark:text-slate-400">2025.01 - 2025.07 | Bachelor Thesis</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating 3D Hedge Mazes from Base 2D Maps</div>
                         </figcaption></div>
                     </div>
                 </figure>
@@ -647,12 +649,11 @@
                         <div class="relative p-2 text-left"><figcaption>
                             <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Tobias Kemmler</div>
                             <div class="text-sm text-slate-500 dark:text-slate-400">2024.12 - 2025.05 | Bachelor Thesis</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating 3D Topiaries from Base Geometric Shapes</div>
                         </figcaption></div>
                     </div>
                 </figure>
 
-                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">Interns</div>
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400 md:col-span-2">Interns</div>
                 <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
                         <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/kotoka_matsunaga.jpg" alt="kotoka portrait">
@@ -698,7 +699,7 @@
                         </figcaption></div>
                     </div>
                 </figure>
-                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">Student Assistant (HiWi)</div>
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400 md:col-span-2">Student Assistant (HiWi)</div>
                 <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
                         <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/vinayak_shivanand_patil.jpg" alt="vinayak_shivanand_patil.jpg">
@@ -708,18 +709,6 @@
                         </figcaption></div>
                     </div>
                 </figure>
-            </div>
-
-            <div class="pt-10 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-slate-400">
-                Ph.D. Thesis
-            </div>
-            <div class="px-2 pt-4">
-                <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Ph.D. Thesis Examiner — Mana Masuda (Keio University)</div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">"Tracking and Scene Representation for Fast-moving Cameras by Event Data Synthesis" (11.2024)</div>
-            </div>
-            <div class="px-2 pt-4">
-                <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Ph.D. Thesis Examiner — Shiori Ueda (Keio University)</div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">"Physically Grounded Cues for Reliable Learning-based Visual Understanding and Reconstruction" (08.2026)</div>
             </div>
 
             <!-- example

@@ -86,6 +86,9 @@ const initApp = () => {
         const slides = Array.from(carousel.querySelectorAll('[data-carousel-slide]'))
         const indicators = Array.from(carousel.querySelectorAll('[data-carousel-indicator]'))
         let activeSlide = 0
+        let pointerStart = null
+
+        carousel.style.touchAction = 'pan-y'
 
         const showSlide = (index) => {
             activeSlide = (index + slides.length) % slides.length
@@ -103,11 +106,28 @@ const initApp = () => {
             })
         }
 
-        carousel.querySelector('[data-carousel-previous]').addEventListener('click', () => showSlide(activeSlide - 1))
-        carousel.querySelector('[data-carousel-next]').addEventListener('click', () => showSlide(activeSlide + 1))
+        const prevButton = carousel.querySelector('[data-carousel-previous]')
+        const nextButton = carousel.querySelector('[data-carousel-next]')
+        if (prevButton) prevButton.addEventListener('click', () => showSlide(activeSlide - 1))
+        if (nextButton) nextButton.addEventListener('click', () => showSlide(activeSlide + 1))
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => showSlide(index))
         })
+        carousel.addEventListener('pointerdown', (event) => {
+            if (event.button !== 0 || event.target.closest('button')) return
+            pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY }
+        })
+        window.addEventListener('pointerup', (event) => {
+            if (!pointerStart || event.pointerId !== pointerStart.id) return
+            const deltaX = event.clientX - pointerStart.x
+            const deltaY = event.clientY - pointerStart.y
+            pointerStart = null
+            if (Math.abs(deltaX) >= 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                showSlide(activeSlide + (deltaX < 0 ? 1 : -1))
+            }
+        })
+        window.addEventListener('pointercancel', () => { pointerStart = null })
+        carousel.addEventListener('dragstart', (event) => event.preventDefault())
     }
 
     // -- year in the footer (the footer may still be loading)
