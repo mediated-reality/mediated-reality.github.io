@@ -1,17 +1,22 @@
     <footer id="footer" class="px-2 text-sm text-slate-700 dark:text-slate-200">
-        <div class="mx-2">
-            <section class="mx-auto flex max-w-4xl flex-col justify-between gap-5 rounded-xl bg-slate-700/10 p-5 shadow-sm ring-1 ring-black/5 dark:bg-slate-800/80 dark:ring-white/10 sm:flex-row sm:items-end">
-                <address class="not-italic leading-relaxed">
-                    <h2 class="mb-1 text-base font-semibold"><a href="https://mediated-reality.github.io">Shohei Mori</a></h2>
-                    Universitätsstr. 38,<br>
-                    70569 Stuttgart, Germany<br>
-                    Email: <a href="mailto:s.mori.jp@ieee.org">s.mori.jp [at] ieee.org</a>
-                </address>
-                <div class="flex flex-col justify-end sm:text-right">
-                    <p>Copyright &copy; <span id="year"></span></p>
+        <section class="mx-auto grid max-w-4xl gap-6 rounded-xl border border-slate-200 bg-white/70 p-5 dark:border-slate-700 dark:bg-slate-900/70 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+            <address class="not-italic leading-relaxed">
+                <h2 class="mb-1 text-base font-semibold text-slate-900 dark:text-white"><a href="https://mediated-reality.github.io">Shohei Mori</a></h2>
+                <p class="text-slate-500 dark:text-slate-400">Mediated Reality Group · VISUS, University of Stuttgart</p>
+                <p>Universitätsstr. 38, 70569 Stuttgart, Germany</p>
+                <p>Email: <a class="font-medium text-teal-700 hover:underline dark:text-teal-300" href="mailto:s.mori.jp@ieee.org">s.mori.jp@ieee.org</a></p>
+            </address>
+            <div class="flex flex-col gap-4 sm:items-end">
+                <nav class="flex flex-wrap gap-x-4 gap-y-2 font-medium" aria-label="footer">
+                    <a class="hover:text-teal-700 dark:hover:text-teal-300" href="index.html">Home</a>
+                    <a class="hover:text-teal-700 dark:hover:text-teal-300" href="team.html">Team</a>
+                    <a class="hover:text-teal-700 dark:hover:text-teal-300" href="projects.html">Projects</a>
+                </nav>
+                <div class="text-slate-500 dark:text-slate-400 sm:text-right">
+                    <p>&copy; <span id="year"></span> Mediated Reality Group</p>
                     <p>All rights reserved.</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </footer>
     <div class="h-4"><!-- spacer --></div>

@@ -12,32 +12,33 @@
 </head>
 
 <body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-left antialiased leading-relaxed">
-    <header class="dark:text-white sticky top-2 z-10 mx-2">
-        <section class="bg-slate-700/30 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl shadow-lg ring-1 ring-black/5 dark:ring-white/10">
+    <header class="sticky top-3 z-10 mx-2 text-slate-800 dark:text-white">
+        <section class="mx-auto flex max-w-4xl items-center justify-between rounded-xl border border-slate-200/80 bg-white/90 p-3 shadow-md backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/90 sm:p-4">
             <div class="flex items-center">
-                <a class="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black" href="index.html" aria-label="Mediated Reality Group home"><img class="w-6 h-6" src="assets/img/mixlab.png" alt=""></a>
-                <h1 class="text-sm font-medium"><a href="index.html">Mediated Reality Group</a></h1><span class="font-extralight">&nbsp;@ UniStuttgart</span>
+                <a class="mr-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black" href="index.html" aria-label="Mediated Reality Group home"><img class="w-6 h-6" src="assets/img/mixlab.png" alt=""></a>
+                <p class="text-xs font-semibold sm:text-sm"><a href="index.html">Mediated Reality Group</a><span class="hidden font-light sm:inline">&nbsp;@ UniStuttgart</span></p>
             </div>
-            <div class="mr-2">
+            <div class="flex items-center gap-2">
                 <button type="button" id="hamburger-button" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="text-xl md:hidden cursor-pointer relative w-8 h-8">
                     &#9776;
                 </button>
-                <nav class="hidden items-center font-sans md:flex space-x-8 text-sm" aria-label="primary">
-                    <a href="team.html" class="hover:opacity-90">TEAM</a>
-                    <a href="projects.html" class="hover:opacity-90">PROJECTS</a>
-                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
+                <nav class="hidden items-center gap-1 font-sans text-sm md:flex" aria-label="primary">
+                    <a href="index.html" aria-current="page" class="rounded-md px-3 py-2 font-semibold text-teal-700 hover:bg-slate-100 dark:text-teal-300 dark:hover:bg-slate-800">HOME</a>
+                    <a href="team.html" class="rounded-md px-3 py-2 hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300">TEAM</a>
+                    <a href="projects.html" class="rounded-md px-3 py-2 hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300">PROJECTS</a>
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="grid h-9 w-9 place-items-center rounded-full text-slate-700 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </nav>
             </div>
         </section>
         <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
-            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 dark:bg-slate-900 border border-gray-700 dark:border-white font-medium rounded-xl" aria-label="mobile">
-                <a href="index.html" class="pb-2 underline hover:opacity-90">TOP</a>
-                <a href="team.html" class="pb-2 hover:opacity-90">TEAM</a>
+            <nav class="mx-2 flex w-full flex-col rounded-xl border border-slate-200 bg-white p-3 font-medium shadow-lg dark:border-slate-700 dark:bg-slate-900" aria-label="mobile">
+                <a href="index.html" aria-current="page" class="rounded-md px-3 py-2 font-semibold text-teal-700 dark:text-teal-300">HOME</a>
+                <a href="team.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">TEAM</a>
                 <div class="flex justify-between items-center hover:opacity-90">
-                    <a href="projects.html">PROJECTS</a>
-                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
+                    <a href="projects.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">PROJECTS</a>
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="grid h-9 w-9 place-items-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </div>
@@ -52,12 +53,15 @@
         -->
         <section id="hero" class="px-4 md:text-left text-center">
             <!-- Text block -->
-            <div class="pt-12">
-                <h1 class="text-4xl font-extrabold leading-tight dark:text-white md:text-5xl">
+            <div class="pt-14 pb-7 md:pt-16 md:pb-8">
+                <p class="mb-3 text-xs font-semibold uppercase text-teal-700 dark:text-teal-300">Human-centered 3D vision for XR</p>
+                <h1 class="text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
                     Mediated Reality Group
                 </h1>
-                <p class="mt-3 mb-5 text-base font-light text-slate-600 dark:text-slate-300 md:text-lg">
-                    📷 Imaging ➜ 🥽 Displaying ➜ 🧠 Understanding
+                <p class="mt-4 flex flex-wrap items-center justify-center gap-x-3 text-sm font-medium text-slate-600 dark:text-slate-300 md:justify-start md:text-base">
+                    <span>Imaging</span><span class="text-teal-600 dark:text-teal-300" aria-hidden="true">&#8594;</span>
+                    <span>Displaying</span><span class="text-teal-600 dark:text-teal-300" aria-hidden="true">&#8594;</span>
+                    <span>Understanding</span>
                 </p>
             </div>
 
