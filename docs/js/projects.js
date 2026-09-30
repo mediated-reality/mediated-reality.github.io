@@ -16,6 +16,7 @@ function copyCodeToClipboard() {
 
 const initApp = () => {
     // -- year in the footer
-    document.getElementById('year').innerHTML = new Date().getFullYear();
+    const year = document.getElementById('year')
+    if (year) year.innerHTML = new Date().getFullYear();
 }
 document.addEventListener('DOMContentLoaded', initApp)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mediated Reality Group</title>
+    <title>Team | Mediated Reality Group</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.5.1-web/css/all.min.css">
 	<link rel="stylesheet" href="assets/academicons-1.9.4/css/academicons.min.css">
@@ -12,42 +12,108 @@
 </head>
 
 <body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-left antialiased leading-relaxed">
-    <header class="sticky top-0 z-10 bg-slate-100 px-2 pt-3 text-slate-800 dark:bg-slate-950 dark:text-white">
-        <section class="mx-auto flex max-w-4xl items-center justify-between rounded-xl border border-slate-200/80 bg-white/90 p-3 shadow-md backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/90 sm:p-4">
-            <div class="flex items-center">
-                <a class="mr-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black" href="index.html" aria-label="Mediated Reality Group home"><img class="w-6 h-6" src="assets/img/mixlab.png" alt=""></a>
-                <p class="text-xs font-semibold sm:text-sm"><a href="index.html">Mediated Reality Group</a><span class="hidden font-light sm:inline">&nbsp;@ UniStuttgart</span></p>
+    <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-slate-900 focus:shadow-lg">Skip to content</a>
+
+    <!--
+        masthead: one sticky header. Its upper part scrolls away with the page while
+        the name block on the left cross-fades into the compact brand; the nav on the
+        right keeps its place, leaving a short bar pinned to the top (see main.js).
+    -->
+    <header id="masthead" data-mini-height="68" class="sticky top-0 z-30 border-b border-slate-200 bg-white text-slate-800 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-white">
+        <div class="relative mx-auto flex max-w-4xl items-end justify-between gap-4 px-4 pb-6 pt-12 sm:gap-8 md:pt-20">
+            <a data-mini-brand href="index.html" class="pointer-events-none absolute bottom-0 left-4 flex h-[68px] items-center gap-2.5 opacity-0" aria-hidden="true" tabindex="-1">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black"><img class="h-6 w-6" src="assets/img/mixlab.png" alt=""></span>
+                <span class="text-xs font-semibold leading-tight text-slate-900 dark:text-white sm:text-sm">Mediated Reality Group<span class="block font-light text-slate-500 dark:text-slate-400 min-[380px]:ml-1 min-[380px]:inline">@ UniStuttgart</span></span>
+            </a>
+            <a data-masthead-fade href="https://www.uni-stuttgart.de/" target="_blank" rel="noopener" class="absolute right-4 top-12 md:top-20" aria-label="University of Stuttgart">
+                <img class="h-6 w-auto dark:hidden sm:h-8 md:h-10" src="assets/img/unistuttgart-logo-en.svg" alt="University of Stuttgart">
+                <img class="hidden h-6 w-auto dark:block sm:h-8 md:h-10" src="assets/img/unistuttgart-logo-inverted-en.svg" alt="">
+            </a>
+            <div data-masthead-brand class="min-w-0">
+                <p class="pr-7 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-teal-700 dark:text-teal-300 min-[400px]:pr-0 sm:text-xs sm:tracking-[0.18em]">Human-centered 3D vision for XR</p>
+                <p class="mt-2 text-[1.375rem] font-bold leading-none tracking-tight text-slate-900 dark:text-white sm:mt-3 sm:text-4xl md:text-5xl"><a href="index.html">Mediated Reality Group</a></p>
+                <p class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium leading-none text-slate-500 dark:text-slate-400 sm:mt-4 sm:gap-x-3 sm:text-sm md:text-base md:leading-none">
+                    <span>Imaging</span><span class="text-teal-600 dark:text-teal-300" aria-hidden="true">&#8594;</span>
+                    <span>Displaying</span><span class="text-teal-600 dark:text-teal-300" aria-hidden="true">&#8594;</span>
+                    <span>Understanding</span>
+                </p>
             </div>
-            <div class="flex items-center gap-2">
-                <button type="button" id="hamburger-button" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="text-xl md:hidden cursor-pointer relative w-8 h-8">
+            <div class="flex shrink-0 items-end gap-2">
+                <nav class="hidden items-end gap-8 text-[0.8125rem] font-semibold leading-none tracking-wider md:flex" aria-label="primary">
+                    <a href="index.html" class="border-b-2 border-transparent pb-1.5 text-slate-600 transition hover:border-slate-300 hover:text-slate-900 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:text-white">HOME</a>
+                    <a href="team.html" aria-current="page" class="border-b-2 border-teal-600 pb-1.5 text-teal-700 dark:border-teal-300 dark:text-teal-300">TEAM</a>
+                    <a href="research.html" class="border-b-2 border-transparent pb-1.5 text-slate-600 transition hover:border-slate-300 hover:text-slate-900 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:text-white">RESEARCH</a>
+                </nav>
+                <button type="button" id="hamburger-button" data-menu-toggle aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="-mb-2 grid h-8 w-8 place-items-center rounded-md text-xl hover:bg-slate-100 dark:hover:bg-slate-800 md:hidden">
                     &#9776;
                 </button>
-                <nav class="hidden items-center gap-1 font-sans text-sm md:flex" aria-label="primary">
-                    <a href="index.html" class="rounded-md px-3 py-2 hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300">HOME</a>
-                    <a href="team.html" aria-current="page" class="rounded-md px-3 py-2 font-semibold text-teal-700 hover:bg-slate-100 dark:text-teal-300 dark:hover:bg-slate-800">TEAM</a>
-                    <a href="projects.html" class="rounded-md px-3 py-2 hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300">PROJECTS</a>
-                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="grid h-9 w-9 place-items-center rounded-full text-slate-700 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
-                </nav>
+                <button type="button" data-theme-toggle aria-label="Toggle color theme" title="Toggle color theme" class="-mb-2 grid h-8 w-8 place-items-center rounded-full text-slate-600 transition md:-mb-0.5 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white md:ml-4">
+                    <i class="fa-solid fa-circle-half-stroke text-sm"></i>
+                </button>
             </div>
-        </section>
-        <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
-            <nav class="mx-2 flex w-full flex-col rounded-xl border border-slate-200 bg-white p-3 font-medium shadow-lg dark:border-slate-700 dark:bg-slate-900" aria-label="mobile">
-                <a href="index.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">HOME</a>
-                <a href="team.html" aria-current="page" class="rounded-md px-3 py-2 font-semibold text-teal-700 dark:text-teal-300">TEAM</a>
-                <div class="flex justify-between items-center hover:opacity-90">
-                    <a href="projects.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">PROJECTS</a>
-                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="grid h-9 w-9 place-items-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
-                </div>
-            </nav>
-        </section>
+        </div>
     </header>
 
+    <!-- mobile menu -->
+    <section id="mobile-menu" class="fixed hidden inset-0 z-40 backdrop-blur-sm justify-center items-start pt-20 text-xl animate-open-menu origin-top">
+        <nav class="mx-2 flex w-full flex-col rounded-xl border border-slate-200 bg-white p-3 font-medium shadow-lg dark:border-slate-700 dark:bg-slate-900" aria-label="mobile">
+            <a href="index.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">HOME</a>
+            <a href="team.html" aria-current="page" class="rounded-md px-3 py-2 font-semibold text-teal-700 dark:text-teal-300">TEAM</a>
+            <a href="research.html" class="rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">RESEARCH</a>
+        </nav>
+    </section>
 
-    <main class="max-w-4xl mx-auto mb-8">
+
+    <main id="content" class="max-w-4xl mx-auto mb-8">
+        <!--
+            page intro
+        -->
+        <section class="px-4 pb-4 pt-12 md:pt-16">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">People</p>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">Team</h1>
+            <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300">Researchers, students, and visitors working on human-centered 3D vision for XR at VISUS, University of Stuttgart, together with our collaborators and alumni.</p>
+        </section>
+
+        <!--
+            supporters
+        -->
+        <section id="supporters" class="px-4 pt-8" aria-labelledby="supporters-heading">
+            <h2 id="supporters-heading" class="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Supported by</h2>
+            <ul class="flex flex-wrap items-center gap-x-8 gap-y-5 sm:gap-x-10">
+                <li>
+                    <a href="https://www.visus.uni-stuttgart.de/" target="_blank" rel="noopener" title="Visualization Research Center (VISUS), University of Stuttgart" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/affiliations/visus.png" alt="Visualization Research Center (VISUS), University of Stuttgart" class="h-7 sm:h-8 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.uni-stuttgart.de/" target="_blank" rel="noopener" title="University of Stuttgart" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/unistuttgart-logo-en.svg" alt="University of Stuttgart" class="h-5 sm:h-6 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.intcdc.uni-stuttgart.de/" target="_blank" rel="noopener" title="Cluster of Excellence IntCDC" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/affiliations/intcdc.png" alt="Cluster of Excellence IntCDC" class="h-6 sm:h-7 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://imprs.is.mpg.de/" target="_blank" rel="noopener" title="International Max Planck Research School for Intelligent Systems (IMPRS-IS)" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/affiliations/imprs-is.png" alt="International Max Planck Research School for Intelligent Systems (IMPRS-IS)" class="h-4 sm:h-5 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.keio.ac.jp/en/" target="_blank" rel="noopener" title="Keio University" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/affiliations/keio.svg" alt="Keio University" class="h-4 sm:h-5 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://en.ritsumei.ac.jp/" target="_blank" rel="noopener" title="Ritsumeikan University" class="block opacity-90 transition hover:opacity-100 dark:opacity-75 dark:hover:opacity-100">
+                        <img src="assets/img/affiliations/ritsumeikan.png" alt="Ritsumeikan University" class="h-5 sm:h-6 w-auto object-contain dark:brightness-0 dark:invert" loading="lazy">
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+
         <!--
             join us
         -->
@@ -67,15 +133,13 @@
         <!--
             members
         -->
-        <section id="members" class="px-4 py-12 justify-center">
-            <h2 class="border-b border-slate-300 pb-3 text-2xl font-semibold text-center dark:border-slate-700 md:text-left">
-                TEAM
-            </h2>
-            <div class="gap-4 pt-6 gap-y-2 lg:m-0 m-2">
-                <figure class="flex pt-4 px-2 group">
+        <section id="members" class="px-4 py-10">
+            <h2 class="mb-6 flex items-center gap-3 border-b border-slate-300 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-700 dark:text-white"><i class="fa-solid fa-users w-5 text-center text-base text-teal-700 dark:text-teal-300" aria-hidden="true"></i>Members</h2>
+            <div class="lg:m-0 m-2">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
                         <div class="group/credit relative shrink-0">
-                            <img class="w-20 h-20 rounded-full" src="assets/members/smori_square.jpg" alt="Shohei Mori">
+                            <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/smori_square.jpg" alt="Shohei Mori">
                             <div class="absolute bottom-1 left-1/2 -translate-x-1/2">
                                 <span class="flex h-5 w-5 cursor-help items-center justify-center rounded-full bg-black/60 text-[0.65rem] leading-none text-white" tabindex="0" aria-label="Photo copyright: Bild: Universität Stuttgart/Uli Regenscheit">&copy;</span>
                                 <div class="pointer-events-none absolute bottom-full right-0 mb-1 w-max max-w-[11rem] rounded bg-black/80 px-2 py-1 text-[0.7rem] text-white opacity-0 transition-opacity duration-150 group-hover/credit:opacity-100 group-focus-within/credit:opacity-100">
@@ -85,16 +149,16 @@
                         </div>
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">
                                     <a href="https://mugichoko445.github.io/" target="_blank">Shohei Mori</a>
                                 </div>
-                                <div class="text-sm text-gray-400">
+                                <div class="text-sm text-slate-500 dark:text-slate-400">
                                     Junior Research Group Leader at Uni Stuttgart<br>
                                     <a href="https://www.visus.uni-stuttgart.de/" target="_blank">VISUS</a>,
                                     <a href="https://www.intcdc.uni-stuttgart.de/" target="_blank">EXC IntCDC</a>,
                                     <a href="https://imprs.is.mpg.de/" target="_blank">IMPRS-IS</a>
                                 </div>
-                                <div class="text-slate-700 dark:text-slate-500">
+                                <div class="mt-1 flex flex-wrap gap-x-2 text-slate-500 dark:text-slate-400 [&_a:hover]:text-teal-700 dark:[&_a:hover]:text-teal-300">
                                     <a href="mailto: s.mori.jp@ieee.org"><i class="fa-solid fa-envelope fa-lg"></i></a> |
                                     <a href="https://scholar.google.com/citations?user=U5lf_WEAAAAJ&hl=en&oi=sra" target="_blank"><i class="ai ai-google-scholar-square ai-lg"></i></a>
                                     <a href="https://orcid.org/0000-0003-0540-7312" target="_blank"><i class="fa-brands fa-orcid fa-lg"></i></a>
@@ -111,150 +175,150 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
                 <!--
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700 dark:invert" src="assets/members/na.png" alt="na.png">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Appointed Ph.D. Student</div>
-                                <div class="text-sm text-gray-400">Ph.D. Student (IMPRS-IS, EXC IntCDC)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Appointed Ph.D. Student</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Ph.D. Student (IMPRS-IS, EXC IntCDC)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
                 -->
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/haifan_zhang.jpg" alt="haifan portrait">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/haifan_zhang.jpg" alt="haifan portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://www.visus.uni-stuttgart.de/en/team/Zhang-00041/" target="_blank">Haifan Zhang</a></div>
-                                <div class="text-sm text-gray-400">Ph.D. Student (IMPRS-IS, EXC IntCDC)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://www.visus.uni-stuttgart.de/en/team/Zhang-00041/" target="_blank">Haifan Zhang</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Ph.D. Student (IMPRS-IS, EXC IntCDC)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
 
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/ayaka_yasunaga.jpg" alt="ayaka portrait">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/ayaka_yasunaga.jpg" alt="ayaka portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://ayaka-yasunaga.github.io" target="_blank">Ayaka Yasunaga</a></div>
-                                <div class="text-sm text-gray-400">Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://ayaka-yasunaga.github.io" target="_blank">Ayaka Yasunaga</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
 
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/rinto_yagawa.jpg" alt="rinto_yagawa.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/rinto_yagawa.jpg" alt="rinto_yagawa.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://yagarin10-max.github.io/" target="_blank">Rinto Yagawa</a></div>
-                                <div class="text-sm text-gray-400">Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://yagarin10-max.github.io/" target="_blank">Rinto Yagawa</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
                 
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/tobias_kemmler.jpg" alt="tobias_kemmler.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/tobias_kemmler.jpg" alt="tobias_kemmler.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Tobias Kemmler</div>
-                                <div class="text-sm text-gray-400">Student Assistent (HiWi)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Tobias Kemmler</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Student Assistant (HiWi)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/han_cheng.jpg" alt="han_cheng.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/han_cheng.jpg" alt="han_cheng.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Han Cheng</div>
-                                <div class="text-sm text-gray-400">Student Assistent (HiWi)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Han Cheng</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Student Assistant (HiWi)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/vinayak_shivanand_patil.jpg" alt="vinayak_shivanand_patil.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/vinayak_shivanand_patil.jpg" alt="vinayak_shivanand_patil.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Vinayak Shivanand Patil</div>
-                                <div class="text-sm text-gray-400">Master Thesis</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Vinayak Shivanand Patil</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700 dark:invert" src="assets/members/na.png" alt="na.png">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Zongyang Chen</div>
-                                <div class="text-sm text-gray-400">Master Thesis (as Examiner)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Zongyang Chen</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis (as Examiner)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700 dark:invert" src="assets/members/na.png" alt="na.png">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Aron Schmid</div>
-                                <div class="text-sm text-gray-400">Master Thesis (as Examiner)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Aron Schmid</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis (as Examiner)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
 
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/serguyen_gumus.jpg" alt="serguyen_gumus.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/serguyen_gumus.jpg" alt="serguyen_gumus.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Sergüney Gümüs</div>
-                                <div class="text-sm text-gray-400">Master Thesis (as Examiner)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Sergüney Gümüs</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis (as Examiner)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700 dark:invert" src="assets/members/na.png" alt="na.png">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Eric Bossecker</div>
-                                <div class="text-sm text-gray-400">Master Thesis (as Examiner)</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Eric Bossecker</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis (as Examiner)</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/paul_schmanns.jpg" alt="paul_schmanns.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/paul_schmanns.jpg" alt="paul_schmanns.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Paul Schmanns</div>
-                                <div class="text-sm text-gray-400">Master Thesis</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Paul Schmanns</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Thesis</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full" src="assets/members/guangxin_zhao.jpg" alt="guangxin_zhao.jpg">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/guangxin_zhao.jpg" alt="guangxin_zhao.jpg">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Guangxin Zhao</div>
-                                <div class="text-sm text-gray-400">Master Project</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Guangxin Zhao</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Master Project</div>
                             </figcaption>
                         </div>
                     </div>
@@ -264,193 +328,192 @@
             <!--
                 collaborators
             -->
-            <h2 class="border-b border-slate-300 pb-3 pt-12 text-2xl font-semibold text-center dark:border-slate-700 md:text-left">
-                COLLABORATORS
-            </h2>
+            <div class="pt-14"></div>
+            <h2 class="mb-6 flex items-center gap-3 border-b border-slate-300 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-700 dark:text-white"><i class="fa-solid fa-handshake w-5 text-center text-base text-teal-700 dark:text-teal-300" aria-hidden="true"></i>Collaborators</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 lg:m-0 m-2">
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/dieter_schmalstieg.jpg" alt="dieter portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/dieter_schmalstieg.jpg" alt="dieter portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://www.vis.uni-stuttgart.de/team/Schmalstieg/" target="_blank">Dieter Schmalstieg</a></div>
-                                <div class="text-sm text-gray-400">Alexander von Humboldt Professor at VISUS, University of Stuttgart, Germany</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://www.vis.uni-stuttgart.de/team/Schmalstieg/" target="_blank">Dieter Schmalstieg</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Alexander von Humboldt Professor at VISUS, University of Stuttgart, Germany</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/jan_knippers.jpg" alt="jan portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/jan_knippers.jpg" alt="jan portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://janknippers.com/" target="_blank">Jan Knippers</a></div>
-                                <div class="text-sm text-gray-400">Professor at ITKE, University of Stuttgart, Germany</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://janknippers.com/" target="_blank">Jan Knippers</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Professor at ITKE, University of Stuttgart, Germany</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/kirsten_dickhaut.jpg" alt="kirsten portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/kirsten_dickhaut.jpg" alt="kirsten portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://www.ilw.uni-stuttgart.de/en/institute/team/Dickhaut/" target="_blank">Kirsten Dickhaut</a></div>
-                                <div class="text-sm text-gray-400">Professor at ILW, University of Stuttgart, Germany</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://www.ilw.uni-stuttgart.de/en/institute/team/Dickhaut/" target="_blank">Kirsten Dickhaut</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Professor at ILW, University of Stuttgart, Germany</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/hideo_saito.jpg" alt="hideo portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/hideo_saito.jpg" alt="hideo portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><div class="text-xl"></div><a href="http://hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
-                                <div class="text-sm text-gray-400">Professor at Keio University, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"></div><a href="http://hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Professor at Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/mariko_isogawa.jpg" alt="mariko portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/mariko_isogawa.jpg" alt="mariko portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
-                                <div class="text-sm text-gray-400">Associate Professor at Keio University, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Associate Professor at Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/asako_kimura.jpg" alt="asako portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/asako_kimura.jpg" alt="asako portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="http://www.rm2c.ise.ritsumei.ac.jp/" target="_blank">Asako Kimura</a></div>
-                                <div class="text-sm text-gray-400">Professor at Ritsumeikan University, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="http://www.rm2c.ise.ritsumei.ac.jp/" target="_blank">Asako Kimura</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Professor at Ritsumeikan University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/fumihiko_nakamura.jpg" alt="fumihiko portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/fumihiko_nakamura.jpg" alt="fumihiko portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://researchmap.jp/fumihiko_nakamura" target="_blank">Fumihiko Nakamura</a></div>
-                                <div class="text-sm text-gray-400">Assistant Professor at Ritsumeikan University, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://researchmap.jp/fumihiko_nakamura" target="_blank">Fumihiko Nakamura</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Assistant Professor at Ritsumeikan University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/yuta_kataoka.jpg" alt="yuta portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/yuta_kataoka.jpg" alt="yuta portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://researchmap.jp/yuta-kataoka" target="_blank">Yuta Kataoka</a></div>
-                                <div class="text-sm text-gray-400">Affiliate Researcher at Ritsumeikan University, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://researchmap.jp/yuta-kataoka" target="_blank">Yuta Kataoka</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Affiliate Researcher at Ritsumeikan University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/marie_morita.jpg" alt="marie portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/marie_morita.jpg" alt="marie portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://researchmap.jp/mariemorita?lang=en" target="_blank">Marie Morita</a></div>
-                                <div class="text-sm text-gray-400">Specially Appointed Lecturer at Osaka Institute of Technology, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://researchmap.jp/mariemorita?lang=en" target="_blank">Marie Morita</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Specially Appointed Lecturer at Osaka Institute of Technology, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/yutaro_hirao.jpg" alt="yutaro portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/yutaro_hirao.jpg" alt="yutaro portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://yutarohirao.notion.site/Yutaro-Hirao-s-CV-08a37b7f88f44d66baa0cb71d6838478" target="_blank">Yutaro Hirao</a></div>
-                                <div class="text-sm text-gray-400">Researcher at Cluster, Inc., Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://yutarohirao.notion.site/Yutaro-Hirao-s-CV-08a37b7f88f44d66baa0cb71d6838478" target="_blank">Yutaro Hirao</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Researcher at Cluster, Inc., Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/ana_stanescu.jpg" alt="ana portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/ana_stanescu.jpg" alt="ana portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://scholar.google.com/citations?user=iD4Pco8AAAAJ&hl=en" target="_blank">Ana Stanescu</a></div>
-                                <div class="text-sm text-gray-400">Postdoc Researcher at Adelaide University, Australia</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://scholar.google.com/citations?user=iD4Pco8AAAAJ&hl=en" target="_blank">Ana Stanescu</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Postdoc Researcher at Adelaide University, Australia</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/peter_mohr_ziak.jpg" alt="peter portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/peter_mohr_ziak.jpg" alt="peter portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://ivc.tugraz.at/people/peter-mohr-ziak/" target="_blank">Peter Mohr-Ziak</a></div>
-                                <div class="text-sm text-gray-400">Postdoc Researcher at Graz University of Technology, Austria</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://ivc.tugraz.at/people/peter-mohr-ziak/" target="_blank">Peter Mohr-Ziak</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Postdoc Researcher at Graz University of Technology, Austria</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/ke_li.jpg" alt="ke portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/ke_li.jpg" alt="ke portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://keli95566.github.io/personal/" target="_blank">Ke Li</a></div>
-                                <div class="text-sm text-gray-400">Postdoc Researcher at University of Hamburg, Germany</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://keli95566.github.io/personal/" target="_blank">Ke Li</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Postdoc Researcher at University of Hamburg, Germany</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/mana_masuda.jpg" alt="mana portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/mana_masuda.jpg" alt="mana portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://llien30.github.io/" target="_blank">Mana Masuda</a></div>
-                                <div class="text-sm text-gray-400">Researcher at SB Intuitions, Japan</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://llien30.github.io/" target="_blank">Mana Masuda</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Researcher at SB Intuitions, Japan</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/susanne_schmidt.jpg" alt="susanne portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/susanne_schmidt.jpg" alt="susanne portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://profiles.canterbury.ac.nz/Susanne-Schmidt" target="_blank">Susanne Schmidt</a></div>
-                                <div class="text-sm text-gray-400">Lecturer at University of Canterbury, New Zealand</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://profiles.canterbury.ac.nz/Susanne-Schmidt" target="_blank">Susanne Schmidt</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Lecturer at University of Canterbury, New Zealand</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/ali_motamedi.jpg" alt="alessandro portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/ali_motamedi.jpg" alt="alessandro portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://scholar.google.com/citations?user=UwD44RQAAAAJ&hl=en" target="_blank">Ali Motamedi</a></div>
-                                <div class="text-sm text-gray-400">Associate Professor at École de Technologie Supérieure, Canada</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://scholar.google.com/citations?user=UwD44RQAAAAJ&hl=en" target="_blank">Ali Motamedi</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Associate Professor at École de Technologie Supérieure, Canada</div>
                             </figcaption>
                         </div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                    <img class="w-20 h-20 rounded-full" src="assets/members/roghieh_eskandari.jpg" alt="alessandro portrait">
+                    <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/roghieh_eskandari.jpg" alt="alessandro portrait">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl"><a href="https://ccps.io/team/roghieh-eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
-                                <div class="text-sm text-gray-400">Ph.D. Candidate at École de Technologie Supérieure, Canada</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white"><a href="https://ccps.io/team/roghieh-eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Ph.D. Candidate at École de Technologie Supérieure, Canada</div>
                             </figcaption>
                         </div>
                     </div>
@@ -461,206 +524,205 @@
                 alumni
             -->
                 
-            <h2 class="border-b border-slate-300 pb-3 pt-12 text-2xl font-semibold text-center dark:border-slate-700 md:text-left">
-                ALUMNI
-            </h2>
+            <div class="pt-14"></div>
+            <h2 class="mb-6 flex items-center gap-3 border-b border-slate-300 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-700 dark:text-white"><i class="fa-solid fa-user-graduate w-5 text-center text-base text-teal-700 dark:text-teal-300" aria-hidden="true"></i>Alumni</h2>
             <div class="grid grid-cols-1 lg:m-0 m-2">
-                <div class="text-xl font-bold pt-8">Master's Thesis/Project</div>
-                <figure class="flex pt-4 px-2 group">
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Master's Thesis/Project</div>
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/mayuri_mahalingam_mudaliar.jpg" alt="mayuri_mahalingam_mudaliar.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/mayuri_mahalingam_mudaliar.jpg" alt="mayuri_mahalingam_mudaliar.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Mayuri Mahalingam Mudaliar</div>
-                            <div class="text-sm text-gray-400">2026.02 - 2026.08 | Master Project</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Mayuri Mahalingam Mudaliar</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2026.02 - 2026.08 | Master Project</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/yonatan_mamo.jpg" alt="yonatan_mamo.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/yonatan_mamo.jpg" alt="yonatan_mamo.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Yonatan Mamo</div>
-                            <div class="text-sm text-gray-400">2025.12 - 2026.06 | Master Thesis</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Yonatan Mamo</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.12 - 2026.06 | Master Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/mo_li.jpg" alt="mo_li.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/mo_li.jpg" alt="mo_li.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Mo Li</div>
-                            <div class="text-sm text-gray-400">2025.12 - 2026.06 | Master Thesis</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Mo Li</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.12 - 2026.06 | Master Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/sampathkumar_d_itagi.jpg" alt="sampathkumar_d_itagi.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/sampathkumar_d_itagi.jpg" alt="sampathkumar_d_itagi.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Sampathkumar D. Itagi</div>
-                            <div class="text-sm text-gray-400">2025.10 - 2026.04 | Master Thesis</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Sampathkumar D. Itagi</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.10 - 2026.04 | Master Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/harish_renganathan.jpg" alt="harish_renganathan.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/harish_renganathan.jpg" alt="harish_renganathan.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Harish Renganathan</div>
-                            <div class="text-sm text-gray-400">2025.10 - 2026.04 | Master Thesis</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Harish Renganathan</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.10 - 2026.04 | Master Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/aqsa_khan.jpg" alt="aqsa_khan.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/aqsa_khan.jpg" alt="aqsa_khan.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Aqsa Khan</div>
-                            <div class="text-sm text-gray-400">2025.10 - 2026.04 | Master Thesis</div>
-                            <div class="text-sm text-gray-400">Generating Diminished Reality Dataset in Virtual Environment</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Aqsa Khan</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.10 - 2026.04 | Master Thesis</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating Diminished Reality Dataset in Virtual Environment</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/han_cheng.jpg" alt="han_cheng.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/han_cheng.jpg" alt="han_cheng.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Han Cheng</div>
-                            <div class="text-sm text-gray-400">2025.3 - 2025.09 | Master Project</div>
-                            <div class="text-sm text-gray-400">Learning Dense Initial Point Clouds for Fast 3D Gaussian Splatting Optimization</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Han Cheng</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.3 - 2025.09 | Master Project</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Learning Dense Initial Point Clouds for Fast 3D Gaussian Splatting Optimization</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/jonas_geiselhart.jpg" alt="jonas_geiselhart.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/jonas_geiselhart.jpg" alt="jonas_geiselhart.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Jonas Geiselhart</div>
-                            <div class="text-sm text-gray-400">2024.12 - 2025.06 | Master Thesis</div>
-                            <div class="text-sm text-gray-400">Investigating Challenges in Generalizing Neural Radiance Fields with Learned Scene Priors</div>
-                        </figcaption></div>
-                    </div>
-                </figure>
-
-                <div class="text-xl font-bold pt-8">Bachelor's Thesis</div>
-                <figure class="flex pt-4 px-2 group">
-                    <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/daniel_atighetchi.jpg" alt="daniel_atighetchi.jpg">
-                        <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Daniel Atighetchi</div>
-                            <div class="text-sm text-gray-400">2025.12 - 2026.06 | Bachelor Thesis</div>
-                        </figcaption></div>
-                    </div>
-                </figure>
-                <figure class="flex pt-4 px-2 group">
-                    <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/deren_bozbiyik.jpg" alt="deren_bozbiyik.jpg">
-                        <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Deren Bozbiyik</div>
-                            <div class="text-sm text-gray-400">2025.11 - 2026.05 | Bachelor Thesis</div>
-                        </figcaption></div>
-                    </div>
-                </figure>
-                <figure class="flex pt-4 px-2 group">
-                    <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/christopher_gaug.jpg" alt="christopher_gaug.jpg">
-                        <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Christopher Gaug</div>
-                            <div class="text-sm text-gray-400">2025.01 - 2025.07 | Bachelor Thesis</div>
-                            <div class="text-sm text-gray-400">Generating 3D Hedge Mazes from Base 2D Maps</div>
-                        </figcaption></div>
-                    </div>
-                </figure>
-                <figure class="flex pt-4 px-2 group">
-                    <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/tobias_kemmler.jpg" alt="tobias_kemmler.jpg">
-                        <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Tobias Kemmler</div>
-                            <div class="text-sm text-gray-400">2024.12 - 2025.05 | Bachelor Thesis</div>
-                            <div class="text-sm text-gray-400">Generating 3D Topiaries from Base Geometric Shapes</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Jonas Geiselhart</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2024.12 - 2025.06 | Master Thesis</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Investigating Challenges in Generalizing Neural Radiance Fields with Learned Scene Priors</div>
                         </figcaption></div>
                     </div>
                 </figure>
 
-                <div class="text-xl font-bold pt-8">Interns</div>
-                <figure class="flex pt-4 px-2 group">
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Bachelor's Thesis</div>
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/kotoka_matsunaga.jpg" alt="kotoka portrait">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/daniel_atighetchi.jpg" alt="daniel_atighetchi.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Kotoka Matsunaga</div>
-                            <div class="text-sm text-gray-400">2026.04 - 2026.08 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Daniel Atighetchi</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.12 - 2026.06 | Bachelor Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/suji_kang.jpg" alt="suji portrait">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/deren_bozbiyik.jpg" alt="deren_bozbiyik.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Suji Kang</div>
-                            <div class="text-sm text-gray-400">2025.12 - 2026.02 | Visiting Researcher (KAIST GSCT <a href="https://uvrlab.org/" target="_blank">UVR Lab.</a>, Korea)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Deren Bozbiyik</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.11 - 2026.05 | Bachelor Thesis</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/shiori_ueda.jpg" alt="shiori portrait">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/christopher_gaug.jpg" alt="christopher_gaug.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm"><a href="https://sh1027.github.io/" target="_blank">Shiori Ueda</a></div>
-                            <div class="text-sm text-gray-400">2024.11 - 2025.11 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Christopher Gaug</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.01 - 2025.07 | Bachelor Thesis</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating 3D Hedge Mazes from Base 2D Maps</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/yoko_nakajima.jpg" alt="yoko portrait">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/tobias_kemmler.jpg" alt="tobias_kemmler.jpg">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Yoko Nakajima</div>
-                            <div class="text-sm text-gray-400">2025.06 - 2025.08 | Visiting Researcher (<a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Isogawa Lab.</a>, Keio University, Japan)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Tobias Kemmler</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2024.12 - 2025.05 | Bachelor Thesis</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Generating 3D Topiaries from Base Geometric Shapes</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <figure class="flex pt-4 px-2 group">
+
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Interns</div>
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/ayaka_yasunaga.jpg" alt="ayaka portrait">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/kotoka_matsunaga.jpg" alt="kotoka portrait">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm"><a href="https://ayaka-yasunaga.github.io" target="_blank">Ayaka Yasunaga</a></div>
-                            <div class="text-sm text-gray-400">2025.01 - 2025.03 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Kotoka Matsunaga</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2026.04 - 2026.08 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
                         </figcaption></div>
                     </div>
                 </figure>
-                <div class="text-xl font-bold pt-8">Student Assistant (HiWi)</div>
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-16 h-16 rounded-full" src="assets/members/vinayak_shivanand_patil.jpg" alt="vinayak_shivanand_patil.jpg">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/suji_kang.jpg" alt="suji portrait">
                         <div class="relative p-2 text-left"><figcaption>
-                            <div class="text-sm">Vinayak Shivanand Patil</div>
-                            <div class="text-sm text-gray-400">2025.05 - 2026.09 | Student Assistant (HiWi)</div>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Suji Kang</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.12 - 2026.02 | Visiting Researcher (KAIST GSCT <a href="https://uvrlab.org/" target="_blank">UVR Lab.</a>, Korea)</div>
+                        </figcaption></div>
+                    </div>
+                </figure>
+                <figure class="flex px-2 pt-4 group">
+                    <div class="relative flex items-center space-x-2">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/shiori_ueda.jpg" alt="shiori portrait">
+                        <div class="relative p-2 text-left"><figcaption>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100"><a href="https://sh1027.github.io/" target="_blank">Shiori Ueda</a></div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2024.11 - 2025.11 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                        </figcaption></div>
+                    </div>
+                </figure>
+                <figure class="flex px-2 pt-4 group">
+                    <div class="relative flex items-center space-x-2">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/yoko_nakajima.jpg" alt="yoko portrait">
+                        <div class="relative p-2 text-left"><figcaption>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Yoko Nakajima</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.06 - 2025.08 | Visiting Researcher (<a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Isogawa Lab.</a>, Keio University, Japan)</div>
+                        </figcaption></div>
+                    </div>
+                </figure>
+                <figure class="flex px-2 pt-4 group">
+                    <div class="relative flex items-center space-x-2">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/ayaka_yasunaga.jpg" alt="ayaka portrait">
+                        <div class="relative p-2 text-left"><figcaption>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100"><a href="https://ayaka-yasunaga.github.io" target="_blank">Ayaka Yasunaga</a></div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.01 - 2025.03 | Visiting Researcher (<a href="http://hvrl.ics.keio.ac.jp/" target="_blank">HVRL</a>, Keio University, Japan)</div>
+                        </figcaption></div>
+                    </div>
+                </figure>
+                <div class="pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Student Assistant (HiWi)</div>
+                <figure class="flex px-2 pt-4 group">
+                    <div class="relative flex items-center space-x-2">
+                        <img class="w-16 h-16 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" src="assets/members/vinayak_shivanand_patil.jpg" alt="vinayak_shivanand_patil.jpg">
+                        <div class="relative p-2 text-left"><figcaption>
+                            <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Vinayak Shivanand Patil</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">2025.05 - 2026.09 | Student Assistant (HiWi)</div>
                         </figcaption></div>
                     </div>
                 </figure>
             </div>
 
-            <div class="text-2xl font-bold pt-12 md:text-left text-center">
+            <div class="pt-10 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">
                 Ph.D. Thesis
             </div>
             <div class="px-2 pt-4">
-                <div class="text-sm">Ph.D. Thesis Examiner — Mana Masuda (Keio University)</div>
-                <div class="text-sm text-gray-400">"Tracking and Scene Representation for Fast-moving Cameras by Event Data Synthesis" (11.2024)</div>
+                <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Ph.D. Thesis Examiner — Mana Masuda (Keio University)</div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">"Tracking and Scene Representation for Fast-moving Cameras by Event Data Synthesis" (11.2024)</div>
             </div>
             <div class="px-2 pt-4">
-                <div class="text-sm">Ph.D. Thesis Examiner — Shiori Ueda (Keio University)</div>
-                <div class="text-sm text-gray-400">"Physically Grounded Cues for Reliable Learning-based Visual Understanding and Reconstruction" (08.2026)</div>
+                <div class="text-sm font-semibold text-slate-800 dark:text-slate-100">Ph.D. Thesis Examiner — Shiori Ueda (Keio University)</div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">"Physically Grounded Cues for Reliable Learning-based Visual Understanding and Reconstruction" (08.2026)</div>
             </div>
 
             <!-- example
             <div class="grid grid-cols-1 gap-y-2 lg:m-0 m-2">
-                <figure class="flex pt-4 px-2 group">
+                <figure class="flex px-2 pt-4 group">
                     <div class="relative flex items-center space-x-2">
-                        <img class="w-20 h-20 rounded-full dark:invert" src="assets/members/na.png" alt="na.png">
+                        <img class="w-20 h-20 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700 dark:invert" src="assets/members/na.png" alt="na.png">
                         <div class="relative p-2 text-left">
                             <figcaption>
-                                <div class="text-xl">Tobias Kemmler</div>
-                                <div class="text-sm text-gray-400">2024.12 - 2025.05 | Bachelor Thesis: Generating 3D Topiaries from Base Geometric Shapes</div>
+                                <div class="text-lg font-semibold leading-snug text-slate-900 dark:text-white">Tobias Kemmler</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">2024.12 - 2025.05 | Bachelor Thesis: Generating 3D Topiaries from Base Geometric Shapes</div>
                             </figcaption>
                         </div>
                     </div>
@@ -676,7 +738,15 @@
         fetch("footer.html")
             .then(response => response.text())
             .then(html => {
-                document.getElementById("footer").innerHTML = html;
+                const footer = document.getElementById("footer");
+                footer.innerHTML = html;
+                // rebase footer-relative links (written relative to footer.html)
+                const base = new URL("footer.html", location.href);
+                footer.querySelectorAll("[src], [href]").forEach((el) => {
+                    const attr = el.hasAttribute("src") ? "src" : "href";
+                    const value = el.getAttribute(attr);
+                    if (!/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(value)) el.setAttribute(attr, new URL(value, base).href);
+                });
                 // Wait for footer to load, then update the year
                 document.getElementById('year').innerHTML = new Date().getFullYear();
             });

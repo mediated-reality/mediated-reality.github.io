@@ -137,7 +137,15 @@
         fetch("../../footer.html")
             .then(response => response.text())
             .then(html => {
-                document.getElementById("footer").innerHTML = html;
+                const footer = document.getElementById("footer");
+                footer.innerHTML = html;
+                // rebase footer-relative links (written relative to footer.html)
+                const base = new URL("../../footer.html", location.href);
+                footer.querySelectorAll("[src], [href]").forEach((el) => {
+                    const attr = el.hasAttribute("src") ? "src" : "href";
+                    const value = el.getAttribute(attr);
+                    if (!/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(value)) el.setAttribute(attr, new URL(value, base).href);
+                });
                 // Wait for footer to load, then update the year
                 document.getElementById('year').innerHTML = new Date().getFullYear();
             });

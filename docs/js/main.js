@@ -40,6 +40,7 @@ const initApp = () => {
     // fades out and the compact brand fades in, both tied to scroll position.
     const masthead = document.getElementById('masthead')
     const brand = masthead && masthead.querySelector('[data-masthead-brand]')
+    const fading = masthead ? Array.from(masthead.querySelectorAll('[data-masthead-brand], [data-masthead-fade]')) : []
     const miniBrand = masthead && masthead.querySelector('[data-mini-brand]')
     if (masthead && brand && miniBrand) {
         const miniHeight = Number(masthead.dataset.miniHeight) || 60
@@ -49,7 +50,8 @@ const initApp = () => {
 
         const update = () => {
             const p = clamp(window.scrollY / range)
-            brand.style.opacity = String(clamp(1 - p / 0.7))
+            const fade = String(clamp(1 - p / 0.7))
+            fading.forEach((el) => { el.style.opacity = fade })
             const q = clamp((p - 0.6) / 0.4)
             miniBrand.style.opacity = String(q)
             miniBrand.style.transform = `translateY(${(1 - q) * 6}px)`
@@ -76,27 +78,6 @@ const initApp = () => {
         }, { passive: true })
         new ResizeObserver(measure).observe(masthead)
         measure()
-    }
-
-    // -- latest news strip
-    const newsTrack = document.querySelector('[data-news-track]')
-    if (newsTrack) {
-        const prev = document.querySelector('[data-news-prev]')
-        const next = document.querySelector('[data-news-next]')
-        const step = () => {
-            const card = newsTrack.querySelector('li')
-            return card ? card.getBoundingClientRect().width + 16 : 280
-        }
-        const updateButtons = () => {
-            const max = newsTrack.scrollWidth - newsTrack.clientWidth - 2
-            prev.disabled = newsTrack.scrollLeft <= 2
-            next.disabled = newsTrack.scrollLeft >= max
-        }
-        prev.addEventListener('click', () => newsTrack.scrollBy({ left: -step(), behavior: 'smooth' }))
-        next.addEventListener('click', () => newsTrack.scrollBy({ left: step(), behavior: 'smooth' }))
-        newsTrack.addEventListener('scroll', updateButtons, { passive: true })
-        window.addEventListener('resize', updateButtons)
-        updateButtons()
     }
 
     // -- homepage hero carousel
