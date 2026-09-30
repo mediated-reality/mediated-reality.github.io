@@ -15,12 +15,183 @@
     <style>
         body { font-family: 'IBM Plex Sans', sans-serif; }
         .font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+        /* ── Hero ───────────────────────────────────────── */
+        .hero { padding-top: 2.5rem; padding-bottom: 1.5rem; text-align: left; }
+        .hero-card {
+            position: relative; isolation: isolate;
+            padding: 2.75rem 2.5rem 2.25rem;
+        }
+        /* no outline: a blurred, oversized backdrop that dissolves into the page */
+        .hero-card::before {
+            content: ""; position: absolute; inset: -1.5rem; z-index: -1; pointer-events: none;
+            background:
+                radial-gradient(30% 40% at 22% 30%, rgba(14, 165, 233, 0.12), transparent 75%),
+                radial-gradient(28% 40% at 80% 70%, rgba(245, 158, 11, 0.09), transparent 75%),
+                radial-gradient(ellipse 50% 50% at 50% 50%, #fff 55%, rgba(255, 255, 255, 0) 100%);
+            filter: blur(20px);
+        }
+        .hero-pixels {
+            position: absolute; right: 1.5rem; bottom: 1.6rem; width: 4.75rem;
+            color: #0ea5e9; pointer-events: none;
+        }
+        .hero-top { position: relative; display: flex; align-items: center; gap: 2rem; }
+        .hero-logo {
+            flex-shrink: 0; width: clamp(6.5rem, 20vw, 10rem);
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.18);
+            transition: transform .3s;
+        }
+        .hero-logo:hover { transform: rotate(-2deg) scale(1.03); }
+        .hero-logo img { display: block; width: 100%; height: auto; }
+        .hero-eyebrow {
+            display: inline-block; font-size: clamp(0.95rem, 2vw, 1.15rem); font-weight: 500;
+            color: #0369a1; letter-spacing: 0.01em;
+        }
+        .hero-title {
+            margin: 0.25rem 0 0.9rem;
+            font-size: clamp(2.25rem, 7vw, 4.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em;
+            background: linear-gradient(95deg, #0f172a 0%, #0f172a 45%, #0369a1 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            font-size: 0.95rem; font-weight: 500; color: #b45309;
+            background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 9999px; padding: 0.25rem 0.9rem;
+        }
+        .hero-meta { position: relative; margin-top: 2rem; padding-right: 5.5rem; }
+        .hero-colocated { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: #64748b; }
+        .hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .hero-chips span {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: #1e293b;
+            background: rgba(255, 255, 255, 0.85); border: 1px solid #e2e8f0; border-radius: 0.6rem;
+            padding: 0.4rem 0.8rem;
+        }
+        .hero-chips i { color: #0ea5e9; }
+        @media (max-width: 639px) {
+            .hero-card { padding: 1.75rem 1.25rem 1.5rem; }
+            .hero-card::before { inset: -1rem -1rem; }
+            .hero-top { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+            .hero-pixels { display: none; }
+            .hero-meta { padding-right: 0; }
+        }
+
+        /* Description references: soft, separated panel */
+        .refs-box {
+            margin: 1rem 0 1.25rem; padding: 0.85rem 1.1rem;
+            background: #f1f5f9; border-radius: 0.5rem;
+            color: #64748b; line-height: 1.55; text-align: left;
+        }
+        .refs-box > p:first-child {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.35rem;
+        }
+        .refs-box li { padding-left: 1.6rem; text-indent: -1.6rem; font-size: 0.8rem; }
+        .refs-box li + li { margin-top: 0.25rem; }
+
+        /* Description topics: emoji bullets */
+        .topic-list { list-style: none; }
+        .topic-list > li { position: relative; padding-left: 1.9rem; }
+        .topic-list > li::before { position: absolute; left: 0.2rem; top: 0; }
+        .topic-list > li:nth-child(1)::before { content: "🛠️"; }
+        .topic-list > li:nth-child(2)::before { content: "🌍"; }
+        .topic-list > li:nth-child(3)::before { content: "👁️"; }
+        .topic-list > li:nth-child(4)::before { content: "📊"; }
+
+        /* DR Challenge items */
+        .challenge-items { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0 0.75rem; text-align: left; }
+        .challenge-item {
+            position: relative;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+            transition: border-color .2s, box-shadow .2s, transform .2s;
+        }
+        /* emoji right before each item's title, on the same line */
+        .challenge-item .challenge-label::before {
+            display: inline-block; margin-right: 0.45rem; font-size: 1.15em;
+            transition: transform .2s;
+        }
+        .challenge-item:nth-child(1) .challenge-label::before { content: "🧰"; }
+        .challenge-item:nth-child(2) .challenge-label::before { content: "🎯"; }
+        .challenge-item:nth-child(3) .challenge-label::before { content: "🎤"; }
+        .challenge-item:hover .challenge-label::before { transform: scale(1.1) rotate(-6deg); }
+        .challenge-item:hover {
+            border-color: rgba(14, 165, 233, 0.5);
+            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 8px 20px rgba(14, 165, 233, 0.10);
+            transform: translateY(-1px);
+        }
+        .challenge-item .challenge-label { display: block; margin-bottom: 0.25rem; letter-spacing: 0.01em; }
+
+        /* DR Challenge video: keep beside the text on middle-size screens (lg/xl widths come from Tailwind) */
+        @media (min-width: 640px) and (max-width: 767px)  { .challenge-video { width: 13rem; } }
+        @media (min-width: 768px) and (max-width: 1023px) { .challenge-video { width: 15rem; } }
+
+        /* Program schedule */
+        .prog {
+            margin-top: 1rem; text-align: left;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; overflow: hidden;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+        .prog-slot {
+            position: relative; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1.25rem;
+            padding: 1rem 1.25rem 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+        }
+        .prog-slot:last-child { border-bottom: 0; }
+        .prog-slot::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #cbd5e1; }
+        .prog-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: #64748b; padding-top: 0.1rem; white-space: nowrap; }
+        .prog-title { font-weight: 600; color: #0f172a; }
+        .prog-note { font-weight: 400; color: #64748b; }
+        .prog-who { color: #334155; }
+        .prog-chair {
+            display: inline-block; margin-top: 0.35rem; font-size: 0.875rem; color: #334155;
+            background: #f1f5f9; border-radius: 0.375rem; padding: 0.1rem 0.55rem;
+        }
+        .prog-slot.is-keynote { background: #f0f9ff; }
+        .prog-slot.is-keynote::before { background: #0ea5e9; }
+        .prog-slot.is-keynote .prog-time { color: #0369a1; font-weight: 500; }
+        .prog-slot.is-challenge { background: #fffbeb; }
+        .prog-slot.is-challenge::before { background: #f59e0b; }
+        .prog-slot.is-challenge .prog-time { color: #b45309; font-weight: 500; }
+        .prog-slot.is-break { background: repeating-linear-gradient(135deg, #fff 0 10px, #f8fafc 10px 20px); }
+        .prog-slot.is-break::before { background: transparent; }
+        .prog-slot.is-break .prog-title { color: #64748b; font-weight: 500; }
+        .prog-paper {
+            margin-top: 0.75rem; padding: 0.85rem 1rem;
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
+        }
+        .prog-paper-title { font-weight: 600; color: #0f172a; line-height: 1.45; }
+        .prog-paper-authors { font-size: 0.875rem; color: #64748b; line-height: 1.55; margin-top: 0.3rem; }
+
+        /* foldable abstract */
+        .prog-abstract { margin-top: 0.5rem; }
+        .prog-abstract summary {
+            display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+            color: #0369a1; padding: 0.2rem 0.6rem; border: 1px solid #bae6fd; border-radius: 9999px; background: #fff;
+            transition: background .15s, border-color .15s;
+        }
+        .prog-abstract summary::-webkit-details-marker { display: none; }
+        .prog-abstract summary::before { content: "▸"; transition: transform .2s; }
+        .prog-abstract[open] summary::before { transform: rotate(90deg); }
+        .prog-abstract summary:hover { background: #f0f9ff; border-color: #7dd3fc; }
+        .prog-abstract p {
+            margin-top: 0.6rem; padding-left: 0.85rem; border-left: 2px solid #bae6fd;
+            font-size: 0.9375rem; line-height: 1.65; color: #334155;
+        }
+        @media (max-width: 639px) {
+            .prog-slot { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 
-<body class="min-h-screen bg-slate-50 dark:bg-[#05080f] text-slate-950 dark:text-slate-200 text-justify">
-    <header class="dark:text-white sticky top-4 lg:top-6 z-10 mx-2">
-        <section class="bg-slate-500/20 dark:bg-slate-800/60 dark:border dark:border-slate-700/60 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
+<body class="min-h-screen bg-slate-50 text-slate-950 text-justify">
+    <header class="sticky top-4 lg:top-6 z-10 mx-2">
+        <section class="bg-slate-500/20 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
             <div class="flex items-center">
                 <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="iwdr2026_icon.png"></div>
                 <h1 class="font-bold"><a href="index.html"><span class="text-sky-400">IWDR</span> 2026</a>
@@ -35,23 +206,17 @@
                     <a href="#keynote" class="hover:text-sky-400 transition-colors">Keynote</a>
                     <a href="#program" class="hover:text-sky-400 transition-colors">Program</a>
                     <a href="#organizers" class="hover:text-sky-400 transition-colors">Organizers</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
                 </nav>
             </div>
         </section>
         <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
-            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 dark:bg-slate-900 border border-gray-700 dark:border-white font-mono rounded-xl" aria-label="mobile">
+            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 border border-gray-700 font-mono rounded-xl" aria-label="mobile">
                 <a href="index.html" class="pb-2 hover:opacity-90">Home</a>
                 <a href="#contribute" class="pb-2 hover:opacity-90">Contribute</a>
                 <a href="#keynote" class="pb-2 hover:opacity-90">Keynote</a>
                 <a href="#program" class="pb-2 hover:opacity-90">Program</a>
                 <div class="flex justify-between items-center hover:opacity-90">
                     <a href="#organizers">Organizers</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
                 </div>
             </nav>
         </section>
@@ -59,68 +224,70 @@
 
 
     <main class="max-w-4xl mx-auto mb-8">
-        <section id="hero" class="px-4 pt-32 pb-12 text-left flex flex-col gap-6">
-            <!-- Row 1: Image + First three lines -->
-            <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 items-center">
-                <!-- Image column with light/dark mode control -->
-                <div class="col-span-1 flex justify-center lg:justify-start">
-                    <div class="relative w-full">
-                        <!-- White-background image (only in light mode) -->
-                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none block dark:hidden"/>
-                        <!-- Dark-background image (only in dark mode) -->
-                        <img src="iwdr2026_logo_dark.png" alt="IWDR Logo" class="relative w-full h-auto object-cover rounded-xl select-none hidden dark:block"/>
+        <section id="hero" class="hero px-4">
+            <div class="hero-card">
+                <!-- decorative "dissolving" pixels, echoing the logo -->
+                <svg class="hero-pixels" viewBox="0 0 150 120" aria-hidden="true" fill="currentColor">
+                    <rect x="60"  y="0"  width="24" height="24" opacity=".15"/>
+                    <rect x="120" y="0"  width="24" height="24" opacity=".8"/>
+                    <rect x="30"  y="32" width="24" height="24" opacity=".1"/>
+                    <rect x="90"  y="32" width="24" height="24" opacity=".7"/>
+                    <rect x="120" y="32" width="24" height="24" opacity=".35"/>
+                    <rect x="0"   y="64" width="24" height="24" opacity=".08"/>
+                    <rect x="60"  y="64" width="24" height="24" opacity=".45"/>
+                    <rect x="90"  y="64" width="24" height="24" opacity=".9"/>
+                    <rect x="120" y="64" width="24" height="24" opacity=".6"/>
+                    <rect x="30"  y="96" width="24" height="24" opacity=".25"/>
+                    <rect x="60"  y="96" width="24" height="24" opacity=".85"/>
+                    <rect x="90"  y="96" width="24" height="24" opacity=".5"/>
+                    <rect x="120" y="96" width="24" height="24" opacity=".95"/>
+                </svg>
+
+                <!-- Row 1: Image + First three lines -->
+                <div class="hero-top">
+                    <!-- Image column -->
+                    <div class="hero-logo">
+                        <!-- Logo -->
+                        <img src="iwdr2026_logo_light.png" alt="IWDR Logo" class="select-none"/>
+                    </div>
+
+                    <!-- Text column -->
+                    <div class="min-w-0">
+                        <p class="hero-eyebrow">
+                            3rd Int. Workshop on
+                        </p>
+                        <h1 class="hero-title">
+                            Diminished Reality
+                        </h1>
+                        <p class="hero-tag">
+                            <span class="italic">Introducing the 1st DR Challenge</span> 🏆
+                        </p>
                     </div>
                 </div>
 
-                <!-- Text column -->
-                <div class="col-span-2 lg:col-span-3 min-w-0">
-                    <p class="text-xl sm:text-2xl text-slate-500 dark:text-slate-400">
-                        3rd Int. Workshop on
+                <!-- Row 2: Everything else (full width) -->
+                <div class="hero-meta">
+                    <p class="hero-colocated font-mono">
+                        Co-located with IEEE ISMAR 2026
                     </p>
-                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold dark:text-white">
-                        Diminished Reality
-                    </h1>
-                        <span class="italic">Introducing the 1st DR Challenge</span> 🏆
-                    </p>
-                </div>
-            </div>
 
-            <!-- Row 2: Everything else (full width) -->
-            <div>
-                <p class="font-mono text-sm uppercase tracking-widest text-slate-500">
-                    Co-located with IEEE ISMAR 2026
-                </p>
-
-                <div class="font-mono text-sm mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 dark:text-slate-300">
-                    <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy</span>
-                    <span class="text-slate-400 dark:text-slate-600">·</span>
-                    <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
-                    <span class="text-slate-400 dark:text-slate-600">·</span>
-                    <span><i class="fa-solid fa-desktop text-sky-400 mr-1.5"></i>Hybrid · Half-day</span>
+                    <div class="hero-chips font-mono">
+                        <span><i class="fa-solid fa-location-dot"></i>Bari, Italy</span>
+                        <span><i class="fa-regular fa-calendar"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
+                        <span><i class="fa-solid fa-desktop"></i>Hybrid · Half-day</span>
+                    </div>
                 </div>
             </div>
         </section>
     
         
-        <!-- ── Announcement ─────────────────────────────────────────── -->
-        <section id="announcement" class="px-4">
-            <div class="flex items-center gap-3 bg-sky-50 dark:bg-sky-950/50 border border-sky-300 dark:border-sky-700 rounded-xl px-4 py-3">
-                <span class="text-2xl">🏆</span>
-                <p class="font-mono text-sm text-sky-800 dark:text-sky-200">
-                    <span class="font-bold">The DR Challenge is now open!</span>
-                    Apply before <span class="font-bold">September 25, 2026</span> (23:59:59 AoE).
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="underline hover:text-sky-600 dark:hover:text-sky-400">Apply now →</a>
-                </p>
-            </div>
-        </section>
-
         <!--
             Descriptions
         -->
         <section id="description" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Description</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="text-base gap-t-2 pt-6">
                 <p class="pb-2">
@@ -136,7 +303,7 @@
                   With these shifts, the technical boundaries of DR have expanded substantially, creating a timely opportunity to revive IWDR
                   and foster a new generation of DR research.</p>
             </div>
-            <div class="text-sm gap-t-2 pt-2 text-slate-400">
+            <div class="refs-box text-sm">
                 <p><span class="font-semibold">References</span></p>
                 <ul>
                     <li>[1] S. Mori, O. Erat, W. Broll, H. Saito, D. Schmalstieg, and D. Kalkofen, “InpaintFusion: Incremental RGB-D Inpainting for 3D Scenes,” IEEE TVCG, Vol. 26, Issue 10, pp. 2994–3007, 2020.</li>
@@ -151,27 +318,27 @@
                     IWDR 2026 aims to bring together researchers working on the full spectrum of DR,
                     from foundational technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR core technologies:</span>
+                <ul class="topic-list pt-2">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR core technologies:</span>
                         Vision- and graphics‑based DR pipelines /
                         Methods for object removal, scene completion, and real‑time inpainting /
                         DR in challenging modalities such as haptics, audio, and multimodal sensor fusion
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR applications:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR applications:</span>
                         XR applications leveraging DR in medicine, industrial support, entertainment, and telepresence /
                         DR for safety‑critical or high‑precision environments /
                         DR for accessibility and situational awareness
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Perceptual issues in DR:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Perceptual issues in DR:</span>
                         User performance and task efficiency under DR conditions /
                         Perceptual thresholds, acceptance, and comfort /
                         Cross‑modal perception when DR is applied to visual, auditory, or tactile cues
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Dataset and benchmarking for DR:</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Dataset and benchmarking for DR:</span>
                         DR datasets for training and evaluation /
                         Benchmarking methodologies, metrics, and reproducible evaluation pipelines /
                         Standardization
@@ -184,22 +351,22 @@
             Contribute
         -->
         <section id="contribute" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Contribute</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p>
                     We invite contributions through two tracks.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
                         in the IEEE Computer Society VGTC conference format. Anonymous submissions undergo formal review (two reviews per paper).
                         Accepted papers appear in the ISMAR 2026 Adjunct Proceedings on IEEE Xplore.
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold text-sky-700 dark:text-sky-300">DR challenge (non‑archival):</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold text-sky-700">DR challenge (non‑archival):</span>
                         The organizers will provide an implementation platform for WebXR-based DR systems using smartphone camera input. The platform will include fundamental components required for DR implementation, such as AR tracking, 3D scanning, 3D bounding-box detection, and inpainting modules.
                         Participants are encouraged to build their own DR algorithms and applications on this platform and submit a short demonstration video recorded in their own environment (up to 2 min), along with a brief paper in the short papers format (up to 2 pages) summarizing the proposed algorithm and implementation details.
                     </li>
@@ -210,33 +377,33 @@
                     <span class="font-bold">Important dates</span> (provisional, aligned with the ISMAR 2026 workshop track). All deadlines are 23:59:59 AoE
                     (Anywhere on Earth, UTC−12) on the stated day.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-slate-400 dark:text-slate-500 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 12, 2026</span>
+                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-slate-400 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600">July 12, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 17, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600">July 17, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">July 31, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600">July 31, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - On-site Participation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 4, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 4, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Notification of invitation:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 18, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Notification of invitation:</span> <span class="font-semibold text-sky-600">September 18, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ONLINE Presentation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">September 27, 2026</span>
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">(DR Challenge - ONLINE Presentation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 27, 2026</span>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600 dark:text-sky-400">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
+                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
                     </li>
                 </ul>
             </div>
             <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row sm:items-center gap-3">
-                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 dark:border-sky-400/50 text-sky-600 dark:text-sky-400 rounded-md px-3 py-1.5 transition-colors hover:bg-sky-500 dark:hover:bg-sky-400 hover:text-white dark:hover:text-white hover:border-sky-500 dark:hover:border-sky-400"><a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank">Submit Your Work (CMT)</a></span>
-                <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 dark:text-sky-400 hover:underline">iwdr2026@googlegroups.com</a></p>
+                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 text-sky-600 rounded-md px-3 py-1.5 transition-colors hover:bg-sky-500 hover:text-white hover:border-sky-500"><a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank">Submit Your Work (CMT)</a></span>
+                <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 hover:underline">iwdr2026@googlegroups.com</a></p>
             </div>
         </section>
 
@@ -244,41 +411,32 @@
             DR Challenge
         -->
         <section id="dr-challenge" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">DR Challenge</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
-            <div class="font-normal text-base gap-t-2 pt-6 flex flex-col lg:flex-row gap-6 items-start">
+            <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row gap-6 items-start">
                 <div class="flex-1 min-w-0">
                     <p>
                         We plan to organize a hands‑on DR Challenge as a central activity of the workshop.
                     </p>
-                    <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Starter Code:</span>
+                    <ul class="challenge-items">
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Starter Code:</span>
                             A mobile DR framework that separates heavy DNN‑based server processing from lightweight AR functions running on mobile devices.
                         </li>
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Challenge Tasks:</span>
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Challenge Tasks:</span>
                             Develop improved DR algorithms, pipelines, applications, or benchmarking schemes.
                             Discuss practical limitations of current DNN‑based DR, including latency, robustness, perceptual quality, and user experience.
                         </li>
-                        <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                            <span class="font-semibold text-sky-700 dark:text-sky-300">Presentation Styles:</span>
+                        <li class="challenge-item">
+                            <span class="challenge-label font-semibold text-sky-700">Presentation Styles:</span>
                             Bring their systems to the workshop venue for <span class="font-semibold">ON-SITE</span> demonstrations (Deadline: September 4), or otherwise present them <span class="font-semibold">ONLINE</span> via pre-recorded videos (Deadline: September 27).
                         </li>
                     </ul>
-                    <div class="font-normal text-base gap-t-2 pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
-                      <p>
-                        The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage reproducible experimentation in DR.
-                        Fill out the form and download the starter code!!
-                      </p>
-                    </div>
-                    <div class="pt-4">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="inline-block font-mono text-xs uppercase tracking-widest bg-sky-500 dark:bg-sky-500 text-white rounded-md px-4 py-2 transition-colors hover:bg-sky-600 dark:hover:bg-sky-400">Apply Now 🏆</a>
-                    </div>
                 </div>
-                <div class="shrink-0 w-full lg:w-64 xl:w-72">
+                <div class="challenge-video shrink-0 w-full lg:w-64 xl:w-72">
                     <div class="relative w-full" style="aspect-ratio: 9/16;">
                         <iframe class="absolute inset-0 w-full h-full rounded-xl"
                             src="https://www.youtube.com/embed/9HO2dJ-dZQc"
@@ -290,23 +448,32 @@
                     </div>
                 </div>
             </div>
+            <div class="font-normal text-base gap-t-2 pt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+              <p>
+                The challenge is designed to stimulate discussion on emerging technical bottlenecks and encourage reproducible experimentation in DR.
+                Fill out the form and download the starter code!!
+              </p>
+            </div>
+            <div class="pt-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="inline-block font-mono text-xs uppercase tracking-widest bg-sky-500 text-white rounded-md px-4 py-2 transition-colors hover:bg-sky-600">Apply Now 🏆</a>
+            </div>
         </section>
 
         <!--
             Keynote
         -->
         <section id="keynote" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Keynote Speaker</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-6 text-center sm:text-justify">
                 <img class="w-40 h-40 rounded-full object-cover shrink-0" src="mohamed_kari.jpg" alt="mohamed portrait">
 
                 <div class="text-base">
-                    <div class="text-lg font-bold text-sky-600 dark:text-sky-400"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a>
+                    <div class="text-lg font-bold text-sky-600"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a>
                     </div>
-                    <div class="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
+                    <div class="text-sm uppercase tracking-widest text-gray-500 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
                     <p class="pb-2">
                         <span class="font-semibold">Title:</span> <span class="italic">Reality Interfaces (Tentative)</span>
                     </p>
@@ -321,38 +488,101 @@
             Program
         -->
         <section id="program" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Program</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p class="pb-2">
                     IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
                     reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500 dark:marker:text-sky-400">
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Welcome and framing</span> (10 min)
+                <ol class="prog">
+                    <li class="prog-slot">
+                        <div class="prog-time">14:00-14:15</div>
+                        <div>
+                            <div class="prog-title">Opening</div>
+                            <div class="prog-who">Shohei Mori</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Keynote</span> by Dr. Mohamed Kari (45 min)
+                    <li class="prog-slot is-keynote">
+                        <div class="prog-time">14:15-15:00</div>
+                        <div>
+                            <div class="prog-title">Keynote</div>
+                            <div class="prog-who">Mohamed Kari</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Short paper session</span> — 4 papers × 15 min (60 min)
+                    <li class="prog-slot">
+                        <div class="prog-time">15:00-15:30</div>
+                        <div>
+                            <div class="prog-title">Short Paper Talk × 2 <span class="prog-note">(15 min per talk)</span></div>
+                            <div class="prog-chair">Session Chair: Hideo Saito</div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">Multimodal Diminished Reality for Robotics</div>
+                                <div class="prog-paper-authors">Rajashekhar V S (Indian Institute of Technology – Kanpur), Rahul Kumar Ray (FLAME University), Diganta Ghorai (Indian Institute of Technology – Kanpur), Vivek Kumar (Indian Institute of Technology – Kanpur), Gowdham Prabhakar (Indian Institute of Technology – Kanpur)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>Diminished Reality (DR) is an emerging paradigm within the Extended Reality (XR) spectrum that enables the selective removal and inpainting of "objects of disinterest" from the user’s environment. While traditional robotics research prioritizes maximizing information gain, a critical research gap exists in managing the cognitive load of operators in complex, cluttered, and perceptually demanding scenarios. This work addresses this gap by formalizing a multimodal Diminished Reality for Robotics (DR-R) framework, shifting the focus from "perceiving more" to "perceiving less". We introduce a unified approach comprising three sensory cues: visual, audio, and haptic. To evaluate this framework, we conducted a structured experimental protocol (N=41) across five modalities: visual wire removal, visual suppression of simulated blood, single-channel speech extraction via SepFormer, and haptic substitution for environmental light cues in a robotic lizard. Quantitative results reveal that Audio (M=5.91/7) and Haptic (M=5.39/7) diminished cues were the most effective, scoring 24.6% and 13.7% higher, respectively, than the average of the visual modalities (M_visual_avg=4.56/7). Furthermore, the unified multimodal scene achieved a high preference rating (M=4.90/7), with participants reporting significantly enhanced scene interpretability and reduced sensory clutter. Our findings suggest that multimodal DR-R effectively mitigates sensory overload, offering a vital complementary principle to traditional robotic perception.</p>
+                                </details>
+                            </div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">Perceive More By Seeing Less: Vision Augmentation Systems</div>
+                                <div class="prog-paper-authors">Daniel Pillis (MIT Media Lab), Pawan Sinha (Massachusetts Institute of Technology), Cayden Pierce (Mentra), Seth Riskin (Massachusetts Institute of Technology), Yuriy Reznik (Research Laboratory of Electronics at MIT), Ken Zolot (Massachusetts Institute of Technology)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>We present “Perceive More By Seeing Less,” a creative research project and diminished reality experience that explores methods for improving visual acuity using mixed reality (MR/AR/VR/XR) pass-through technology. Working with a transdisciplinary team, we designed five real-time spatial frequency filters that suppress or enhance specific bands of visual information, a perceptual form of diminished reality (DR) in which selectively removing detail, rather than adding virtual content, reshapes how users perceive objects, spatial relations, and environments. Motivated by vision rehabilitation research on children recovering from treatable blindness, the system reframes deprivation-based rehabilitation as a creative DR tool and demonstrates the paradoxical potential of diminished reality to enhance human perception. This paper discusses the theoretical foundation, implementation, and implications for sensory, creative, and vision rehabilitation-oriented diminished reality research.</p>
+                                </details>
+                            </div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Coffee break</span> (20 min)
+                    <li class="prog-slot is-break">
+                        <div class="prog-time">15:30-16:15</div>
+                        <div>
+                            <div class="prog-title">☕ Coffee break</div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Challenger demonstrations and talks</span>  — 4 challengers × 15 min (60 min)
+                    <li class="prog-slot">
+                        <div class="prog-time">16:15-16:30</div>
+                        <div>
+                            <div class="prog-title">Short Paper Talk × 1 <span class="prog-note">(15 min)</span></div>
+                            <div class="prog-chair">Session Chair: Shohei Mori</div>
+                            <div class="prog-paper">
+                                <div class="prog-paper-title">DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning</div>
+                                <div class="prog-paper-authors">RUOFAN LIU (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
+                                <details class="prog-abstract">
+                                    <summary>Abstract</summary>
+                                    <p>Previous DR systems rely on manually defined rules or fixed object elimination, limiting their ability to adapt to the changing activities and surrounding contexts. In this paper, we present DR.Adapt, an adaptive diminished reality framework that incorporates vision-language reasoning to automatically determine which objects should be visually suppressed based on the user's ongoing task. Our approach combines egocentric scene perception, semantic task inference, and adaptive rendering to estimate the relevance of surrounding objects and adjust their visibility accordingly. To demonstrate the feasibility of this idea, we implement a proof-of-concept prototype featuring two adaptive rendering strategies and evaluate it in representative scenarios. DR.Adapt is designed as an AI-driven interactive agent that responds to users' intentions and evolving environments. We hope this work will inspire future research on intelligent, personalized, and context-aware visual assistance in mixed reality.</p>
+                                </details>
+                            </div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Closing panel</span> (35 min)
+                    <li class="prog-slot is-challenge">
+                        <div class="prog-time">16:30-16:45</div>
+                        <div>
+                            <div class="prog-title">DR Challenge Introduction <span class="prog-note">(15 min)</span></div>
+                        </div>
                     </li>
-                    <li class="hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Wrap-up and next steps</span> (10 min)
+                    <li class="prog-slot is-challenge">
+                        <div class="prog-time">16:45-17:00</div>
+                        <div>
+                            <div class="prog-title">DR Challenge Demonstrations and Talks <span class="prog-note">(15 min)</span></div>
+                        </div>
                     </li>
-                </ul>
+                    <li class="prog-slot">
+                        <div class="prog-time">17:00-17:35</div>
+                        <div>
+                            <div class="prog-title">Panel</div>
+                            <div class="prog-who">by Mohame Kari, Hideo Saito, Shohei Mori (+ participants)</div>
+                        </div>
+                    </li>
+                    <li class="prog-slot">
+                        <div class="prog-time">17:35-17:45</div>
+                        <div>
+                            <div class="prog-title">Closing - Group Photo</div>
+                            <div class="prog-who">Shohei Mori</div>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
         
@@ -360,9 +590,9 @@
             Organizers
         -->
         <section id="organizers" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Organizers</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
                 <figure class="flex flex-col group">
@@ -370,8 +600,8 @@
                         <img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                             </figcaption>
                         </div>
                     </div>
@@ -381,8 +611,8 @@
                         <img class="w-32 h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
@@ -392,8 +622,8 @@
                         <img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 dark:hover:text-sky-400 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Keio University, Japan</div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
                             </figcaption>
                         </div>
                     </div>
@@ -405,42 +635,42 @@
             Program Committee
         -->
         <section id="pc" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Program Committee</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6 text-base">
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Norihiko Kawai</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Osaka Institute of Technology, Japan</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://norihi-k.com/index-e.html" target="_blank">Norihiko Kawai</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Osaka Institute of Technology, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Xuening Tian</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Tian-00002/" target="_blank">Xuening Tian</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Verena Biener</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">University of Stuttgart, Germany</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Biener-Roser/" target="_blank">Verena Biener</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Roghieh E. Toushmanlou</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">École de Technologie Supérieure, Canada</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.researchgate.net/profile/Roghieh-Eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">École de Technologie Supérieure, Canada</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Fumihiko Nakamura</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=139" target="_blank">Fumihiko Nakamura</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Fumihisa Shibata</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Ritsumeikan University, Japan</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=21" target="_blank">Fumihisa Shibata</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Tomohiro Fukuda</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">The University of Osaka, Japan</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://researchmap.jp/tomohirofukuda?lang=en" target="_blank">Tomohiro Fukuda</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">The University of Osaka, Japan</div>
                 </div>
-                <div class="border border-slate-300 dark:border-slate-700/70 rounded-md p-3 hover:border-sky-500/60 dark:hover:border-sky-400/60 transition-colors">
-                    <div class="text-base font-bold">Nobuyoshi Yabuki</div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-1">Tokyo City University, Japan</div>
+                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
+                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://research.tcu.ac.jp/en/persons/nobuyoshi-yabuki/" target="_blank">Nobuyoshi Yabuki</a></div>
+                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Tokyo City University, Japan</div>
                 </div>
             </div>
         </section>
@@ -448,9 +678,9 @@
             Acknowledgement
         -->
         <section id="acknowledgement" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-sky-400">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
                 <span class="whitespace-nowrap">Acknowledgement</span>
-                <span class="h-px flex-1 bg-sky-500/30 dark:bg-sky-400/30"></span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p>The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</p>
@@ -460,9 +690,9 @@
 
     
     <!-- footer -->
-    <footer id="footer" class="dark:text-white text-base">
+    <footer id="footer" class="text-base">
         <div class="mx-2">
-            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 dark:bg-slate-900 rounded-2xl">
+            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 rounded-2xl">
                 <address>
                     <h2><a href="https://mediated-reality.github.io">IWDR 2026 Organizers</a></h2>
                     Email: <a href="mailto:iwdr2026@googlegroups.com">iwdr2026@googlegroups.com</a>
