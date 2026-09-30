@@ -11,21 +11,21 @@
     <link rel="icon" href="assets/img/mixlab.png" type="image/x-icon">
 </head>
 
-<body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-justify">
+<body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-left antialiased leading-relaxed">
     <header class="dark:text-white sticky top-2 z-10 mx-2">
-        <section class="bg-slate-700/30 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl">
+        <section class="bg-slate-700/30 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl shadow-lg ring-1 ring-black/5 dark:ring-white/10">
             <div class="flex items-center">
-                <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="assets/img/mixlab.png"></div>
+                <a class="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black" href="index.html" aria-label="Mediated Reality Group home"><img class="w-6 h-6" src="assets/img/mixlab.png" alt=""></a>
                 <h1 class="text-sm font-medium"><a href="index.html">Mediated Reality Group</a></h1><span class="font-extralight">&nbsp;@ UniStuttgart</span>
             </div>
             <div class="mr-2">
-                <buttom id="hamburger-button" class="text-sm md:hidden cursor-pointer relative w-8 h-8">
+                <button type="button" id="hamburger-button" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="text-xl md:hidden cursor-pointer relative w-8 h-8">
                     &#9776;
-                </buttom>
-                <nav class="hidden font-sans md:block space-x-8 text-sm" aria-label="main">
+                </button>
+                <nav class="hidden items-center font-sans md:flex space-x-8 text-sm" aria-label="primary">
                     <a href="team.html" class="hover:opacity-90">TEAM</a>
                     <a href="projects.html" class="underline hover:opacity-90">PROJECTS</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </nav>
@@ -37,7 +37,7 @@
                 <a href="team.html" class="pb-2 hover:opacity-90">TEAM</a>
                 <div class="flex justify-between items-center hover:opacity-90">
                     <a href="projects.html" class="underline">PROJECTS</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </div>
@@ -53,7 +53,7 @@
         -->
         <section id="projects" class="px-4 py-12 justify-center">
             <div class="pb-10">
-                <h2 class="text-2xl font-bold pb-8 md:text-left text-center">📸 3D Imaging</h2>
+                <h2 class="mb-6 border-b border-slate-300 pb-3 text-xl font-semibold text-center dark:border-slate-700 md:text-left">📸 3D Imaging</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <a class="group relative block rounded-2xl" href="projects/yasunaga_ismar25" target="_blank">
                         <img class="w-full aspect-square object-cover rounded-2xl" src="projects/yasunaga_ismar25/yasunaga_ismar25.jpg" alt="IntelliCap: Intelligent Guidance for Consistent View Sampling">
@@ -94,7 +94,7 @@
             </div>
 
             <div class="pb-10">
-                <h2 class="text-2xl font-bold pb-8 md:text-left text-center">🧊 Scene Representation</h2>
+                <h2 class="mb-6 border-b border-slate-300 pb-3 text-xl font-semibold text-center dark:border-slate-700 md:text-left">🧊 Scene Representation</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <a class="group relative block rounded-2xl" href="https://mediated-reality.github.io/rf4xr/papers/li_tvcg25" target="_blank">
                         <img class="w-full aspect-square object-cover rounded-2xl" src="projects/li_tvcg25.jpg" alt="Radiance Fields in XR: A Survey on How Radiance Fields are Envisioned and Addressed for XR Research">
@@ -135,7 +135,7 @@
             </div>
 
             <div class="pb-10">
-                <h2 class="text-2xl font-bold pb-8 md:text-left text-center">🧠 Scene Understanding</h2>
+                <h2 class="mb-6 border-b border-slate-300 pb-3 text-xl font-semibold text-center dark:border-slate-700 md:text-left">🧠 Scene Understanding</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <a class="group relative block rounded-2xl" href="https://snapphysics-ismar2026.github.io/" target="_blank">
                         <img class="w-full aspect-square object-cover rounded-2xl" src="projects/kang_ismar26.jpg" alt="SnapPhysics: A Physics-Aware Scene Graph from a Single View for Interactive Mixed Reality Scenes">
@@ -162,7 +162,7 @@
             </div>
 
             <div>
-                <h2 class="text-2xl font-bold pb-8 md:text-left text-center">👁️ Perception in XR</h2>
+                <h2 class="mb-6 border-b border-slate-300 pb-3 text-xl font-semibold text-center dark:border-slate-700 md:text-left">👁️ Perception in XR</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <a class="group relative block rounded-2xl" href="#" target="_blank">
                         <img class="w-full aspect-square object-cover rounded-2xl" src="projects/tanahashi_vrst26.jpg" alt="Embodying a Quadrupedal Avatar Through Posture- and Hand-Gesture-Congruent Locomotion">

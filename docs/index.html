@@ -11,21 +11,21 @@
     <link rel="icon" href="assets/img/mixlab.png" type="image/x-icon">
 </head>
 
-<body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-justify">
+<body class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-white font-medium text-left antialiased leading-relaxed">
     <header class="dark:text-white sticky top-2 z-10 mx-2">
-        <section class="bg-slate-700/30 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl">
+        <section class="bg-slate-700/30 dark:bg-slate-700/50 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-2xl shadow-lg ring-1 ring-black/5 dark:ring-white/10">
             <div class="flex items-center">
-                <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="assets/img/mixlab.png"></div>
+                <a class="mr-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black" href="index.html" aria-label="Mediated Reality Group home"><img class="w-6 h-6" src="assets/img/mixlab.png" alt=""></a>
                 <h1 class="text-sm font-medium"><a href="index.html">Mediated Reality Group</a></h1><span class="font-extralight">&nbsp;@ UniStuttgart</span>
             </div>
             <div class="mr-2">
-                <buttom id="hamburger-button" class="text-sm md:hidden cursor-pointer relative w-8 h-8">
+                <button type="button" id="hamburger-button" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="text-xl md:hidden cursor-pointer relative w-8 h-8">
                     &#9776;
-                </buttom>
-                <nav class="hidden font-sans md:block space-x-8 text-sm" aria-label="main">
+                </button>
+                <nav class="hidden items-center font-sans md:flex space-x-8 text-sm" aria-label="primary">
                     <a href="team.html" class="hover:opacity-90">TEAM</a>
                     <a href="projects.html" class="hover:opacity-90">PROJECTS</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </nav>
@@ -37,7 +37,7 @@
                 <a href="team.html" class="pb-2 hover:opacity-90">TEAM</a>
                 <div class="flex justify-between items-center hover:opacity-90">
                     <a href="projects.html">PROJECTS</a>
-                    <button id="theme-button" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
+                    <button type="button" id="theme-button" aria-label="Toggle color theme" title="Toggle color theme" class="hover:opacity-90 cursor-pointer text-black dark:text-white ">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                 </div>
@@ -53,17 +53,17 @@
         <section id="hero" class="px-4 md:text-left text-center">
             <!-- Text block -->
             <div class="pt-12">
-                <h1 class="md:text-5xl text-4xl font-extrabold dark:text-white select-none">
+                <h1 class="text-4xl font-extrabold leading-tight dark:text-white md:text-5xl">
                     Mediated Reality Group
                 </h1>
-                <p class="mt-2 mb-4 select-none font-extralight">
+                <p class="mt-3 mb-5 text-base font-light text-slate-600 dark:text-slate-300 md:text-lg">
                     📷 Imaging ➜ 🥽 Displaying ➜ 🧠 Understanding
                 </p>
             </div>
 
             <!-- Hero carousel -->
-            <div class="relative w-full overflow-hidden rounded-xl" data-carousel role="region" aria-roledescription="carousel" aria-label="Mediated Reality Group photos">
-                <div class="relative aspect-[16/7] min-h-[220px]">
+            <div class="relative w-full overflow-hidden rounded-xl bg-slate-200 ring-1 ring-black/10 dark:bg-slate-800 dark:ring-white/10" data-carousel role="region" aria-roledescription="carousel" aria-label="Mediated Reality Group photos">
+                <div class="relative aspect-[16/9] min-h-[220px]">
                     <figure class="absolute inset-0 m-0 opacity-100 transition-opacity duration-500" data-carousel-slide role="group" aria-roledescription="slide" aria-label="1 of 2" aria-hidden="false">
                         <img src="assets/img/hero/group.jpg" class="h-full w-full object-cover" alt="Mediated Reality Group members" />
                     </figure>
@@ -71,13 +71,13 @@
                         <img src="assets/img/hero/u38.jpg" class="h-full w-full object-cover" alt="Mediated Reality Group at U38" />
                     </figure>
                 </div>
-                <button type="button" class="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-previous aria-label="Previous photo">
-                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                <button type="button" class="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white shadow-md transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-previous aria-label="Previous photo">
+                    <span class="text-2xl leading-none" aria-hidden="true">&#8592;</span>
                 </button>
-                <button type="button" class="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-next aria-label="Next photo">
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <button type="button" class="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white shadow-md transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-next aria-label="Next photo">
+                    <span class="text-2xl leading-none" aria-hidden="true">&#8594;</span>
                 </button>
-                <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2" aria-label="Choose a photo">
+                <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2" role="group" aria-label="Choose a photo">
                     <button type="button" class="h-2.5 w-2.5 rounded-full bg-white" data-carousel-indicator aria-label="Show photo 1" aria-current="true"></button>
                     <button type="button" class="h-2.5 w-2.5 rounded-full bg-white/50" data-carousel-indicator aria-label="Show photo 2" aria-current="false"></button>
                 </div>
@@ -88,11 +88,11 @@
         <!--
             news
         -->
-        <section id="news" class="px-4 py-12 justify-center">
-            <div class="text-2xl font-bold pb-2 md:text-left text-center">
+        <section id="news" class="px-4 py-10 md:py-14">
+            <h2 class="mb-5 border-b border-slate-300 pb-3 text-2xl font-semibold text-center dark:border-slate-700 md:text-left">
                 NEWS
-            </div>
-            <div class="dark:text-white font-mono font-extralight h-80 overflow-y-scroll scrollbar-hide">
+            </h2>
+            <div class="max-h-80 overflow-y-auto pr-2 text-sm leading-relaxed dark:text-white scrollbar-hide">
                 <div class="flex flex-col md:flex-row bg-slate-300/30 hover:bg-slate-400/50 dark:bg-slate-700/30 dark:hover:bg-slate-700/50 p-1 px-2 rounded-md mb-1">
                     <p class="mr-12">09.2026</p>
                     <p>One paper got accepted at ACCV 2026 🎉</p>
