@@ -61,9 +61,26 @@
                 </p>
             </div>
 
-            <!-- Hero image -->
-            <div class="relative w-full">
-                <img src="assets/img/hero.jpg" class="w-full object-cover rounded-xl" alt="hero.jpg" />
+            <!-- Hero carousel -->
+            <div class="relative w-full overflow-hidden rounded-xl" data-carousel role="region" aria-roledescription="carousel" aria-label="Mediated Reality Group photos">
+                <div class="relative aspect-[16/7] min-h-[220px]">
+                    <figure class="absolute inset-0 m-0 opacity-100 transition-opacity duration-500" data-carousel-slide role="group" aria-roledescription="slide" aria-label="1 of 2" aria-hidden="false">
+                        <img src="assets/img/hero/group.jpg" class="h-full w-full object-cover" alt="Mediated Reality Group members" />
+                    </figure>
+                    <figure class="absolute inset-0 m-0 opacity-0 transition-opacity duration-500" data-carousel-slide role="group" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true">
+                        <img src="assets/img/hero/u38.jpg" class="h-full w-full object-cover" alt="Mediated Reality Group at U38" />
+                    </figure>
+                </div>
+                <button type="button" class="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-previous aria-label="Previous photo">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" data-carousel-next aria-label="Next photo">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2" aria-label="Choose a photo">
+                    <button type="button" class="h-2.5 w-2.5 rounded-full bg-white" data-carousel-indicator aria-label="Show photo 1" aria-current="true"></button>
+                    <button type="button" class="h-2.5 w-2.5 rounded-full bg-white/50" data-carousel-indicator aria-label="Show photo 2" aria-current="false"></button>
+                </div>
             </div>
         </section>
         
