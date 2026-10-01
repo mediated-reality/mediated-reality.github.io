@@ -67,6 +67,81 @@
         figure a > img { transition: opacity .2s; }
         figure a > img:hover { opacity: .85; }
 
+        /* ── Navigation bar ─────────────────────────────── */
+        .site-nav {
+            max-width: 56rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 0.5rem 0.6rem 0.5rem 0.75rem;
+            background: rgba(255, 255, 255, 0.82);
+            -webkit-backdrop-filter: saturate(160%) blur(12px); backdrop-filter: saturate(160%) blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 0.875rem;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.18);
+        }
+        .site-brand { display: flex; align-items: center; gap: 0.65rem; min-width: 0; color: #0f172a; }
+        .site-brand-icon { width: 2rem; height: 2rem; border-radius: 9999px; background: #000; overflow: hidden; flex-shrink: 0; }
+        .site-brand-icon img { display: block; width: 100%; height: 100%; }
+        .site-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .site-brand-name { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+        .site-brand-name .accent { color: var(--accent-500); }
+        .site-brand-sub {
+            margin-top: 0.15rem; font-family: var(--font-mono); font-size: 0.625rem;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;
+        }
+        .site-links { display: none; align-items: center; gap: 0.125rem; }
+        .site-links a {
+            position: relative; padding: 0.45rem 0.75rem; border-radius: 0.5rem;
+            font-size: 0.875rem; font-weight: 500; color: #334155;
+            transition: color .15s, background-color .15s;
+        }
+        .site-links a:hover { color: var(--accent-700); background: var(--accent-50); }
+        .site-links a.is-active { color: var(--accent-700); }
+        .site-links a.is-active::after {
+            content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.2rem;
+            height: 2px; border-radius: 2px; background: var(--accent-500);
+        }
+        .site-menu-btn {
+            display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; cursor: pointer;
+            color: #334155; background: #fff; border: 1px solid rgba(15, 23, 42, 0.1); border-radius: 0.5rem;
+            transition: color .15s, border-color .15s;
+        }
+        .site-menu-btn:hover { color: var(--accent-700); border-color: var(--accent-200); }
+        @media (min-width: 768px) { .site-links { display: flex; } .site-menu-btn { display: none; } }
+        @media (max-width: 380px) { .site-brand-sub { display: none; } }
+
+        /* mobile menu (shown/hidden by main.js) */
+        #mobile-menu { padding: 0 0.5rem; background: rgba(15, 23, 42, 0.10); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+        .site-mobile-panel {
+            width: 100%; max-width: 56rem; margin: 0 auto; display: flex; flex-direction: column; padding: 0.35rem;
+            background: #fff; border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 0.875rem;
+            box-shadow: 0 16px 40px -16px rgba(15, 23, 42, 0.3);
+        }
+        .site-mobile-panel a { padding: 0.75rem 0.9rem; border-radius: 0.5rem; font-size: 1rem; font-weight: 500; color: #1e293b; }
+        .site-mobile-panel a + a { border-top: 1px solid #f1f5f9; }
+        .site-mobile-panel a:hover { color: var(--accent-700); background: var(--accent-50); }
+
+        /* ── Footer ─────────────────────────────────────── */
+        .site-footer { margin-top: 3rem; background: #0f1b2d; color: #cbd5e1; font-size: 0.875rem; text-align: left; }
+        .site-footer-inner { max-width: 56rem; margin: 0 auto; padding: 2.75rem 1rem 1.5rem; }
+        .site-footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 640px) { .site-footer-grid { grid-template-columns: 1.6fr 1fr 1.1fr; } }
+        .site-footer-brand { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; color: #fff; }
+        .site-footer-brand .accent { color: var(--accent-300); }
+        .site-footer p { line-height: 1.6; }
+        .site-footer h3 {
+            margin-bottom: 0.75rem; font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500;
+            letter-spacing: 0.14em; text-transform: uppercase; color: #94a3b8;
+        }
+        .site-footer ul { list-style: none; display: grid; gap: 0.45rem; }
+        .site-footer address { font-style: normal; }
+        .site-footer a { color: #e2e8f0; transition: color .15s; }
+        .site-footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+        .site-footer i { color: var(--accent-300); width: 1.1rem; }
+        .site-footer-bottom {
+            margin-top: 2.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(148, 163, 184, 0.2);
+            display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem;
+            font-size: 0.8125rem; color: #94a3b8;
+        }
+        .site-footer-bottom a { color: #cbd5e1; }
+
         /* ── Hero ───────────────────────────────────────── */
         /* the hero keeps its original IBM Plex typefaces */
         .hero { font-family: var(--font-display); }
@@ -252,33 +327,32 @@
 
 <body class="min-h-screen text-slate-950 text-justify">
     <header class="sticky top-4 lg:top-6 z-10 mx-2">
-        <section class="bg-slate-500/20 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
-            <div class="flex items-center">
-                <div class="bg-black rounded-full mr-2"><a href="index.html"><img class="w-6 h-6" src="iwdr2026_icon.png"></div>
-                <h1 class="font-bold"><a href="index.html"><span class="text-sky-400">IWDR</span> 2026</a>
-            </div>
-            <div class="mr-2">
-                <buttom id="hamburger-button" class="md:hidden cursor-pointer relative w-8 h-8">
-                    &#9776;
-                </buttom>
-                <nav class="hidden md:block space-x-8 text-sm" aria-label="main">
-                    <a href="index.html" class="hover:text-sky-400 transition-colors">Home</a>
-                    <a href="#contribute" class="hover:text-sky-400 transition-colors">Contribute</a>
-                    <a href="#keynote" class="hover:text-sky-400 transition-colors">Keynote</a>
-                    <a href="#program" class="hover:text-sky-400 transition-colors">Program</a>
-                    <a href="#organizers" class="hover:text-sky-400 transition-colors">Organizers</a>
-                </nav>
-            </div>
-        </section>
-        <section id="mobile-menu" class="fixed hidden inset-0 backdrop-blur-sm justify-center items-start top-20 text-xl animate-open-menu origin-top">
-            <nav class="flex flex-col p-4 w-full mx-2 bg-slate-100 border border-gray-700 font-mono rounded-xl" aria-label="mobile">
-                <a href="index.html" class="pb-2 hover:opacity-90">Home</a>
-                <a href="#contribute" class="pb-2 hover:opacity-90">Contribute</a>
-                <a href="#keynote" class="pb-2 hover:opacity-90">Keynote</a>
-                <a href="#program" class="pb-2 hover:opacity-90">Program</a>
-                <div class="flex justify-between items-center hover:opacity-90">
-                    <a href="#organizers">Organizers</a>
-                </div>
+        <div class="site-nav">
+            <a href="index.html" class="site-brand" aria-label="IWDR 2026 home">
+                <span class="site-brand-icon"><img src="iwdr2026_icon.png" alt=""></span>
+                <span class="site-brand-text">
+                    <span class="site-brand-name"><span class="accent">IWDR</span> 2026</span>
+                    <span class="site-brand-sub">IEEE ISMAR 2026 Workshop</span>
+                </span>
+            </a>
+            <nav class="site-links" aria-label="main">
+                <a href="index.html">Home</a>
+                <a href="#contribute">Contribute</a>
+                <a href="#keynote">Keynote</a>
+                <a href="#program">Program</a>
+                <a href="#organizers">Organizers</a>
+            </nav>
+            <button id="hamburger-button" type="button" class="site-menu-btn" aria-label="Open menu" aria-controls="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <section id="mobile-menu" class="fixed hidden inset-0 justify-center items-start top-20 animate-open-menu origin-top">
+            <nav class="site-mobile-panel" aria-label="mobile">
+                <a href="index.html">Home</a>
+                <a href="#contribute">Contribute</a>
+                <a href="#keynote">Keynote</a>
+                <a href="#program">Program</a>
+                <a href="#organizers">Organizers</a>
             </nav>
         </section>
     </header>
@@ -830,21 +904,56 @@
 
     
     <!-- footer -->
-    <footer id="footer" class="text-base">
-        <div class="mx-2">
-            <section class="max-w-4xl mx-auto p-4 flex flex-row justify-between bg-slate-500/50 rounded-2xl">
-                <address>
-                    <h2><a href="https://mediated-reality.github.io">IWDR 2026 Organizers</a></h2>
-                    Email: <a href="mailto:iwdr2026@googlegroups.com">iwdr2026@googlegroups.com</a>
-                </address>
-                <div class="flex flex-col justify-end">
-                    <p class="text-right">Copyright &copy; <span id="year"></span></p>
-                    <p class="text-right">All Rights Reserved</p>
+    <footer id="footer" class="site-footer">
+        <div class="site-footer-inner">
+            <div class="site-footer-grid">
+                <div>
+                    <div class="site-footer-brand"><span class="accent">IWDR</span> 2026</div>
+                    <p class="pt-2">3rd International Workshop on Diminished Reality<br>Co-located with IEEE ISMAR 2026 · Bari, Italy · Hybrid</p>
                 </div>
+                <nav aria-label="footer">
+                    <h3>Workshop</h3>
+                    <ul>
+                        <li><a href="#contribute">Contribute</a></li>
+                        <li><a href="#dr-challenge">DR Challenge</a></li>
+                        <li><a href="#keynote">Keynote</a></li>
+                        <li><a href="#program">Program</a></li>
+                        <li><a href="#organizers">Organizers</a></li>
+                    </ul>
+                </nav>
+                <address>
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fa-regular fa-envelope"></i><a href="mailto:iwdr2026@googlegroups.com">iwdr2026@googlegroups.com</a></li>
+                        <li><i class="fa-solid fa-globe"></i><a href="https://mediated-reality.github.io" target="_blank">mediated-reality.github.io</a></li>
+                    </ul>
+                </address>
             </div>
-        </section>
+            <div class="site-footer-bottom">
+                <p>Copyright &copy; <span id="year"></span> <a href="https://mediated-reality.github.io" target="_blank">IWDR 2026 Organizers</a>. All Rights Reserved.</p>
+                <p><a href="#">Back to top <i class="fa-solid fa-arrow-up"></i></a></p>
+            </div>
+        </div>
     </footer>
-    <div class="h-4"><!-- spacer --></div>
+
+    <script>
+        // nav bar: underline the link of the section currently in view
+        (() => {
+            const links = new Map(Array.from(document.querySelectorAll('.site-links a[href^="#"]'))
+                .map((a) => [a.getAttribute('href').slice(1), a]));
+            const sections = document.querySelectorAll('main section[id]');
+            if (!('IntersectionObserver' in window) || !sections.length) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    links.forEach((a) => a.classList.remove('is-active'));
+                    const link = links.get(entry.target.id);
+                    if (link) link.classList.add('is-active');
+                });
+            }, { rootMargin: '-40% 0px -55% 0px' });
+            sections.forEach((section) => observer.observe(section));
+        })();
+    </script>
 </body>
 
 </html>
