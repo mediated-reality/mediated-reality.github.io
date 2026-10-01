@@ -198,68 +198,177 @@
         /* icon spacing in the program info row */
         .prog-info i { margin-right: 0.375rem; }
 
-        /* Description references: soft, separated panel */
+        /* ── Shared surface tokens (same language as nav bar and footer) ── */
+        :root {
+            --line: rgba(15, 23, 42, 0.08);
+            --radius: 0.875rem;
+            --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -14px rgba(15, 23, 42, 0.16);
+        }
+        main { color: #1e293b; }
+        main > section:not(#hero) { padding: 2.25rem 1rem; }
+        main section p { hyphens: auto; -webkit-hyphens: auto; }
+        main section p a {
+            color: var(--accent-700); text-decoration: underline;
+            text-decoration-color: rgba(var(--accent-rgb), 0.35); text-underline-offset: 3px;
+            transition: text-decoration-color .15s;
+        }
+        main section p a:hover { text-decoration-color: var(--accent-500); }
+
+        /* section headings: title + hairline */
+        .section-title {
+            display: flex; align-items: center; gap: 0.75rem;
+            font-family: var(--font-sans); font-size: 1.375rem; font-weight: 650; letter-spacing: -0.015em;
+            color: #0f172a; line-height: 1.2;
+        }
+        .section-rule { flex: 1; height: 1px; background: var(--line); }
+        @media (min-width: 640px) { .section-title { font-size: 1.5rem; } }
+
+        /* small mono label, as in the footer column headings */
+        .label {
+            font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500;
+            letter-spacing: 0.14em; text-transform: uppercase; color: #64748b;
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border-radius: 0.5rem;
+            font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; line-height: 1.25;
+            transition: background-color .15s, color .15s, border-color .15s;
+        }
+        .btn-primary {
+            color: #fff; background: var(--accent-500);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1), 0 6px 16px -8px rgba(var(--accent-rgb), 0.6);
+        }
+        .btn-primary:hover { background: var(--accent-700); }
+        .btn-outline { color: var(--accent-700); background: #fff; border: 1px solid var(--accent-200); }
+        .btn-outline:hover { background: var(--accent-50); border-color: var(--accent-300); }
+
+        /* Description: references panel */
         .refs-box {
-            margin: 1rem 0 1.25rem; padding: 0.85rem 1.1rem;
-            background: #f1f5f9; border-radius: 0.5rem;
+            margin: 1.25rem 0 1.5rem; padding: 1rem 1.25rem;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
             color: #64748b; line-height: 1.55; text-align: left;
         }
         .refs-box > p:first-child {
-            font-family: var(--font-mono); font-size: 0.7rem;
-            letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.35rem;
+            font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;
         }
-        .refs-box li { padding-left: 1.6rem; text-indent: -1.6rem; font-size: 0.8rem; }
-        .refs-box li + li { margin-top: 0.25rem; }
+        .refs-box > p:first-child span { font-weight: 500; }
+        .refs-box li { padding-left: 1.6rem; text-indent: -1.6rem; font-size: 0.8125rem; }
+        .refs-box li + li { margin-top: 0.3rem; }
 
-        /* Description topics: emoji bullets */
-        .topic-list { list-style: none; }
-        .topic-list > li { position: relative; padding-left: 1.9rem; }
-        .topic-list > li::before { position: absolute; left: 0.2rem; top: 0; }
-        .topic-list > li:nth-child(1)::before { content: "🛠️"; }
-        .topic-list > li:nth-child(2)::before { content: "🌍"; }
-        .topic-list > li:nth-child(3)::before { content: "👁️"; }
-        .topic-list > li:nth-child(4)::before { content: "📊"; }
+        /* Description topics: card grid */
+        .topic-list {
+            list-style: none; display: grid; grid-template-columns: 1fr; gap: 0.75rem;
+            margin-top: 0.85rem; text-align: left;
+        }
+        @media (min-width: 640px) { .topic-list { grid-template-columns: 1fr 1fr; } }
+        .topic-list > li {
+            position: relative; padding: 1rem 1.15rem;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+            font-size: 0.9375rem; line-height: 1.6; color: #334155;
+            transition: border-color .15s;
+        }
+        .topic-list > li:hover { border-color: var(--accent-200); }
+        .topic-list > li > span:first-child {
+            display: block; margin-bottom: 0.3rem; color: #0f172a;
+        }
+        .topic-list > li { padding-left: 3.75rem; }
+        .topic-list > li::before {
+            position: absolute; left: 1rem; top: 1rem; width: 2rem; height: 2rem; display: grid; place-items: center;
+            border-radius: 0.5rem; background: var(--accent-50); color: var(--accent-500);
+            font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.8125rem;
+        }
+        .topic-list > li:nth-child(1)::before { content: "\f0ad"; }  /* wrench */
+        .topic-list > li:nth-child(2)::before { content: "\f0ac"; }  /* globe */
+        .topic-list > li:nth-child(3)::before { content: "\f06e"; }  /* eye */
+        .topic-list > li:nth-child(4)::before { content: "\f080"; }  /* chart */
+
+        /* Contribute: tracks as a plain bulleted list */
+        .bullet-list { list-style: disc; padding-left: 1.25rem; margin-top: 0.6rem; text-align: left; }
+        .bullet-list > li { padding-left: 0.25rem; line-height: 1.7; color: #334155; }
+        .bullet-list > li + li { margin-top: 0.5rem; }
+        .bullet-list > li::marker { color: var(--accent-500); }
+        .bullet-list > li > span:first-child { color: #0f172a; }
+
+        /* Contribute: important dates as a clean table */
+        .date-list {
+            list-style: none; margin-top: 0.75rem; overflow: hidden; text-align: left;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+        }
+        .date-list > li {
+            display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+            padding: 0.75rem 1.15rem; font-size: 0.9375rem;
+        }
+        .date-list > li + li { border-top: 1px solid rgba(15, 23, 42, 0.06); }
+        .date-list > li:hover { background: #fafbfc; }
+        .date-label { color: #334155; font-weight: 500; }
+        .date-val { flex-shrink: 0; text-align: right; color: #64748b; font-variant-numeric: tabular-nums; }
+        .date-val > span { white-space: nowrap; }
+        @media (max-width: 639px) {
+            .date-list > li { flex-direction: column; gap: 0.15rem; }
+            .date-val { text-align: left; }
+        }
 
         /* DR Challenge items */
         .challenge-items { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0 0.75rem; text-align: left; }
         .challenge-item {
-            position: relative;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 1rem 1.25rem;
-            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
-            transition: border-color .2s, box-shadow .2s, transform .2s;
+            position: relative; padding: 1rem 1.15rem;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+            font-size: 0.9375rem; line-height: 1.6; color: #334155;
+            transition: border-color .15s;
         }
-        /* emoji right before each item's title, on the same line */
+        .challenge-item:hover { border-color: var(--accent-200); }
+        .challenge-item .challenge-label { display: flex; align-items: center; margin-bottom: 0.35rem; color: #0f172a; }
         .challenge-item .challenge-label::before {
-            display: inline-block; margin-right: 0.45rem; font-size: 1.15em;
-            transition: transform .2s;
+            display: inline-grid; place-items: center; width: 1.75rem; height: 1.75rem; margin-right: 0.6rem; flex-shrink: 0;
+            border-radius: 0.5rem; background: var(--accent-50); color: var(--accent-500);
+            font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.75rem;
         }
-        .challenge-item:nth-child(1) .challenge-label::before { content: "🧰"; }
-        .challenge-item:nth-child(2) .challenge-label::before { content: "🎯"; }
-        .challenge-item:nth-child(3) .challenge-label::before { content: "🎤"; }
-        .challenge-item:hover .challenge-label::before { transform: scale(1.1) rotate(-6deg); }
-        .challenge-item:hover {
-            border-color: rgba(var(--accent-rgb), 0.5);
-            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 8px 20px rgba(var(--accent-rgb), 0.10);
-            transform: translateY(-1px);
-        }
-        .challenge-item .challenge-label { display: block; margin-bottom: 0.25rem; letter-spacing: 0.01em; }
+        .challenge-item:nth-child(1) .challenge-label::before { content: "\f552"; }  /* toolbox */
+        .challenge-item:nth-child(2) .challenge-label::before { content: "\f140"; }  /* bullseye */
+        .challenge-item:nth-child(3) .challenge-label::before { content: "\f130"; }  /* microphone */
 
         /* DR Challenge video: keep beside the text on middle-size screens (lg/xl widths come from Tailwind) */
         @media (min-width: 640px) and (max-width: 767px)  { .challenge-video { width: 13rem; } }
         @media (min-width: 768px) and (max-width: 1023px) { .challenge-video { width: 15rem; } }
+        .video-frame { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); background: #0f172a; }
+
+        /* Keynote card */
+        .keynote-card {
+            display: flex; flex-direction: column; align-items: center; gap: 1.25rem; padding: 1.5rem;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        @media (min-width: 640px) {
+            .keynote-card { flex-direction: row; align-items: flex-start; gap: 1.75rem; padding: 1.75rem; text-align: left; }
+        }
+        .keynote-photo {
+            width: 8.5rem; height: 8.5rem; border-radius: 9999px; object-fit: cover; flex-shrink: 0;
+            box-shadow: 0 0 0 4px var(--accent-50), 0 0 0 5px var(--accent-200);
+        }
+        .keynote-body { min-width: 0; }
+        .keynote-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; color: #0f172a; }
+        .keynote-name a:hover, .keynote-affil a:hover { color: var(--accent-700); }
+        .keynote-affil { margin-top: 0.3rem; }
+        .keynote-talk {
+            margin-top: 1rem; padding: 0.75rem 1rem; text-align: left;
+            background: var(--accent-50); border-left: 3px solid var(--accent-500); border-radius: 0.5rem;
+            font-size: 1rem; font-weight: 500; color: #0f172a;
+        }
+        .keynote-talk .label { display: block; margin-bottom: 0.2rem; color: var(--accent-700); }
+        .keynote-bio { margin-top: 0.9rem; text-align: justify; font-size: 0.9375rem; line-height: 1.7; color: #334155; }
+
 
         /* Program schedule */
         .prog {
             margin-top: 1rem; text-align: left;
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; overflow: hidden;
-            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--card-shadow);
         }
         .prog-slot {
             position: relative; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1.25rem;
-            padding: 1rem 1.25rem 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 1.25rem 1rem 1.5rem; border-bottom: 1px solid rgba(15, 23, 42, 0.06);
         }
         .prog-slot:last-child { border-bottom: 0; }
         .prog-slot::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #cbd5e1; }
@@ -283,7 +392,7 @@
         .prog-slot.is-break .prog-title { color: #64748b; font-weight: 500; }
         .prog-paper {
             display: flex; gap: 0.75rem; margin-top: 0.6rem; padding: 0.75rem 0.9rem;
-            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
+            background: #f8fafc; border: 1px solid var(--line); border-radius: 0.625rem;
         }
         .prog-paper > div { min-width: 0; }
         .prog-paper-no { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-500); padding-top: 0.15rem; flex-shrink: 0; }
@@ -308,7 +417,7 @@
         .prog-abstract summary {
             display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
             font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--accent-700); padding: 0.2rem 0.6rem; border: 1px solid var(--accent-200); border-radius: 9999px; background: #fff;
+            color: var(--accent-700); padding: 0.2rem 0.6rem; border: 1px solid var(--accent-200); border-radius: 0.5rem; background: #fff;
             transition: background .15s, border-color .15s;
         }
         .prog-abstract summary::-webkit-details-marker { display: none; }
@@ -321,6 +430,43 @@
         }
         @media (max-width: 639px) {
             .prog-slot { grid-template-columns: 1fr; padding: 0.9rem 1rem 0.9rem 1.25rem; }
+        }
+
+        /* ── People (panel, organizers) ─────────────────── */
+        .people-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; padding-top: 1.5rem; }
+        @media (min-width: 640px) { .people-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 1rem; } }
+        .person-card {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 0.5rem 0.5rem 0;
+        }
+        .person-photo img {
+            display: block; width: 6rem; height: 6rem; border-radius: 9999px; object-fit: cover;
+            box-shadow: 0 0 0 4px var(--accent-50);
+        }
+        @media (min-width: 640px) { .person-photo img { width: 7rem; height: 7rem; } }
+        .person-name { margin-top: 0.9rem; font-size: 1.0625rem; font-weight: 650; letter-spacing: -0.01em; color: #0f172a; }
+        .person-name a:hover { color: var(--accent-700); }
+        .person-affil { margin-top: 0.35rem; line-height: 1.5; letter-spacing: 0.08em; }
+
+        /* ── Program committee ──────────────────────────── */
+        .pc-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; padding-top: 1.5rem; }
+        @media (min-width: 640px) { .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { .pc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .pc-card {
+            padding: 0.85rem 1rem; text-align: left;
+            background: #fff; border: 1px solid var(--line); border-radius: 0.75rem;
+            transition: border-color .15s;
+        }
+        .pc-card:hover { border-color: var(--accent-200); }
+        .pc-name { font-weight: 600; color: #0f172a; }
+        .pc-name a:hover { color: var(--accent-700); }
+        .pc-affil { margin-top: 0.2rem; font-size: 0.8125rem; color: #64748b; }
+
+        /* ── Acknowledgement ────────────────────────────── */
+        .ack-note {
+            padding: 1rem 1.25rem; text-align: left;
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+            font-size: 0.875rem; line-height: 1.65; color: #64748b;
         }
     </style>
 </head>
@@ -402,6 +548,7 @@
 
                     <div class="hero-chips font-mono">
                         <span><i class="fa-solid fa-location-dot"></i>Bari, Italy</span>
+                        <span><i class="fa-solid fa-door-open"></i>Room Sezione 6+7</span>
                         <span><i class="fa-regular fa-calendar"></i>Oct. 5 (Mon) 2026, Afternoon Session</span>
                         <span><i class="fa-solid fa-desktop"></i>Hybrid · Half-day</span>
                     </div>
@@ -414,9 +561,9 @@
             Descriptions
         -->
         <section id="description" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Description</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
             <div class="text-base gap-t-2 pt-6">
                 <p class="pb-2">
@@ -448,25 +595,25 @@
                     from foundational technologies to perceptual studies and domain‑specific applications. Topics include, but are not limited to:
                 </p>
                 <ul class="topic-list pt-2">
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                    <li>
                         <span class="font-semibold text-sky-700">DR core technologies:</span>
                         Vision- and graphics‑based DR pipelines /
                         Methods for object removal, scene completion, and real‑time inpainting /
                         DR in challenging modalities such as haptics, audio, and multimodal sensor fusion
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                    <li>
                         <span class="font-semibold text-sky-700">DR applications:</span>
                         XR applications leveraging DR in medicine, industrial support, entertainment, and telepresence /
                         DR for safety‑critical or high‑precision environments /
                         DR for accessibility and situational awareness
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                    <li>
                         <span class="font-semibold text-sky-700">Perceptual issues in DR:</span>
                         User performance and task efficiency under DR conditions /
                         Perceptual thresholds, acceptance, and comfort /
                         Cross‑modal perception when DR is applied to visual, auditory, or tactile cues
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                    <li>
                         <span class="font-semibold text-sky-700">Dataset and benchmarking for DR:</span>
                         DR datasets for training and evaluation /
                         Benchmarking methodologies, metrics, and reproducible evaluation pipelines /
@@ -480,21 +627,21 @@
             Contribute
         -->
         <section id="contribute" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Contribute</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p>
                     We invite contributions through two tracks.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                <ul class="bullet-list">
+                    <li>
                         <span class="font-semibold text-sky-700">Short papers (archival):</span> Original research, surveys, demos, or position papers, up to 6 pages excluding references,
                         in the IEEE Computer Society VGTC conference format. Anonymous submissions undergo formal review (two reviews per paper).
                         Accepted papers appear in the ISMAR 2026 Adjunct Proceedings on IEEE Xplore.
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
+                    <li>
                         <span class="font-semibold text-sky-700">DR challenge (non‑archival):</span>
                         The organizers will provide an implementation platform for WebXR-based DR systems using smartphone camera input. The platform will include fundamental components required for DR implementation, such as AR tracking, 3D scanning, 3D bounding-box detection, and inpainting modules.
                         Participants are encouraged to build their own DR algorithms and applications on this platform and submit a short demonstration video recorded in their own environment (up to 2 min), along with a brief paper in the short papers format (up to 2 pages) summarizing the proposed algorithm and implementation details.
@@ -506,32 +653,32 @@
                     <span class="font-bold">Important dates</span> (provisional, aligned with the ISMAR 2026 workshop track). All deadlines are 23:59:59 AoE
                     (Anywhere on Earth, UTC−12) on the stated day.
                 </p>
-                <ul class="list-disc pl-5 pt-2 marker:text-sky-500">
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Short paper submission:</span> <span class="font-semibold text-slate-400 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600">July 12, 2026</span>
+                <ul class="date-list">
+                    <li>
+                        <span class="date-label">Short paper submission</span> <span class="date-val"><span class="font-semibold text-slate-400 line-through">July 5, 2026</span> <span class="font-semibold text-sky-600">July 12, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Notification of acceptance:</span> <span class="font-semibold text-sky-600">July 17, 2026</span>
+                    <li>
+                        <span class="date-label">Notification of acceptance</span> <span class="date-val"><span class="font-semibold text-sky-600">July 17, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600">July 31, 2026</span>
+                    <li>
+                        <span class="date-label">Camera-ready materials</span> <span class="date-val"><span class="font-semibold text-sky-600">July 31, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 4, 2026</span>
+                    <li>
+                        <span class="date-label">(DR Challenge - ON-SITE) Demonstration video and description submission</span> <span class="date-val"><span class="font-semibold text-sky-600">September 4, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE) Notification of invitation:</span> <span class="font-semibold text-sky-600">September 18, 2026</span>
+                    <li>
+                        <span class="date-label">(DR Challenge - ON-SITE) Notification of invitation</span> <span class="date-val"><span class="font-semibold text-sky-600">September 18, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ONLINE) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 27, 2026</span>
+                    <li>
+                        <span class="date-label">(DR Challenge - ONLINE) Demonstration video and description submission</span> <span class="date-val"><span class="font-semibold text-sky-600">September 27, 2026</span></span>
                     </li>
-                    <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
+                    <li>
+                        <span class="date-label">Workshop</span> <span class="date-val"><span class="font-semibold text-sky-600">October 5 or 6, 2026</span> (Bari, Italy / hybrid)</span>
                     </li>
                 </ul>
             </div>
             <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row sm:items-center gap-3">
-                <span class="font-mono text-xs uppercase tracking-widest border border-sky-500/50 text-sky-600 rounded-md px-3 py-1.5 transition-colors hover:bg-sky-500 hover:text-white hover:border-sky-500"><a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank">Submit Your Work (CMT)</a></span>
+                <a href="https://cmt3.research.microsoft.com/IWDR2026/" target="_blank" class="btn btn-outline"><i class="fa-solid fa-arrow-up-from-bracket"></i>Submit Your Work (CMT)</a>
                 <p><span class="font-bold">Contact:</span> <a href="mailto:iwdr2026@googlegroups.com" class="font-mono text-sky-600 hover:underline">iwdr2026@googlegroups.com</a></p>
             </div>
         </section>
@@ -540,9 +687,9 @@
             DR Challenge
         -->
         <section id="dr-challenge" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">DR Challenge</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6 flex flex-col sm:flex-row gap-6 items-start">
                 <div class="flex-1 min-w-0">
@@ -566,7 +713,7 @@
                     </ul>
                 </div>
                 <div class="challenge-video shrink-0 w-full lg:w-64 xl:w-72">
-                    <div class="relative w-full" style="aspect-ratio: 9/16;">
+                    <div class="video-frame relative w-full" style="aspect-ratio: 9/16;">
                         <iframe class="absolute inset-0 w-full h-full rounded-xl"
                             src="https://www.youtube.com/embed/9HO2dJ-dZQc"
                             title="DR Challenge demo"
@@ -584,7 +731,7 @@
               </p>
             </div>
             <div class="pt-4">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="inline-block font-mono text-xs uppercase tracking-widest bg-sky-500 text-white rounded-md px-4 py-2 transition-colors hover:bg-sky-600">Apply Now 🏆</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJMTdfdhNbxOYb8PqdMYZc4s-fa_JENQd8R4K783JNlzwF2Q/viewform" target="_blank" class="btn btn-primary">Apply Now 🏆</a>
             </div>
         </section>
 
@@ -592,23 +739,23 @@
             Keynote
         -->
         <section id="keynote" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Keynote Speaker</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-6 text-center sm:text-justify">
-                <img class="w-40 h-40 rounded-full object-cover shrink-0" src="mohamed_kari.jpg" alt="mohamed portrait">
-
-                <div class="text-base">
-                    <div class="text-lg font-bold text-sky-600"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a>
+            <div class="pt-6">
+                <div class="keynote-card">
+                    <img class="keynote-photo" src="mohamed_kari.jpg" alt="mohamed portrait">
+                    <div class="keynote-body">
+                        <div class="keynote-name"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a></div>
+                        <div class="keynote-affil label"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
+                        <p class="keynote-talk">
+                            <span class="label">Title</span><span class="italic">Reality Interfaces: Rebuilding Reality in Real-Time</span>
+                        </p>
+                        <p class="keynote-bio">
+                            <a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a> is a researcher at the <a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a> whose work bridges interactive, real-time 3D graphics and vision systems for scene-aware augmented reality and robotics applications.
+                        </p>
                     </div>
-                    <div class="text-sm uppercase tracking-widest text-gray-500 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
-                    <p class="pb-2">
-                        <span class="font-semibold">Title:</span> <span class="italic">Reality Interfaces: Rebuilding Reality in Real-Time</span>
-                    </p>
-                    <p class="text-justify">
-                        <a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a> is a researcher at the <a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a> whose work bridges interactive, real-time 3D graphics and vision systems for scene-aware augmented reality and robotics applications.
-                    </p>
                 </div>
             </div>
         </section>
@@ -617,9 +764,9 @@
             Program
         -->
         <section id="program" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Program</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
                 <p class="pb-2">
@@ -630,6 +777,7 @@
                     <span><i class="fa-regular fa-calendar text-sky-400"></i>Mon, October 5, 2026</span>
                     <span><i class="fa-regular fa-clock text-sky-400"></i>14:00–17:45 CEST</span>
                     <span><i class="fa-solid fa-location-dot text-sky-400"></i>Bari, Italy · Hybrid</span>
+                    <span><i class="fa-solid fa-door-open text-sky-400"></i>Room Sezione 6+7</span>
                 </div>
                 <ol class="prog">
                     <li class="prog-slot">
@@ -759,43 +907,31 @@
             Panel Discussion
         -->
         <section id="panel_discussion" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Panel Discussion</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="https://mkari.de/" target="_blank"><img class="w-32 h-32 rounded-full" src="mohamed_kari.jpg" alt="mohamed portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mkari.de/" target="_blank">Mohamed Kari</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
-                            </figcaption>
-                        </div>
-                    </div>
+            <div class="people-grid">
+                <figure class="person-card">
+                    <a href="https://mkari.de/" target="_blank" class="person-photo"><img src="mohamed_kari.jpg" alt="mohamed portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="https://mkari.de/" target="_blank">Mohamed Kari</a></div>
+                        <div class="person-affil label">Keio University, Japan</div>
+                    </figcaption>
                 </figure>
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
-                            </figcaption>
-                        </div>
-                    </div>
+                <figure class="person-card">
+                    <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank" class="person-photo"><img src="hideo_saito.jpg" alt="hideo portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                        <div class="person-affil label">Keio University, Japan</div>
+                    </figcaption>
                 </figure>
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="https://mugichoko445.github.io" target="_blank"><img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
-                            </figcaption>
-                        </div>
-                    </div>
+                <figure class="person-card">
+                    <a href="https://mugichoko445.github.io" target="_blank" class="person-photo"><img src="shohei_mori.jpg" alt="shohei portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                        <div class="person-affil label">University of Stuttgart, Germany</div>
+                    </figcaption>
                 </figure>
             </div>
         </section>
@@ -804,43 +940,31 @@
             Organizers
         -->
         <section id="organizers" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Organizers</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="https://mugichoko445.github.io" target="_blank"><img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
-                            </figcaption>
-                        </div>
-                    </div>
+            <div class="people-grid">
+                <figure class="person-card">
+                    <a href="https://mugichoko445.github.io" target="_blank" class="person-photo"><img src="shohei_mori.jpg" alt="shohei portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                        <div class="person-affil label">University of Stuttgart, Germany</div>
+                    </figcaption>
                 </figure>
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="https://isogawa.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
-                            </figcaption>
-                        </div>
-                    </div>
+                <figure class="person-card">
+                    <a href="https://isogawa.ics.keio.ac.jp/" target="_blank" class="person-photo"><img src="mariko_isogawa.jpg" alt="mariko portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
+                        <div class="person-affil label">Keio University, Japan</div>
+                    </figcaption>
                 </figure>
-                <figure class="flex flex-col group">
-                    <div class="relative flex flex-col items-center">
-                        <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait"></a>
-                        <div class="relative pt-2 px-2">
-                            <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
-                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
-                            </figcaption>
-                        </div>
-                    </div>
+                <figure class="person-card">
+                    <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank" class="person-photo"><img src="hideo_saito.jpg" alt="hideo portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                        <div class="person-affil label">Keio University, Japan</div>
+                    </figcaption>
                 </figure>
             </div>
         </section>
@@ -849,42 +973,42 @@
             Program Committee
         -->
         <section id="pc" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Program Committee</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6 text-base">
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://norihi-k.com/index-e.html" target="_blank">Norihiko Kawai</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Osaka Institute of Technology, Japan</div>
+            <div class="pc-grid">
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://norihi-k.com/index-e.html" target="_blank">Norihiko Kawai</a></div>
+                    <div class="pc-affil">Osaka Institute of Technology, Japan</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Tian-00002/" target="_blank">Xuening Tian</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://www.visus.uni-stuttgart.de/en/team/Tian-00002/" target="_blank">Xuening Tian</a></div>
+                    <div class="pc-affil">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.visus.uni-stuttgart.de/en/team/Biener-Roser/" target="_blank">Verena Biener</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://www.visus.uni-stuttgart.de/en/team/Biener-Roser/" target="_blank">Verena Biener</a></div>
+                    <div class="pc-affil">University of Stuttgart, Germany</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://www.researchgate.net/profile/Roghieh-Eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">École de Technologie Supérieure, Canada</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://www.researchgate.net/profile/Roghieh-Eskandari" target="_blank">Roghieh E. Toushmanlou</a></div>
+                    <div class="pc-affil">École de Technologie Supérieure, Canada</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=139" target="_blank">Fumihiko Nakamura</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=139" target="_blank">Fumihiko Nakamura</a></div>
+                    <div class="pc-affil">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=21" target="_blank">Fumihisa Shibata</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Ritsumeikan University, Japan</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://en.ritsumei.ac.jp/ise/teacher/detail/?id=21" target="_blank">Fumihisa Shibata</a></div>
+                    <div class="pc-affil">Ritsumeikan University, Japan</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://researchmap.jp/tomohirofukuda?lang=en" target="_blank">Tomohiro Fukuda</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">The University of Osaka, Japan</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://researchmap.jp/tomohirofukuda?lang=en" target="_blank">Tomohiro Fukuda</a></div>
+                    <div class="pc-affil">The University of Osaka, Japan</div>
                 </div>
-                <div class="border border-slate-300 rounded-md p-3 hover:border-sky-500/60 transition-colors">
-                    <div class="text-base font-bold hover:text-sky-500 transition-colors"><a href="https://research.tcu.ac.jp/en/persons/nobuyoshi-yabuki/" target="_blank">Nobuyoshi Yabuki</a></div>
-                    <div class="text-xs uppercase tracking-wider text-gray-500 pt-1">Tokyo City University, Japan</div>
+                <div class="pc-card">
+                    <div class="pc-name"><a href="https://research.tcu.ac.jp/en/persons/nobuyoshi-yabuki/" target="_blank">Nobuyoshi Yabuki</a></div>
+                    <div class="pc-affil">Tokyo City University, Japan</div>
                 </div>
             </div>
         </section>
@@ -892,12 +1016,12 @@
             Acknowledgement
         -->
         <section id="acknowledgement" class="p-4">
-            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+            <h2 class="section-title">
                 <span class="whitespace-nowrap">Acknowledgement</span>
-                <span class="h-px flex-1 bg-sky-500/30"></span>
+                <span class="section-rule"></span>
             </h2>
             <div class="font-normal text-base gap-t-2 pt-6">
-                <p>The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</p>
+                <p class="ack-note">The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</p>
             </div>
         </section>
     </main>
@@ -909,7 +1033,7 @@
             <div class="site-footer-grid">
                 <div>
                     <div class="site-footer-brand"><span class="accent">IWDR</span> 2026</div>
-                    <p class="pt-2">3rd International Workshop on Diminished Reality<br>Co-located with IEEE ISMAR 2026 · Bari, Italy · Hybrid</p>
+                    <p class="pt-2">3rd International Workshop on Diminished Reality<br>Co-located with IEEE ISMAR 2026 · Bari, Italy · Room Sezione 6+7 · Hybrid</p>
                 </div>
                 <nav aria-label="footer">
                     <h3>Workshop</h3>
