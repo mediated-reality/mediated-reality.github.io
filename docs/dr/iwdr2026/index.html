@@ -146,14 +146,15 @@
         .prog-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: #64748b; padding-top: 0.1rem; white-space: nowrap; }
         .prog-title { font-weight: 600; color: #0f172a; }
         .prog-note { font-weight: 400; color: #64748b; }
-        .prog-who { color: #334155; }
+        .prog-who { font-size: 0.875rem; color: #334155; }
+        .prog-desc { font-size: 0.875rem; color: #475569; margin-top: 0.25rem; }
         .prog-chair {
             display: inline-block; margin-top: 0.35rem; font-size: 0.875rem; color: #334155;
             background: #f1f5f9; border-radius: 0.375rem; padding: 0.1rem 0.55rem;
         }
-        .prog-slot.is-keynote { background: #f0f9ff; }
-        .prog-slot.is-keynote::before { background: #0ea5e9; }
-        .prog-slot.is-keynote .prog-time { color: #0369a1; font-weight: 500; }
+        .prog-slot.is-feature { background: #f0f9ff; }
+        .prog-slot.is-feature::before { background: #0ea5e9; }
+        .prog-slot.is-feature .prog-time { color: #0369a1; font-weight: 500; }
         .prog-slot.is-challenge { background: #fffbeb; }
         .prog-slot.is-challenge::before { background: #f59e0b; }
         .prog-slot.is-challenge .prog-time { color: #b45309; font-weight: 500; }
@@ -161,11 +162,26 @@
         .prog-slot.is-break::before { background: transparent; }
         .prog-slot.is-break .prog-title { color: #64748b; font-weight: 500; }
         .prog-paper {
-            margin-top: 0.75rem; padding: 0.85rem 1rem;
+            display: flex; gap: 0.75rem; margin-top: 0.6rem; padding: 0.75rem 0.9rem;
             background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
         }
+        .prog-paper > div { min-width: 0; }
+        .prog-paper-no { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #0ea5e9; padding-top: 0.15rem; flex-shrink: 0; }
         .prog-paper-title { font-weight: 600; color: #0f172a; line-height: 1.45; }
         .prog-paper-authors { font-size: 0.875rem; color: #64748b; line-height: 1.55; margin-top: 0.3rem; }
+
+        /* portraits inside the schedule */
+        .prog-person { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+        .prog-person-info { line-height: 1.25; }
+        .prog-person-info .prog-desc { margin-top: 0.125rem; }
+        .prog-person img { width: 3.25rem; height: 3.25rem; border-radius: 9999px; object-fit: cover; flex-shrink: 0; }
+        .prog-avatars { display: flex; flex-shrink: 0; }
+        .prog-avatars img {
+            width: 2.5rem; height: 2.5rem; border-radius: 9999px; object-fit: cover;
+            border: 2px solid #fff; margin-left: -0.6rem;
+        }
+        .prog-avatars img:first-child { margin-left: 0; }
+        .prog-slot.is-feature .prog-avatars img { border-color: #f0f9ff; }
 
         /* foldable abstract */
         .prog-abstract { margin-top: 0.5rem; }
@@ -184,7 +200,7 @@
             font-size: 0.9375rem; line-height: 1.65; color: #334155;
         }
         @media (max-width: 639px) {
-            .prog-slot { grid-template-columns: 1fr; }
+            .prog-slot { grid-template-columns: 1fr; padding: 0.9rem 1rem 0.9rem 1.25rem; }
         }
     </style>
 </head>
@@ -475,7 +491,7 @@
                     </div>
                     <div class="text-sm uppercase tracking-widest text-gray-500 pb-3 pt-0.5"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
                     <p class="pb-2">
-                        <span class="font-semibold">Title:</span> <span class="italic">Reality Interfaces (Tentative)</span>
+                        <span class="font-semibold">Title:</span> <span class="italic">Reality Interfaces: Rebuilding Reality in Real-Time</span>
                     </p>
                     <p class="text-justify">
                         <a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a> is a researcher at the <a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a> whose work bridges interactive, real-time 3D graphics and vision systems for scene-aware augmented reality and robotics applications.
@@ -497,19 +513,42 @@
                     IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
                     reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
                 </p>
+                <div class="font-mono text-xs flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 pt-2">
+                    <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>Mon, October 5, 2026</span>
+                    <span><i class="fa-regular fa-clock text-sky-400 mr-1.5"></i>14:00–17:45 CEST</span>
+                    <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy · Hybrid</span>
+                </div>
                 <ol class="prog">
                     <li class="prog-slot">
                         <div class="prog-time">14:00-14:15</div>
                         <div>
-                            <div class="prog-title">Opening</div>
-                            <div class="prog-who">Shohei Mori</div>
+                            <div class="prog-title">Opening <span class="prog-note">(15 min)</span></div>
+                            <div class="prog-person">
+                                <div class="prog-avatars">
+                                    <img src="shohei_mori.jpg" alt="Shohei Mori">
+                                    <img src="mariko_isogawa.jpg" alt="Mariko Isogawa">
+                                    <img src="hideo_saito.jpg" alt="Hideo Saito">
+                                </div>
+                                <div class="prog-who"><a href="#organizers" class="hover:text-sky-500 transition-colors">IWDR Organizers</a></div>
+                            </div>
                         </div>
                     </li>
-                    <li class="prog-slot is-keynote">
+                    <li class="prog-slot is-feature">
                         <div class="prog-time">14:15-15:00</div>
                         <div>
-                            <div class="prog-title">Keynote</div>
-                            <div class="prog-who">Mohamed Kari</div>
+                            <div class="prog-title">Keynote <span class="prog-note">(45 min)</span></div>
+                            <div class="prog-person">
+                                <img src="mohamed_kari.jpg" alt="Mohamed Kari">
+                                <div class="prog-person-info">
+                                    <div class="prog-who font-semibold"><a href="#keynote" class="hover:text-sky-500 transition-colors">Mohamed Kari</a></div>
+                                    <div class="text-xs uppercase tracking-wider text-gray-500">FieldAI Research Institute</div>
+                                    <div class="prog-desc italic">Reality Interfaces: Rebuilding Reality in Real-Time</div>
+                                </div>
+                            </div>
+                            <details class="prog-abstract">
+                                <summary>Abstract</summary>
+                                <p>Computers moved from the basement onto the user’s desk, into their pocket, around their wrist, and in front of their eyes. Not only did they physically converge to the user’s space of action, but the increasing integration of sensors and displays provides them with unprecedented access to the user’s senses and their environment, promising to evolve computers into comprehensive reality interfaces through which the user perceives and interacts with the world around. In this talk, I will introduce reality interfaces as computers situated between objective and subjective reality, and that build a representation of reality to then reprocess and present it as needed for user-desired interactions. I will discuss how to design and build interactive reality interfaces that leverage geometric, photometric, semantic, and pragmatic awareness of the user’s environment for engaging situated interactions and experiences beyond single-object augmentations.</p>
+                            </details>
                         </div>
                     </li>
                     <li class="prog-slot">
@@ -518,27 +557,33 @@
                             <div class="prog-title">Short Paper Talk × 2 <span class="prog-note">(15 min per talk)</span></div>
                             <div class="prog-chair">Session Chair: Hideo Saito</div>
                             <div class="prog-paper">
+                                <span class="prog-paper-no">01</span>
+                                <div>
                                 <div class="prog-paper-title">Multimodal Diminished Reality for Robotics</div>
                                 <div class="prog-paper-authors">Rajashekhar V S (Indian Institute of Technology – Kanpur), Rahul Kumar Ray (FLAME University), Diganta Ghorai (Indian Institute of Technology – Kanpur), Vivek Kumar (Indian Institute of Technology – Kanpur), Gowdham Prabhakar (Indian Institute of Technology – Kanpur)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
                                     <p>Diminished Reality (DR) is an emerging paradigm within the Extended Reality (XR) spectrum that enables the selective removal and inpainting of "objects of disinterest" from the user’s environment. While traditional robotics research prioritizes maximizing information gain, a critical research gap exists in managing the cognitive load of operators in complex, cluttered, and perceptually demanding scenarios. This work addresses this gap by formalizing a multimodal Diminished Reality for Robotics (DR-R) framework, shifting the focus from "perceiving more" to "perceiving less". We introduce a unified approach comprising three sensory cues: visual, audio, and haptic. To evaluate this framework, we conducted a structured experimental protocol (N=41) across five modalities: visual wire removal, visual suppression of simulated blood, single-channel speech extraction via SepFormer, and haptic substitution for environmental light cues in a robotic lizard. Quantitative results reveal that Audio (M=5.91/7) and Haptic (M=5.39/7) diminished cues were the most effective, scoring 24.6% and 13.7% higher, respectively, than the average of the visual modalities (M_visual_avg=4.56/7). Furthermore, the unified multimodal scene achieved a high preference rating (M=4.90/7), with participants reporting significantly enhanced scene interpretability and reduced sensory clutter. Our findings suggest that multimodal DR-R effectively mitigates sensory overload, offering a vital complementary principle to traditional robotic perception.</p>
                                 </details>
+                                </div>
                             </div>
                             <div class="prog-paper">
+                                <span class="prog-paper-no">02</span>
+                                <div>
                                 <div class="prog-paper-title">Perceive More By Seeing Less: Vision Augmentation Systems</div>
                                 <div class="prog-paper-authors">Daniel Pillis (MIT Media Lab), Pawan Sinha (Massachusetts Institute of Technology), Cayden Pierce (Mentra), Seth Riskin (Massachusetts Institute of Technology), Yuriy Reznik (Research Laboratory of Electronics at MIT), Ken Zolot (Massachusetts Institute of Technology)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
                                     <p>We present “Perceive More By Seeing Less,” a creative research project and diminished reality experience that explores methods for improving visual acuity using mixed reality (MR/AR/VR/XR) pass-through technology. Working with a transdisciplinary team, we designed five real-time spatial frequency filters that suppress or enhance specific bands of visual information, a perceptual form of diminished reality (DR) in which selectively removing detail, rather than adding virtual content, reshapes how users perceive objects, spatial relations, and environments. Motivated by vision rehabilitation research on children recovering from treatable blindness, the system reframes deprivation-based rehabilitation as a creative DR tool and demonstrates the paradoxical potential of diminished reality to enhance human perception. This paper discusses the theoretical foundation, implementation, and implications for sensory, creative, and vision rehabilitation-oriented diminished reality research.</p>
                                 </details>
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="prog-slot is-break">
                         <div class="prog-time">15:30-16:15</div>
                         <div>
-                            <div class="prog-title">☕ Coffee break</div>
+                            <div class="prog-title">☕ Coffee break <span class="prog-note">(45 min)</span></div>
                         </div>
                     </li>
                     <li class="prog-slot">
@@ -547,12 +592,15 @@
                             <div class="prog-title">Short Paper Talk × 1 <span class="prog-note">(15 min)</span></div>
                             <div class="prog-chair">Session Chair: Shohei Mori</div>
                             <div class="prog-paper">
+                                <span class="prog-paper-no">03</span>
+                                <div>
                                 <div class="prog-paper-title">DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning</div>
                                 <div class="prog-paper-authors">RUOFAN LIU (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
                                     <p>Previous DR systems rely on manually defined rules or fixed object elimination, limiting their ability to adapt to the changing activities and surrounding contexts. In this paper, we present DR.Adapt, an adaptive diminished reality framework that incorporates vision-language reasoning to automatically determine which objects should be visually suppressed based on the user's ongoing task. Our approach combines egocentric scene perception, semantic task inference, and adaptive rendering to estimate the relevance of surrounding objects and adjust their visibility accordingly. To demonstrate the feasibility of this idea, we implement a proof-of-concept prototype featuring two adaptive rendering strategies and evaluate it in representative scenarios. DR.Adapt is designed as an AI-driven interactive agent that responds to users' intentions and evolving environments. We hope this work will inspire future research on intelligent, personalized, and context-aware visual assistance in mixed reality.</p>
                                 </details>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -568,21 +616,73 @@
                             <div class="prog-title">DR Challenge Demonstrations and Talks <span class="prog-note">(15 min)</span></div>
                         </div>
                     </li>
-                    <li class="prog-slot">
+                    <li class="prog-slot is-feature">
                         <div class="prog-time">17:00-17:35</div>
                         <div>
-                            <div class="prog-title">Panel</div>
-                            <div class="prog-who">by Mohame Kari, Hideo Saito, Shohei Mori (+ participants)</div>
+                            <div class="prog-title">Panel Discussion <span class="prog-note">(35 min)</span></div>
+                            <div class="prog-person">
+                                <div class="prog-avatars">
+                                    <img src="mohamed_kari.jpg" alt="Mohamed Kari">
+                                    <img src="hideo_saito.jpg" alt="Hideo Saito">
+                                    <img src="shohei_mori.jpg" alt="Shohei Mori">
+                                </div>
+                                <div class="prog-who"><a href="#panel_discussion" class="hover:text-sky-500 transition-colors">Mohamed Kari, Hideo Saito, Shohei Mori</a> (+ participants)</div>
+                            </div>
                         </div>
                     </li>
                     <li class="prog-slot">
                         <div class="prog-time">17:35-17:45</div>
                         <div>
-                            <div class="prog-title">Closing - Group Photo</div>
-                            <div class="prog-who">Shohei Mori</div>
+                            <div class="prog-title">Closing - Group Photo <span class="prog-note">(10 min)</span></div>
+                            <div class="prog-who pt-1"><a href="#organizers" class="hover:text-sky-500 transition-colors">IWDR Organizers</a></div>
                         </div>
                     </li>
                 </ol>
+            </div>
+        </section>
+        
+        <!--
+            Panel Discussion
+        -->
+        <section id="panel_discussion" class="p-4">
+            <h2 class="flex items-center gap-3 font-mono text-lg font-bold uppercase tracking-[0.2em] text-sky-500">
+                <span class="whitespace-nowrap">Panel Discussion</span>
+                <span class="h-px flex-1 bg-sky-500/30"></span>
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-32 h-32 rounded-full" src="mohamed_kari.jpg" alt="mohamed portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mohamed Kari</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="flex flex-col group">
+                    <div class="relative flex flex-col items-center">
+                        <img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
+                        <div class="relative pt-2 px-2">
+                            <figcaption class="text-center">
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
+                                <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">University of Stuttgart, Germany</div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </figure>
             </div>
         </section>
         
