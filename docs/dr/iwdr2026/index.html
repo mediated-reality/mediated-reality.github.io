@@ -6,17 +6,40 @@
     <title>IWDR 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.1-web/css/all.min.css">
 	<link rel="stylesheet" href="../../assets/academicons-1.9.4/css/academicons.min.css">
     <script src="../../js/main.js" defer></script>
     <link rel="icon" href="iwdr2026_icon.png" type="image/x-icon">
     <style>
-        body { font-family: 'IBM Plex Sans', sans-serif; }
-        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        :root {
+            --font-sans: 'Inter', system-ui, sans-serif;
+            --font-display: 'IBM Plex Sans', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+        }
+        html, body { background: #f8f7f3; }
+        /* keep anchor targets clear of the sticky nav bar */
+        html { scroll-padding-top: 6rem; }
+        @media (min-width: 1024px) { html { scroll-padding-top: 6.5rem; } }
+        body {
+            font-family: var(--font-sans);
+            font-feature-settings: 'cv11', 'ss01', 'ss03';
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        .font-mono { font-family: var(--font-mono); }
+        h2.font-mono { font-weight: 700; }
+        .prog-time, .prog-paper-no { font-variant-numeric: tabular-nums; }
+        /* linked portraits (panel, organizers) */
+        figure a > img { transition: opacity .2s; }
+        figure a > img:hover { opacity: .85; }
 
         /* ── Hero ───────────────────────────────────────── */
+        /* the hero keeps its original IBM Plex typefaces */
+        .hero { font-family: var(--font-display); }
+        .hero .font-mono { font-family: 'IBM Plex Mono', monospace; }
         .hero { padding-top: 2.5rem; padding-bottom: 1.5rem; text-align: left; }
         .hero-card {
             position: relative; isolation: isolate;
@@ -62,12 +85,10 @@
         }
         .hero-meta { position: relative; margin-top: 2rem; padding-right: 5.5rem; }
         .hero-colocated { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: #64748b; }
-        .hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .hero-chips { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-top: 0.6rem; }
         .hero-chips span {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.85rem; color: #1e293b;
-            background: rgba(255, 255, 255, 0.85); border: 1px solid #e2e8f0; border-radius: 0.6rem;
-            padding: 0.4rem 0.8rem;
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            font-size: 0.85rem; color: #334155;
         }
         .hero-chips i { color: #0ea5e9; }
         @media (max-width: 639px) {
@@ -78,6 +99,9 @@
             .hero-meta { padding-right: 0; }
         }
 
+        /* icon spacing in the program info row */
+        .prog-info i { margin-right: 0.375rem; }
+
         /* Description references: soft, separated panel */
         .refs-box {
             margin: 1rem 0 1.25rem; padding: 0.85rem 1.1rem;
@@ -85,7 +109,7 @@
             color: #64748b; line-height: 1.55; text-align: left;
         }
         .refs-box > p:first-child {
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-family: var(--font-mono); font-size: 0.7rem;
             letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.35rem;
         }
         .refs-box li { padding-left: 1.6rem; text-indent: -1.6rem; font-size: 0.8rem; }
@@ -143,7 +167,7 @@
         }
         .prog-slot:last-child { border-bottom: 0; }
         .prog-slot::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #cbd5e1; }
-        .prog-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: #64748b; padding-top: 0.1rem; white-space: nowrap; }
+        .prog-time { font-family: var(--font-mono); font-size: 0.875rem; color: #64748b; padding-top: 0.1rem; white-space: nowrap; }
         .prog-title { font-weight: 600; color: #0f172a; }
         .prog-note { font-weight: 400; color: #64748b; }
         .prog-who { font-size: 0.875rem; color: #334155; }
@@ -166,7 +190,7 @@
             background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
         }
         .prog-paper > div { min-width: 0; }
-        .prog-paper-no { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #0ea5e9; padding-top: 0.15rem; flex-shrink: 0; }
+        .prog-paper-no { font-family: var(--font-mono); font-size: 0.75rem; color: #0ea5e9; padding-top: 0.15rem; flex-shrink: 0; }
         .prog-paper-title { font-weight: 600; color: #0f172a; line-height: 1.45; }
         .prog-paper-authors { font-size: 0.875rem; color: #64748b; line-height: 1.55; margin-top: 0.3rem; }
 
@@ -187,7 +211,7 @@
         .prog-abstract { margin-top: 0.5rem; }
         .prog-abstract summary {
             display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+            font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
             color: #0369a1; padding: 0.2rem 0.6rem; border: 1px solid #bae6fd; border-radius: 9999px; background: #fff;
             transition: background .15s, border-color .15s;
         }
@@ -205,7 +229,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-slate-50 text-slate-950 text-justify">
+<body class="min-h-screen text-slate-950 text-justify">
     <header class="sticky top-4 lg:top-6 z-10 mx-2">
         <section class="bg-slate-500/20 backdrop-blur-sm max-w-4xl mx-auto p-4 flex justify-between items-center rounded-full font-mono">
             <div class="flex items-center">
@@ -513,10 +537,10 @@
                     IWDR 2026 is a half-day, hybrid workshop. We deliberately move away from a "mini-conference" format — roughly half the time is
                     reserved for interactive activity rather than paper presentations. Indicative agenda (subject to change):
                 </p>
-                <div class="font-mono text-xs flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 pt-2">
-                    <span><i class="fa-regular fa-calendar text-sky-400 mr-1.5"></i>Mon, October 5, 2026</span>
-                    <span><i class="fa-regular fa-clock text-sky-400 mr-1.5"></i>14:00–17:45 CEST</span>
-                    <span><i class="fa-solid fa-location-dot text-sky-400 mr-1.5"></i>Bari, Italy · Hybrid</span>
+                <div class="prog-info font-mono text-xs flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600 pt-2">
+                    <span><i class="fa-regular fa-calendar text-sky-400"></i>Mon, October 5, 2026</span>
+                    <span><i class="fa-regular fa-clock text-sky-400"></i>14:00–17:45 CEST</span>
+                    <span><i class="fa-solid fa-location-dot text-sky-400"></i>Bari, Italy · Hybrid</span>
                 </div>
                 <ol class="prog">
                     <li class="prog-slot">
@@ -652,10 +676,10 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="mohamed_kari.jpg" alt="mohamed portrait">
+                        <a href="https://mkari.de/" target="_blank"><img class="w-32 h-32 rounded-full" src="mohamed_kari.jpg" alt="mohamed portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
-                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mohamed Kari</a></div>
+                                <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mkari.de/" target="_blank">Mohamed Kari</a></div>
                                 <div class="text-sm uppercase tracking-wider text-gray-500 pt-1">Keio University, Japan</div>
                             </figcaption>
                         </div>
@@ -663,7 +687,7 @@
                 </figure>
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
+                        <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
                                 <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
@@ -674,7 +698,7 @@
                 </figure>
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
+                        <a href="https://mugichoko445.github.io" target="_blank"><img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
                                 <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
@@ -697,7 +721,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-2 pt-6 font-normal">
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait">
+                        <a href="https://mugichoko445.github.io" target="_blank"><img class="w-32 h-32 rounded-full" src="shohei_mori.jpg" alt="shohei portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
                                 <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://mugichoko445.github.io" target="_blank">Shohei Mori</a></div>
@@ -708,7 +732,7 @@
                 </figure>
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait">
+                        <a href="https://isogawa.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="mariko_isogawa.jpg" alt="mariko portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
                                 <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a></div>
@@ -719,7 +743,7 @@
                 </figure>
                 <figure class="flex flex-col group">
                     <div class="relative flex flex-col items-center">
-                        <img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait">
+                        <a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank"><img class="w-32 h-32 rounded-full" src="hideo_saito.jpg" alt="hideo portrait"></a>
                         <div class="relative pt-2 px-2">
                             <figcaption class="text-center">
                                 <div class="text-base sm:text-lg font-bold hover:text-sky-500 transition-colors"><a href="http://www.hvrl.ics.keio.ac.jp/" target="_blank">Hideo Saito</a></div>
