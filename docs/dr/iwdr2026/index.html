@@ -18,6 +18,37 @@
             --font-display: 'IBM Plex Sans', 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', ui-monospace, monospace;
         }
+        /* ── Palette: deep academic blue + muted trophy gold ── */
+        :root {
+            --accent-50:  #eef3f9;
+            --accent-200: #c8d7ea;
+            --accent-300: #9fb9d9;
+            --accent-400: #5f88bd;
+            --accent-500: #2f5f99;
+            --accent-700: #1f4777;
+            --accent-800: #17365b;
+            --accent-rgb: 47, 95, 153;
+            --gold-50:  #faf5e8;
+            --gold-500: #b8862b;
+            --gold-700: #85601a;
+            --gold-rgb: 184, 134, 43;
+        }
+        /* remap Tailwind's sky utilities used on this page to the palette */
+        .text-sky-400 { color: var(--accent-400); }
+        .text-sky-500 { color: var(--accent-500); }
+        .text-sky-600 { color: var(--accent-700); }
+        .text-sky-700 { color: var(--accent-800); }
+        .bg-sky-500 { background-color: var(--accent-500); }
+        .bg-sky-500\/30 { background-color: rgba(var(--accent-rgb), 0.3); }
+        .border-sky-500\/50 { border-color: rgba(var(--accent-rgb), 0.5); }
+        .hover\:text-sky-400:hover { color: var(--accent-400); }
+        .hover\:text-sky-500:hover { color: var(--accent-500); }
+        .hover\:bg-sky-500:hover { background-color: var(--accent-500); }
+        .hover\:bg-sky-600:hover { background-color: var(--accent-700); }
+        .hover\:border-sky-500:hover { border-color: var(--accent-500); }
+        .hover\:border-sky-500\/60:hover { border-color: rgba(var(--accent-rgb), 0.6); }
+        .marker\:text-sky-500 *::marker, .marker\:text-sky-500::marker { color: var(--accent-500); }
+
         html, body { background: #f8f7f3; }
         /* keep anchor targets clear of the sticky nav bar */
         html { scroll-padding-top: 6rem; }
@@ -49,14 +80,14 @@
         .hero-card::before {
             content: ""; position: absolute; inset: -1.5rem; z-index: -1; pointer-events: none;
             background:
-                radial-gradient(30% 40% at 22% 30%, rgba(14, 165, 233, 0.12), transparent 75%),
-                radial-gradient(28% 40% at 80% 70%, rgba(245, 158, 11, 0.09), transparent 75%),
+                radial-gradient(30% 40% at 22% 30%, rgba(var(--accent-rgb), 0.12), transparent 75%),
+                radial-gradient(28% 40% at 80% 70%, rgba(var(--gold-rgb), 0.09), transparent 75%),
                 radial-gradient(ellipse 50% 50% at 50% 50%, #fff 55%, rgba(255, 255, 255, 0) 100%);
             filter: blur(20px);
         }
         .hero-pixels {
             position: absolute; right: 1.5rem; bottom: 1.6rem; width: 4.75rem;
-            color: #0ea5e9; pointer-events: none;
+            color: var(--accent-500); pointer-events: none;
         }
         .hero-top { position: relative; display: flex; align-items: center; gap: 2rem; }
         .hero-logo {
@@ -69,18 +100,18 @@
         .hero-logo img { display: block; width: 100%; height: auto; }
         .hero-eyebrow {
             display: inline-block; font-size: clamp(0.95rem, 2vw, 1.15rem); font-weight: 500;
-            color: #0369a1; letter-spacing: 0.01em;
+            color: var(--accent-700); letter-spacing: 0.01em;
         }
         .hero-title {
             margin: 0.25rem 0 0.9rem;
             font-size: clamp(2.25rem, 7vw, 4.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em;
-            background: linear-gradient(95deg, #0f172a 0%, #0f172a 45%, #0369a1 100%);
+            background: linear-gradient(95deg, #0f172a 0%, #0f172a 45%, var(--accent-700) 100%);
             -webkit-background-clip: text; background-clip: text; color: transparent;
         }
         .hero-tag {
             display: inline-flex; align-items: center; gap: 0.45rem;
-            font-size: 0.95rem; font-weight: 500; color: #b45309;
-            background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.35);
+            font-size: 0.95rem; font-weight: 500; color: var(--gold-700);
+            background: rgba(var(--gold-rgb), 0.10); border: 1px solid rgba(var(--gold-rgb), 0.35);
             border-radius: 9999px; padding: 0.25rem 0.9rem;
         }
         .hero-meta { position: relative; margin-top: 2rem; padding-right: 5.5rem; }
@@ -90,7 +121,7 @@
             display: inline-flex; align-items: center; gap: 0.45rem;
             font-size: 0.85rem; color: #334155;
         }
-        .hero-chips i { color: #0ea5e9; }
+        .hero-chips i { color: var(--accent-500); }
         @media (max-width: 639px) {
             .hero-card { padding: 1.75rem 1.25rem 1.5rem; }
             .hero-card::before { inset: -1rem -1rem; }
@@ -145,8 +176,8 @@
         .challenge-item:nth-child(3) .challenge-label::before { content: "🎤"; }
         .challenge-item:hover .challenge-label::before { transform: scale(1.1) rotate(-6deg); }
         .challenge-item:hover {
-            border-color: rgba(14, 165, 233, 0.5);
-            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 8px 20px rgba(14, 165, 233, 0.10);
+            border-color: rgba(var(--accent-rgb), 0.5);
+            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 8px 20px rgba(var(--accent-rgb), 0.10);
             transform: translateY(-1px);
         }
         .challenge-item .challenge-label { display: block; margin-bottom: 0.25rem; letter-spacing: 0.01em; }
@@ -176,12 +207,12 @@
             display: inline-block; margin-top: 0.35rem; font-size: 0.875rem; color: #334155;
             background: #f1f5f9; border-radius: 0.375rem; padding: 0.1rem 0.55rem;
         }
-        .prog-slot.is-feature { background: #f0f9ff; }
-        .prog-slot.is-feature::before { background: #0ea5e9; }
-        .prog-slot.is-feature .prog-time { color: #0369a1; font-weight: 500; }
-        .prog-slot.is-challenge { background: #fffbeb; }
-        .prog-slot.is-challenge::before { background: #f59e0b; }
-        .prog-slot.is-challenge .prog-time { color: #b45309; font-weight: 500; }
+        .prog-slot.is-feature { background: var(--accent-50); }
+        .prog-slot.is-feature::before { background: var(--accent-500); }
+        .prog-slot.is-feature .prog-time { color: var(--accent-700); font-weight: 500; }
+        .prog-slot.is-challenge { background: var(--gold-50); }
+        .prog-slot.is-challenge::before { background: var(--gold-500); }
+        .prog-slot.is-challenge .prog-time { color: var(--gold-700); font-weight: 500; }
         .prog-slot.is-break { background: repeating-linear-gradient(135deg, #fff 0 10px, #f8fafc 10px 20px); }
         .prog-slot.is-break::before { background: transparent; }
         .prog-slot.is-break .prog-title { color: #64748b; font-weight: 500; }
@@ -190,7 +221,7 @@
             background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem;
         }
         .prog-paper > div { min-width: 0; }
-        .prog-paper-no { font-family: var(--font-mono); font-size: 0.75rem; color: #0ea5e9; padding-top: 0.15rem; flex-shrink: 0; }
+        .prog-paper-no { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-500); padding-top: 0.15rem; flex-shrink: 0; }
         .prog-paper-title { font-weight: 600; color: #0f172a; line-height: 1.45; }
         .prog-paper-authors { font-size: 0.875rem; color: #64748b; line-height: 1.55; margin-top: 0.3rem; }
 
@@ -205,22 +236,22 @@
             border: 2px solid #fff; margin-left: -0.6rem;
         }
         .prog-avatars img:first-child { margin-left: 0; }
-        .prog-slot.is-feature .prog-avatars img { border-color: #f0f9ff; }
+        .prog-slot.is-feature .prog-avatars img { border-color: var(--accent-50); }
 
         /* foldable abstract */
         .prog-abstract { margin-top: 0.5rem; }
         .prog-abstract summary {
             display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
             font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-            color: #0369a1; padding: 0.2rem 0.6rem; border: 1px solid #bae6fd; border-radius: 9999px; background: #fff;
+            color: var(--accent-700); padding: 0.2rem 0.6rem; border: 1px solid var(--accent-200); border-radius: 9999px; background: #fff;
             transition: background .15s, border-color .15s;
         }
         .prog-abstract summary::-webkit-details-marker { display: none; }
         .prog-abstract summary::before { content: "▸"; transition: transform .2s; }
         .prog-abstract[open] summary::before { transform: rotate(90deg); }
-        .prog-abstract summary:hover { background: #f0f9ff; border-color: #7dd3fc; }
+        .prog-abstract summary:hover { background: var(--accent-50); border-color: var(--accent-300); }
         .prog-abstract p {
-            margin-top: 0.6rem; padding-left: 0.85rem; border-left: 2px solid #bae6fd;
+            margin-top: 0.6rem; padding-left: 0.85rem; border-left: 2px solid var(--accent-200);
             font-size: 0.9375rem; line-height: 1.65; color: #334155;
         }
         @media (max-width: 639px) {
@@ -428,13 +459,13 @@
                         <span class="font-semibold">Camera-ready materials:</span> <span class="font-semibold text-sky-600">July 31, 2026</span>
                     </li>
                     <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 4, 2026</span>
+                        <span class="font-semibold">(DR Challenge - ON-SITE) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 4, 2026</span>
                     </li>
                     <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ON-SITE Participation) Notification of invitation:</span> <span class="font-semibold text-sky-600">September 18, 2026</span>
+                        <span class="font-semibold">(DR Challenge - ON-SITE) Notification of invitation:</span> <span class="font-semibold text-sky-600">September 18, 2026</span>
                     </li>
                     <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
-                        <span class="font-semibold">(DR Challenge - ONLINE Presentation) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 27, 2026</span>
+                        <span class="font-semibold">(DR Challenge - ONLINE) Demonstration video and description submission:</span> <span class="font-semibold text-sky-600">September 27, 2026</span>
                     </li>
                     <li class="hover:bg-slate-200 transition-colors colors rounded-md px-1">
                         <span class="font-semibold">Workshop:</span> <span class="font-semibold text-sky-600">October 5 or 6, 2026</span> (Bari, Italy / hybrid)
@@ -638,6 +669,7 @@
                         <div class="prog-time">16:45-17:00</div>
                         <div>
                             <div class="prog-title">DR Challenge Demonstrations and Talks <span class="prog-note">(15 min)</span></div>
+                            <div class="prog-who pt-1">Weida Cheng (Ritsumeikan University)</div>
                         </div>
                     </li>
                     <li class="prog-slot is-feature">
