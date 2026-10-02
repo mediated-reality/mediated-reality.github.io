@@ -435,6 +435,7 @@
         /* ── People (panel, organizers) ─────────────────── */
         .people-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; padding-top: 1.5rem; }
         @media (min-width: 640px) { .people-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 1rem; } }
+        @media (min-width: 640px) { .people-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
         .person-card {
             display: flex; flex-direction: column; align-items: center; text-align: center;
             padding: 0.5rem 0.5rem 0;
@@ -748,7 +749,7 @@
                     <img class="keynote-photo" src="mohamed_kari.jpg" alt="mohamed portrait">
                     <div class="keynote-body">
                         <div class="keynote-name"><a href="https://mkari.de/" target="_blank">Dr. Mohamed Kari</a></div>
-                        <div class="keynote-affil label"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a></div>
+                        <div class="keynote-affil label"><a href="https://www.fieldai.com/" target="_blank">FieldAI Research Institute</a>, USA</div>
                         <p class="keynote-talk">
                             <span class="label">Title</span><span class="italic">Reality Interfaces: Rebuilding Reality in Real-Time</span>
                         </p>
@@ -802,7 +803,7 @@
                                 <img src="mohamed_kari.jpg" alt="Mohamed Kari">
                                 <div class="prog-person-info">
                                     <div class="prog-who font-semibold"><a href="#keynote" class="hover:text-sky-500 transition-colors">Mohamed Kari</a></div>
-                                    <div class="text-xs uppercase tracking-wider text-gray-500">FieldAI Research Institute</div>
+                                    <div class="text-xs uppercase tracking-wider text-gray-500">FieldAI Research Institute, USA</div>
                                     <div class="prog-desc italic">Reality Interfaces: Rebuilding Reality in Real-Time</div>
                                 </div>
                             </div>
@@ -856,7 +857,7 @@
                                 <span class="prog-paper-no">03</span>
                                 <div>
                                 <div class="prog-paper-title">DR.Adapt: Context-Aware Adaptive Diminished Reality via VLM Reasoning</div>
-                                <div class="prog-paper-authors">RUOFAN LIU (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
+                                <div class="prog-paper-authors">Ruofan Liu (Institute of Science Tokyo), Chen-Chieh Liao (Institute of Science Tokyo), Erwin Wu (Institute of Science Tokyo), Hideki Koike (Institute of Science Tokyo)</div>
                                 <details class="prog-abstract">
                                     <summary>Abstract</summary>
                                     <p>Previous DR systems rely on manually defined rules or fixed object elimination, limiting their ability to adapt to the changing activities and surrounding contexts. In this paper, we present DR.Adapt, an adaptive diminished reality framework that incorporates vision-language reasoning to automatically determine which objects should be visually suppressed based on the user's ongoing task. Our approach combines egocentric scene perception, semantic task inference, and adaptive rendering to estimate the relevance of surrounding objects and adjust their visibility accordingly. To demonstrate the feasibility of this idea, we implement a proof-of-concept prototype featuring two adaptive rendering strategies and evaluate it in representative scenarios. DR.Adapt is designed as an AI-driven interactive agent that responds to users' intentions and evolving environments. We hope this work will inspire future research on intelligent, personalized, and context-aware visual assistance in mixed reality.</p>
@@ -885,10 +886,11 @@
                             <div class="prog-person">
                                 <div class="prog-avatars">
                                     <img src="mohamed_kari.jpg" alt="Mohamed Kari">
+                                    <img src="ruofan_liu.jpg" alt="Ruofan Liu">
                                     <img src="hideo_saito.jpg" alt="Hideo Saito">
                                     <img src="shohei_mori.jpg" alt="Shohei Mori">
                                 </div>
-                                <div class="prog-who"><a href="#panel_discussion" class="hover:text-sky-500 transition-colors">Mohamed Kari, Hideo Saito, Shohei Mori</a> (+ participants)</div>
+                                <div class="prog-who"><a href="#panel_discussion" class="hover:text-sky-500 transition-colors">Mohamed Kari, Ruofan Liu, Hideo Saito, Shohei Mori</a> (+ participants)</div>
                             </div>
                         </div>
                     </li>
@@ -911,12 +913,19 @@
                 <span class="whitespace-nowrap">Panel Discussion</span>
                 <span class="section-rule"></span>
             </h2>
-            <div class="people-grid">
+            <div class="people-grid people-grid-4">
                 <figure class="person-card">
                     <a href="https://mkari.de/" target="_blank" class="person-photo"><img src="mohamed_kari.jpg" alt="mohamed portrait"></a>
                     <figcaption>
                         <div class="person-name"><a href="https://mkari.de/" target="_blank">Mohamed Kari</a></div>
-                        <div class="person-affil label">Keio University, Japan</div>
+                        <div class="person-affil label">FieldAI Research Institute, USA</div>
+                    </figcaption>
+                </figure>
+                <figure class="person-card">
+                    <a href="https://ruofanliu0129.github.io/Resume/" target="_blank" class="person-photo"><img src="ruofan_liu.jpg" alt="ruofan portrait"></a>
+                    <figcaption>
+                        <div class="person-name"><a href="https://ruofanliu0129.github.io/Resume/" target="_blank">Ruofan Liu</a></div>
+                        <div class="person-affil label">Institute of Science Tokyo, Japan</div>
                     </figcaption>
                 </figure>
                 <figure class="person-card">
@@ -935,7 +944,7 @@
                 </figure>
             </div>
         </section>
-        
+
         <!--
             Organizers
         -->
